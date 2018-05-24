@@ -1,0 +1,25 @@
+ftp.formadin.com
+ANUNCIOS (Carlos Acevedo)
+http://www.formadin.com/STAF/CURS_APPWEB_2018/UF1845/PHP/PHP09/ANUNCIOS
+usuario: seg7239
+password: Qwerty1
+GEO (Emmanuel)
+http://www.formadin.com/STAF/CURS_APPWEB_2018/UF1845/PHP/PHP09/GEO
+usuario: seg7246
+password: Qwerty1
+GALERIA (Juan Carlos Buges)
+http://www.formadin.com/STAF/CURS_APPWEB_2018/UF1845/PHP/PHP09/GALERIA
+usuario: seg7245
+password: Qwerty1
+ADMIN (Betty)
+http://www.formadin.com/STAF/CURS_APPWEB_2018/UF1845/PHP/PHP09/ADMIN
+usuario:  seg7242
+password: Qwerty1
+GRUPOS (Edgar)
+http://www.formadin.com/STAF/CURS_APPWEB_2018/UF1845/PHP/PHP09/GRUPOS
+usuario: seg7244
+password: Qwerty1
+COMENTARIOS (Javier Atance)
+http://www.formadin.com/STAF/CURS_APPWEB_2018/UF1845/PHP/PHP09/COMENTARIOS
+usuario: seg7241
+password: Qwerty1
