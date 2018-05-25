@@ -10,7 +10,11 @@
        //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
      //4 comentario Carlos Acevedo
+
      //6 comentario Javi
+
+     //5 comentario Carlos Acevedo
+
     $consulta="SELECT * FROM Tags order by Fecha DESC";
 
     conectarBD();
