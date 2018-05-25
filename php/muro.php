@@ -9,6 +9,7 @@
        //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
      //4 Javi
+     //6 Javi Otra Vez
      
     $consulta="SELECT * FROM Tags order by Fecha DESC";
 
