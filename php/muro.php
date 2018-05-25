@@ -1,6 +1,7 @@
 <?php
   if (session_id() === "") 
       { session_start(); }
+      
   include '../lib/lib1.php';
 
  if(isset($_POST['texto'])){
