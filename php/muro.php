@@ -12,6 +12,7 @@
      //6 Javi Otra Vez
      //linea 5 Carlos Acevedo
      //7 linea 
+     //10 Autorización de cambios
      
     $consulta="SELECT * FROM Tags order by Fecha DESC";
 
