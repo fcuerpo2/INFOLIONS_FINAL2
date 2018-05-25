@@ -1,11 +1,19 @@
 <?php
-  if (session_id() == "") session_start(); 
+  if (session_id() === "") 
+      { session_start(); }
+      
   include '../lib/lib1.php';
 
  if(isset($_POST['texto'])){
- 
+        //nuevo comentario carlos acevedo   
        //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
+     //4 Javi
+     //6 Javi Otra Vez
+     //linea 5 Carlos Acevedo
+     //7 linea 
+     //10 Autorización de cambios
+     
     $consulta="SELECT * FROM Tags order by Fecha DESC";
 
     conectarBD();
