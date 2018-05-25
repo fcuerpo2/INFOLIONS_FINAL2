@@ -3,7 +3,7 @@
   include '../lib/lib1.php';
 
  if(isset($_POST['texto'])){
- 
+        //nuevo comentario carlos acevedo
        //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
     $consulta="SELECT * FROM Tags order by Fecha DESC";
