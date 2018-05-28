@@ -86,7 +86,7 @@ echo "
   		  	<div id='anuncio-left'></div>
   		</div>
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
-  		   	<div id='anuncio-top'>";
+  		   	<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 10px; border-radius: 10px; padding: 10px; color: #fff;'>";
 
 include "../ANUNCIOS/anuncios.php";
 
@@ -95,7 +95,7 @@ echo "                  </div>
    			<div id='perfiles'></div>
    			<div id='tags'>";
 
-
+include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
 echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick=verImagen(".$foto."))/>  ".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
