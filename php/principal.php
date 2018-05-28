@@ -20,6 +20,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
+            $_SESSION['MisTags'][] = $row;
     }
   }
     desconectarBD();
