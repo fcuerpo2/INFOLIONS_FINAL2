@@ -122,12 +122,14 @@ if ($encontrado == "NO")
 {
 //        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
         echo "<img src='../img/megusta.png' style='height:35px; width:35px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike()'>&nbsp;&nbsp;";
+        echo "Total Likes: <strong>".$totalLikes."</strong>";
 }
 else
 {
         echo "<img src='../img/megusta.png' style='height:35px; width:35px; border-radius: 0px;'>&nbsp;&nbsp;";
+        echo "Total Likes: <strong>".$totalLikes."</strong>";
 }
-echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
+//echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
 echo "</div>";
 echo "<div class='comentarios'></div></div>";
 }
