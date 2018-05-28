@@ -13,10 +13,6 @@
      //linea 5 Carlos Acevedo
      //7 linea 
      //10 Autorización de cambios
-     // Linea 8 Javi
-     //7 linea 
-     
-    
      
     $consulta="SELECT * FROM Tags order by Fecha DESC";
 
