@@ -18,10 +18,10 @@ if($_SESSION['usu']['idUsuario']!=""){
 				</header>
 				<form id='ftag' method='POST'>
 				<article>
-				Titulo: <input type='text' class='form-control' id='cab' name='cabecera'></input>
+				<input type='text' class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título'></input>
 				</article>
 				<article>
-				Texto: <textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto'></textarea>
+				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>
 				<input type='hidden' name='latitud'/>
 				<input type='hidden' name='longitud'/>
 				</article>
