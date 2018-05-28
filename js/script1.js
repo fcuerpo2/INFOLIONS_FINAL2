@@ -8,6 +8,7 @@ function miperfil(){
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("tags").innerHTML = this.responseText;
       document.getElementById("perfiles").style.display="none";
+      document.getElementById("anuncio-top").style.display="none";
     }
   }
   xhttp.open("GET", "../php/perfil.php", true);
