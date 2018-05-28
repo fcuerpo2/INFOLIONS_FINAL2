@@ -126,3 +126,6 @@ div#tags {
     width: 100%;
     height: auto;
 }
+.oscurecer:hover {
+    opacity: 1;
+}
