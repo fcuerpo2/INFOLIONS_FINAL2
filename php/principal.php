@@ -86,7 +86,9 @@ echo "
   		  	<div id='anuncio-left'></div>
   		</div>
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
-  		   	<div id='anuncio-top'></div>
+  		   	<div id='anuncio-top'>";
+include "../ANUNCIOS/anuncios.php";
+echo "                  </div>
    			<div id='imagen'></div>
    			<div id='perfiles'></div>
    			<div id='tags'>";
