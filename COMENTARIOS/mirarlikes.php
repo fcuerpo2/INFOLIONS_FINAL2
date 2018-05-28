@@ -7,8 +7,16 @@ $_SESSION['TodosLikes'] = "";
   conectarBD();
   $consulta="SELECT * FROM Likes";
   $resultado=$conexion->query($consulta);
-  while ($fila = mysql_fetch_row($resultado)) {         
-        $_SESSION['TodosLikes'][] = $fila;
-  }
+  
+    $i=0;
+    while ($array=$resultado->fetch_array()){
+        //Obtengo las claves del arreglo que en tu caso son los atributos de la tabla (id, nombre, etc)
+        $claves = array_keys($array);
+        //Recorro el arreglo de las claves para ir asignando los datos al arreglo con los nombres de los atributos
+        foreach($claves as $clave){
+            $_SESSION['TodosLikes'][$i][$clave]=$array[$clave];
+        }           
+        $i++;
+    }
   desconectarBD();
 ?>
