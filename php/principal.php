@@ -20,6 +20,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
+            $_SESSION['MisTags'][] = $row;
     }
   }
     desconectarBD();
@@ -99,14 +100,13 @@ echo "                  </div>
 include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
+echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div class='imagenes'></div>";
 echo "<div class='botones' style='margin-top:10px;'><input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;<input type='button' class='btn btn-primary' value='Comentario'/></div>";
 echo "<div class='comentarios'></div></div>";
 }
-
 echo "		</div>
 		</div>
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
