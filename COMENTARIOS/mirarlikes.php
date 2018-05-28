@@ -14,7 +14,7 @@ $_SESSION['TodosLikes'] = "";
         $claves = array_keys($array);
         //Recorro el arreglo de las claves para ir asignando los datos al arreglo con los nombres de los atributos
         foreach($claves as $clave){
-            $_SESSION['TodosLikes'][$i][$clave]=$array[$clave];
+//            $_SESSION['TodosLikes'][$i][$clave]=$array[$clave];
         }           
         $i++;
     }
