@@ -120,11 +120,12 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
 }
 if ($encontrado == "NO")
 {
+//        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
         echo "<input type='button' class='btn btn-primary' value='Me puede gustar'/>&nbsp;&nbsp;";
 }
 else
 {
-        echo "<input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;";               
+        echo "<img src='../img/megusta.png' style='height:35px;'>";
 }
 echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
 echo "</div>";
