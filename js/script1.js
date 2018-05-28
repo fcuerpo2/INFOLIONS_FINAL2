@@ -121,8 +121,8 @@ function registrar(){
   }else{
 
   }
-  	var tags="";
-
+      document.getElementById("botPubliTag").innerHTML="Publicando...";
+      var tags="";
       var formdata = new FormData($('#ftag')[0]);
         $.ajax({
         type: 'POST',
@@ -132,6 +132,7 @@ function registrar(){
         processData: false,
         success:function(resultado){
        	objeto = JSON.parse(resultado); 
+        document.getElementById("botPubliTag").innerHTML="Publicado";
     	mostrarTags(objeto);
  		}
     });  
@@ -156,9 +157,9 @@ function mostrarTags(obj){
 function crearTags(miTexto,index){
 	var idTag=miTexto.idTag;
    t+="<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/"+miTexto.FotoPortada+"' onclick='verImagen("+miTexto.FotoPortada+")  "+miTexto.Nombre+" "+miTexto.Apellidos+" "+miTexto.Fecha+"</div>";
-   t+="<div class='titulo'>"+miTexto.Cabecera+"</div>";
-   t+="<div class='texto'>"+miTexto.Texto+"</div>";
-   t+="<div id='imagenes'></div><div id='botones'><input type='button' class='btn btn-primary' value='Me gusta'/><input type='button' class='btn btn-primary' value='Comentario'/></div>";
+   t+="<div class='titulo' style='padding-bottom:3px;'>"+miTexto.Cabecera+"</div>";
+   t+="<div class='texto' style='padding-bottom:3px;'>"+miTexto.Texto+"</div>";
+   t+="<div id='imagenes'></div><div id='botones' style='margin-top:5px;'><input type='button' class='btn btn-primary' value='Me gusta'/><input type='button' class='btn btn-primary' value='Comentario'/></div>";
    t+="<div id='comentarios'></div></div>"; 
 }
 
