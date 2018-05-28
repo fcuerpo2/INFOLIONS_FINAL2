@@ -71,6 +71,7 @@ echo "
                 <li class='active'><a href='./principal.php'>Home</a></li>
                 <li ><a href='#'  onclick='miperfil();'>Mi Perfil</a></li>
                 <li><a href='./contactos.php'>Contactos</a></li>
+                <li ><a href='#'  onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
                 <li><a href='#'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
