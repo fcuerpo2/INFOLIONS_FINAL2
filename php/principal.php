@@ -116,10 +116,6 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
         {
             $encontrado="SI";
         }
-        else
-        {
-            $encontrado="NO";
-        }
     }        
 }
 if ($encontrado == "NO")
