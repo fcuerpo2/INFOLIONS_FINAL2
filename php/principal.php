@@ -2,8 +2,7 @@
 header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
-if (session_id() == '') 
-    session_start(); 
+if (session_id() === '') { session_start(); }
 
 if($_SESSION['usu']['idUsuario']!=""){
 
@@ -50,65 +49,71 @@ echo "
     visibility: hidden;
     width:0px;
     height:0px;
-}</style>
-
+}
+</style>
 </head>
 <body onload='cargarmuro()'>
-      <center>
-
-
-    <div id='cabecera'>
-          <nav class='navbar navbar-inverse'>
-  <div class='container-fluid'>
+<center>
+<div id='cabecera'>
+  <nav class='navbar navbar-inverse'>
+    <div class='container-fluid'>
         <div class='navbar-header'>
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <a class='navbar-brand' href='#'>INFOLIONS</a>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' href='#'>INFOLIONS</a>
+        </div>
+        <div class='collapse navbar-collapse' id='myNavbar'>
+            <ul class='nav navbar-nav'>
+                <li class='active'><a href='./principal.php'>Home</a></li>
+                <li ><a href='#'  onclick='miperfil();'>Mi Perfil</a></li>
+                <li><a href='./contactos.php'>Contactos</a></li>
+            </ul>
+            <ul class='nav navbar-nav navbar-right'>
+                <li><a href='#'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
+                <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
+            </ul>
+        </div>
     </div>
-    <div class='collapse navbar-collapse' id='myNavbar'>
-      <ul class='nav navbar-nav'>
-        <li class='active'><a href='./principal.php'>Home</a></li>
-        <li ><a href='#'  onclick='miperfil();'>Mi Perfil</a></li>
-        <li><a href='./contactos.php'>Contactos</a></li>
-      </ul>
-      <ul class='nav navbar-nav navbar-right'>
-        <li><a href='#'><span class='glyphicon glyphicon-user'></span> 
-         Bienvenido $nombre $apellidos</a></li>
-        <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> 
+  </nav> 
+</div>
 
-   </div>
-   <div id='imagen'></div>
-   <div id='perfiles'></div>
-   <div id='tags' style='max-height: 300px; overflow: auto;'>";
+   	<div class='row' style='margin: 0 auto;'>
+  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
+  		  	<div id='geolocalizacion'></div>
+  		  	<div id='anuncio-left'></div>
+  		</div>
+  		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
+  		   	<div id='anuncio-top'></div>
+   			<div id='imagen'></div>
+   			<div id='perfiles'></div>
+   			<div id='tags'>";
 
 
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' onclick=verImagen(".$foto."))/>  ".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
+echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick=verImagen(".$foto."))/>  ".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div class='imagenes'></div>";
 echo "<div class='botones'><input type='button' class='btn btn-primary' value='Me gusta'/><input type='button' class='btn btn-primary' value='Comentario'/></div>";
 echo "<div class='comentarios'></div></div>";
-
 }
 
-echo "</div></center></body>";
-
-
+echo "		</div>
+		</div>
+  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
+  		  		<div id='grupos'></div>
+  			 	<div id='anuncio-right'></div>
+  		</div>
+  	</div>		
+	</center>";
 }
 else{
-
   header("location: ../index.php");
-
 }
-
 ?>
+</body>
 </html>
