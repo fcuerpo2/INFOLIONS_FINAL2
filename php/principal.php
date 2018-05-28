@@ -103,7 +103,26 @@ echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag'><div class='cabecera'>
 echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div class='imagenes'></div>";
-echo "<div class='botones' style='margin-top:10px;'><input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;<input type='button' class='btn btn-primary' value='Comentario'/></div>";
+echo "<div class='botones' style='margin-top:10px;'>";
+$totalLikes = 0;
+for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
+{
+    if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $miArray[$i]['idTag'])
+    {
+        $totalLikes++;
+        if ($_SESSION['TodosLikes'][$z]['IdUsuarioEnvia'] == $miArray[$i]['idUsuario'])
+        {
+            echo "<input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;";           
+        }
+        else
+        {
+            echo "<input type='button' class='btn btn-primary' value='Me puede gustar'/>&nbsp;&nbsp;";
+        }
+    }
+        
+}
+echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
+echo "</div>";
 echo "<div class='comentarios'></div></div>";
 }
 echo "		</div>
