@@ -98,7 +98,7 @@ echo "                  </div>
 include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick=verImagen(".$foto."))/>  ".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
+echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div class='imagenes'></div>";
