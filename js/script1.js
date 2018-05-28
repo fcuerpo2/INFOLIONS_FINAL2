@@ -121,7 +121,7 @@ function registrar(){
   }else{
 
   }
-      document.getElementById("botPubliTag").style.value="Publicando...";
+      document.getElementById("botPubliTag").value="Publicando...";
       var tags="";
       var formdata = new FormData($('#ftag')[0]);
         $.ajax({
@@ -132,8 +132,8 @@ function registrar(){
         processData: false,
         success:function(resultado){
        	objeto = JSON.parse(resultado); 
-        document.getElementById("botPubliTag").style.value="Publicado";
     	mostrarTags(objeto);
+        document.getElementById("botPubliTag").value="Publicado";
  		}
     });  
 
