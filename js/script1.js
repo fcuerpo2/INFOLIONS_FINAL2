@@ -117,7 +117,7 @@ function registrar(){
   function enviartag(){
 
  if (navigator.geolocation){
-  navigator.geolocation.getCurrentPosition(showPosition);
+//  navigator.geolocation.getCurrentPosition(showPosition);
   }else{
 
   }
