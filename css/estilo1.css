@@ -127,5 +127,5 @@ div#tags {
     height: auto;
 }
 .oscurecer:hover {
-    opacity: 1;
+    opacity: 1 !important;
 }
