@@ -1,8 +1,7 @@
 <?php
 header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
-if (session_id() == '') 
-    session_start(); 
+if (session_id() === '') { session_start(); }
 
 if($_SESSION['usu']['idUsuario']!=""){
 
@@ -11,13 +10,11 @@ if($_SESSION['usu']['idUsuario']!=""){
   $foto=$_SESSION['usu']['FotoPortada'];
   $fecha=date('d-m-y h:i:sa');
 
-
-
 	echo "
 			<div id='tag' class='tag' >
 				<section>
-				<header>
-		<img src='../doc/fotoportada/$foto' id='fotoperfil' />   $nombre $apellidos $fecha
+				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'>
+                        		<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar' /><span style='margin-left:15px; text-align:center; margin-top: 20px;'>$nombre $apellidos $fecha</span>
 				</header>
 				<form id='ftag' method='POST'>
 				<article>
@@ -29,18 +26,14 @@ if($_SESSION['usu']['idUsuario']!=""){
 				<input type='hidden' name='longitud'/>
 				</article>
 				<footer>
-				<input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='publicar'></input>
+				<input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='publicar' style='margin-top:10px;'></input>
 				</footer>
 				</section>
 				</form>
-			</div>	
-		";
+			</div>";
 }
 else{
-
   header("location: ../index.php");
-
 }
-
 ?>
 </html>
