@@ -102,7 +102,7 @@ echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto'
 echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div class='imagenes'></div>";
-echo "<div class='botones'><input type='button' class='btn btn-primary' value='Me gusta'/><input type='button' class='btn btn-primary' value='Comentario'/></div>";
+echo "<div class='botones' style='margin-top:10px;'><input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;<input type='button' class='btn btn-primary' value='Comentario'/></div>";
 echo "<div class='comentarios'></div></div>";
 }
 
