@@ -121,11 +121,11 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
 if ($encontrado == "NO")
 {
 //        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
-        echo "<input type='button' class='btn btn-primary' value='Me puede gustar'/>&nbsp;&nbsp;";
+                echo "<img src='../img/megusta.png' style='height:35px; width:35px; border-radius: 0px; opacity: 0.7;'>&nbsp;&nbsp;";
 }
 else
 {
-        echo "<img src='../img/megusta.png' style='height:35px;'>";
+        echo "<img src='../img/megusta.png' style='height:35px; width:35px; border-radius: 0px;'>&nbsp;&nbsp;";
 }
 echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
 echo "</div>";
