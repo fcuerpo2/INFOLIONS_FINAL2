@@ -8,7 +8,10 @@
 //TODO: la idea es poner un nuevo botón junto al publicar tag, que sea publicar anuncio.
 //TODO: los anuncios entrarán en una cola y se presentarán de forma rotativa, cambiando cada 3 o 4 minutos
 
-echo "Codigo Anuncios";
+// El Div donde ira el codigo se llama "anuncio-top"
+
+
+echo "Introducir Nuevo Anuncio";
 
 ?>
 
