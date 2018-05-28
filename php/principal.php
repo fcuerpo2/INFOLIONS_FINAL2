@@ -31,7 +31,7 @@ echo "
 <html lang='es'>
 <head>
 	<title>InfoLions</title>
-	<link rel='shortcut icon' type='image/x-icon' href='./img/favicon.ico'>
+	<link rel='shortcut icon' type='image/x-icon' href='../img/favicon.ico'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<meta http-equiv='Pragma' content='no-cache'>
 	<meta http-equiv='Expires' content='-1'>
