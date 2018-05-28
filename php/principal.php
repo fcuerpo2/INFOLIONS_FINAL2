@@ -121,12 +121,12 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
 if ($encontrado == "NO")
 {
 //        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
-        echo "<img src='../img/megusta.png' style='height:35px; width:35px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike()'>&nbsp;&nbsp;";
+        echo "<img src='../img/megusta.png' style='height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike()'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 }
 else
 {
-        echo "<img src='../img/megusta.png' style='height:35px; width:35px; border-radius: 0px;'>&nbsp;&nbsp;";
+        echo "<img src='../img/megusta.png' style='height:30px; width:30px; border-radius: 0px;'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 }
 //echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
