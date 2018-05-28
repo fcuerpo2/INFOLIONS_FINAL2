@@ -26,7 +26,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 				<input type='hidden' name='longitud'/>
 				</article>
 				<footer>
-				<input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='publicar' style='margin-top:10px;'></input>
+				<input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='Publicar' style='margin-top:10px;' id='botPubliTag'></input>
 				</footer>
 				</section>
 				</form>
