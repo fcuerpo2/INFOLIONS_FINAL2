@@ -159,7 +159,7 @@ function crearTags(miTexto,index){
    t+="<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/"+miTexto.FotoPortada+"' onclick='verImagen("+miTexto.FotoPortada+")' class='escalar'>&nbsp;&nbsp;&nbsp;&nbsp;"+miTexto.Nombre+" "+miTexto.Apellidos+" "+miTexto.Fecha+"</div>";
    t+="<div class='titulo' style='padding-bottom:3px;'>"+miTexto.Cabecera+"</div>";
    t+="<div class='texto' style='padding-bottom:3px;'>"+miTexto.Texto+"</div>";
-   t+="<div id='imagenes'></div><div id='botones' style='margin-top:5px;'><input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;&nbsp;<input type='button' class='btn btn-primary' value='Comentario'/></div>";
+   t+="<div id='imagenes'></div><div id='botones' style='margin-top:10px;'><input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;&nbsp;<input type='button' class='btn btn-primary' value='Comentario'/></div>";
    t+="<div id='comentarios'></div></div>"; 
 }
 
