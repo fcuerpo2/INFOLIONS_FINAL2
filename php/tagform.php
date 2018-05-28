@@ -16,9 +16,9 @@ if($_SESSION['usu']['idUsuario']!=""){
 				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'>
                         		<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar' /><span style='margin-left:15px; text-align:center; margin-top: 20px;'>$nombre $apellidos $fecha</span>
 				</header>
-				<form id='ftag' method='POST'>
+				<form id='ftag' method='POST' style='margin-bottom:0px;'>
 				<article>
-				<input type='text' class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título'></input>
+				<input type='text' class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;'></input>
 				</article>
 				<article>
 				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>
