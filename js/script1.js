@@ -16,6 +16,20 @@ function miperfil(){
 }
 
 
+function nuevoAnuncio(){
+ var xhttp;
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tags").innerHTML = this.responseText;
+      document.getElementById("perfiles").style.display="none";
+      document.getElementById("anuncio-top").style.display="none";
+    }
+  }
+  xhttp.open("GET", "../ANUNCIOS/anuncios.php", true);
+  xhttp.send();   
+}
+
 
 
 function subirfoto(){
