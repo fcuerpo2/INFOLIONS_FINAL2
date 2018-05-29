@@ -186,10 +186,20 @@ document.getElementById("imagen").innerHTML="<img src='"+ruta+"' width='200px'/>
 }
 function ponerlike(numTag,UserEnvia,UserRecibe)
 {
-    contenedor="Botones-"+numTag;
-    ruta="../COMENTARIOS/ponerlike.php?numTag="+numTag+"&UserEnvia="+UserEnvia+"UserRecibe="+UserRecibe;
-    alert(ruta);
-    document.getElementById(contenedor).load(ruta);
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("Botones-"+numTag).innerHTML = this.responseText;
+        }
+    }
+    xhttp.open("GET", "../COMENTARIOS/ponerlike.php", true);
+    xhttp.send();
+    
+//    contenedor="Botones-"+numTag;
+//    ruta="../COMENTARIOS/ponerlike.php?numTag="+numTag+"&UserEnvia="+UserEnvia+"UserRecibe="+UserRecibe;
+//    alert(ruta);
+//    document.getElementById(contenedor).load(ruta);
 }
 
 function quitarlike(numTag,UserEnvia,UserRecibe)
