@@ -87,7 +87,7 @@ echo "
   		  	<div id='geolocalizacion' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		</div>
-  		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
+  		<div class='col-md-6 col-md-push-6' style='margin-top: 5px; margin-bottom: 5px;'>
   		   	<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 10px; border-radius: 10px; padding: 10px; color: #fff;'>";
 
 include "../ANUNCIOS/anuncios.php";
