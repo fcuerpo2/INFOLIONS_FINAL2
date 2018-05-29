@@ -16,9 +16,9 @@ if($_SESSION['usu']['idUsuario']!=""){
 				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'>";
 $nombre_fichero = '../doc/fotoportada/'.$foto;
 if (file_exists($nombre_fichero)) {
-    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar'/>";
+    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' />";
 } else {
-    echo "<img src='../img/vacio.jpg' id='fotoperfil' class='escalar' alt='Sube una Foto de Perfil' title='Sube una Foto de Perfil' />";
+    echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sube una Foto de Perfil' title='Sube una Foto de Perfil' />";
 }    
         echo "                          <span style='margin-left:15px; text-align:center; margin-top: 20px;'>$nombre $apellidos $fecha</span>
 				</header>
