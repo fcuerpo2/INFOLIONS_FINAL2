@@ -18,7 +18,7 @@ $nombre_fichero = '../doc/fotoportada/'.$foto;
 if (file_exists($nombre_fichero)) {
     echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar'/>";
 } else {
-    echo "<img src='../img/reservoir.png' id='fotoperfil' class='escalar'/>";
+    echo "<img src='../img/vacio.jpg' id='fotoperfil' class='escalar' alt='Sube una Foto de Perfil' title='Sube una Foto de Perfil' />";
 }    
         echo "                          <span style='margin-left:15px; text-align:center; margin-top: 20px;'>$nombre $apellidos $fecha</span>
 				</header>
