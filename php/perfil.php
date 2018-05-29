@@ -23,7 +23,7 @@ if ($_SESSION['usu']['idUsuario']!=0) {
      
 $nombre_fichero = '../doc/fotoportada/'.$fotoportada;
 if (file_exists($nombre_fichero)) {
-    $texto.="<img src='../doc/fotoportada/$fotoportada' id='fotoperfil' class='escalar'/>";
+    $texto.="<img src='../doc/fotoportada/$fotoportada' id='fotoperfil' class='escalar cambio'/>";
 } else {
     $texto.="<img src='../img/reservoir.png' id='fotoperfil' class='escalar'/>";
 }    
