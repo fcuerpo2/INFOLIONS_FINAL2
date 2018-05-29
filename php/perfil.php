@@ -19,8 +19,16 @@ if ($_SESSION['usu']['idUsuario']!=0) {
      $fotoportada=$_SESSION['usu']['FotoPortada'];
 
      $texto="<div class='row'><div class='col-md-3'>";
+     $texto.="<form method='POST' id='subir' action='../php/fichero.php'><div id='foto'>";
+     
+$nombre_fichero = '../doc/fotoportada/'.$fotoportada;
+if (file_exists($nombre_fichero)) {
+    $texto.="<img src='../doc/fotoportada/$fotoportada' id='fotoperfil' class='escalar'/>";
+} else {
+    $texto.="<img src='../img/reservoir.png' id='fotoperfil' class='escalar'/>";
+}    
 
-     $texto.="<form method='POST' id='subir' action='../php/fichero.php'><div id='foto'><img src='../doc/fotoportada/$fotoportada' id='fotoperfil' class='escalar'/></div><br>
+     $texto.="</div><br>
       <div class='image-upload' style='margin:0 auto; text-align:center;'>
       <label for='fotoportada' style='margin-bottom:0px; cursor:pointer;'>
       <img src='../img/ico-adjuntar.png' style='height:50px; width: 50px; pointer-events:none;'/>
