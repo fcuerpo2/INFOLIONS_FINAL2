@@ -101,10 +101,10 @@ include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
 echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
-echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
-echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div class='imagenes'></div>";
-echo "<div class='botones' style='margin-top:10px;'>";
+echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
+echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
+echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'></div>";
+echo "<div id='Botones-".$miArray[$i]['idTag']."' class='botones' style='margin-top:10px;'>";
 $totalLikes = 0;
 $encontrado="NO";
 for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
@@ -131,7 +131,10 @@ else
 }
 //echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
 echo "</div>";
-echo "<div class='comentarios'></div></div>";
+echo "<div class='comentarios'>";
+
+echo "</div>";
+echo "</div>";
 }
 echo "		</div>
 		</div>
