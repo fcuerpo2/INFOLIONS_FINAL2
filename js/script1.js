@@ -184,3 +184,12 @@ function verImagen(foto){
 document.getElementById("imagen").innerHTML="<img src='"+ruta+"' width='200px'/>";
 
 }
+function ponerlike(numTag,UserEnvia,UserRecibe)
+{
+    alert("poner Like");
+}
+
+function quitarlike(numTag,UserEnvia,UserRecibe)
+{
+    alert("poner Like");
+}
