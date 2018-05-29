@@ -13,8 +13,14 @@ if($_SESSION['usu']['idUsuario']!=""){
 	echo "
 			<div id='tag' class='tag' >
 				<section>
-				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'>
-                        		<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar' /><span style='margin-left:15px; text-align:center; margin-top: 20px;'>$nombre $apellidos $fecha</span>
+				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'>";
+$nombre_fichero = '../doc/fotoportada/'.$foto;
+if (file_exists($nombre_fichero)) {
+    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar'/>";
+} else {
+    echo "<img src='../img/reservoir.png' id='fotoperfil' class='escalar'/>";
+}    
+        echo "                          <span style='margin-left:15px; text-align:center; margin-top: 20px;'>$nombre $apellidos $fecha</span>
 				</header>
 				<form id='ftag' method='POST' style='margin-bottom:0px;'>
 				<article>
