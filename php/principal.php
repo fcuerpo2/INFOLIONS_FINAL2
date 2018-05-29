@@ -99,7 +99,14 @@ echo "                  </div>
 include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
+echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'>";
+$nombre_fichero = '../doc/fotoportada/'.$foto;
+if (file_exists($nombre_fichero)) {
+    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' onclick='verImagen(".$foto.")' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;'/>";
+} else {
+    echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sin Foto de Perfil' title='Sin Foto de Perfil' style='width: 40px; height: 40px;' />";
+}    
+echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'></div>";
