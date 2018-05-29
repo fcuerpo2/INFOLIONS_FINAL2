@@ -187,6 +187,9 @@ document.getElementById("imagen").innerHTML="<img src='"+ruta+"' width='200px'/>
 function ponerlike(numTag,UserEnvia,UserRecibe)
 {
     alert("poner Like");
+    contenedor="Botones"+numTag;
+    ruta="../COMENTARIOS/ponerlike.php?numTag="+numTag+"&UserEnvia="+UserEnvia+"UserRecibe="+UserRecibe;
+    document.getElementById(contenedor).load(ruta);
 }
 
 function quitarlike(numTag,UserEnvia,UserRecibe)
