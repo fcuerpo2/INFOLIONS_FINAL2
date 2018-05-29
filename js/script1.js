@@ -193,7 +193,7 @@ function ponerlike(numTag,UserEnvia,UserRecibe)
         document.getElementById("Botones-"+numTag).innerHTML = this.responseText;
         }
     }
-    xhttp.open("GET", "../COMENTARIOS/ponerlike.php", true);
+    xhttp.open("GET", "../COMENTARIOS/ponerlike.php?NumTag=".numTag, true);
     xhttp.send();
     
 //    contenedor="Botones-"+numTag;
