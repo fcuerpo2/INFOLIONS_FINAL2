@@ -126,7 +126,7 @@ if ($encontrado == "NO")
 }
 else
 {
-        echo "<img src='../img/megusta.png' class='escalar' style='height:30px; width:30px; border-radius: 0px;' alt='Me Gusta' title='Me Gusta'>&nbsp;&nbsp;";
+        echo "<img src='../img/nomegusta.png' class='escalar' style='height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 }
 //echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
