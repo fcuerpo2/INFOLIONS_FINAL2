@@ -64,7 +64,7 @@ echo "
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' href='#'>INFOLIONS</a>
+            <a class='navbar-brand' href='#'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height:45px;'>   INFOLIONS</a>
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
