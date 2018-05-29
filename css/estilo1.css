@@ -70,7 +70,7 @@ img{
 
 .titulo{
     width: 100%;
-    background-color: beige;
+    background-color: rgba(220, 223, 245, 0.5294117647058824);
     color: blue;
     padding: 3px;
     font-size: 16px;
