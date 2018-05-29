@@ -20,7 +20,7 @@ if ($_SESSION['usu']['idUsuario']!=0) {
 
      $texto="<div class='row'><div class='col-md-3'>";
 
-     $texto.="<form method='POST' id='subir' action='../php/fichero.php'><div id='foto'><img src='../doc/fotoportada/$fotoportada' id='fotoperfil'/></div><br>
+     $texto.="<form method='POST' id='subir' action='../php/fichero.php'><div id='foto'><img src='../doc/fotoportada/$fotoportada' id='fotoperfil' class='escalar'/></div><br>
       <div class='image-upload' style='margin:0 auto; text-align:center;'>
       <label for='fotoportada' style='margin-bottom:0px; cursor:pointer;'>
       <img src='../img/ico-adjuntar.png' style='height:50px; width: 50px; pointer-events:none;'/>
