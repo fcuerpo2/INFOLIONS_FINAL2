@@ -120,12 +120,12 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
 if ($encontrado == "NO")
 {
 //        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
-        echo "<img src='../img/megusta.png' class='escalar oscurecer' style='height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike()' alt='¿ Te Gusta ?' title='¿ Te Gusta ?'>&nbsp;&nbsp;";
+        echo "<img src='../img/megusta.png' class='escalar oscurecer' style='cursor: pointer; height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")' alt='¿ Te Gusta ?' title='¿ Te Gusta ?'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 }
 else
 {
-        echo "<img src='../img/nomegusta.png' class='escalar' style='height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta'>&nbsp;&nbsp;";
+        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 }
 //echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
