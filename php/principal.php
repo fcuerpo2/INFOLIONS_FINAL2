@@ -64,13 +64,13 @@ echo "
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' href='#'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
+            <a class='navbar-brand' href='principal.php'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
                 <li><a href='./principal.php'>Home</a></li>
                 <li><a href='./contactos.php'>Contactos</a></li>
-                <li><a href='#'  onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
+                <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
                 <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
