@@ -68,12 +68,19 @@ img{
     width: 100%;
     background-color: blue;
     color: white;
+    padding: 5px;
 }
 
 .titulo{
     width: 100%;
     background-color: beige;
     color: blue;
+    padding: 3px;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 2px 2px 8px #5a53c5;
+    border-bottom: 1px solid #ddd;
 }
 
 .texto{
@@ -81,6 +88,7 @@ img{
     background-color: beige;
     color: black;
     overflow: auto;
+    padding: 5px;
 }
 #fotoperfil{
 
