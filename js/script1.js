@@ -193,10 +193,8 @@ function ponerlike(numTag,UserEnvia,UserRecibe)
         document.getElementById("Botones-"+numTag).innerHTML = this.responseText;
         }
     }
-    ruta="";
-    xhttp.open("GET", "../COMENTARIOS/ponerlike.php?NumTag="+numTag, true);
-    xhttp.send();
-    
+    xhttp.open("GET", "../COMENTARIOS/ponerlike.php?NumTag="+numTag+"&UserEnvia="+UserEnvia+"&UserRecibe="+UserRecibe, true);
+    xhttp.send();    
 //    contenedor="Botones-"+numTag;
 //    ruta="../COMENTARIOS/ponerlike.php?numTag="+numTag+"&UserEnvia="+UserEnvia+"UserRecibe="+UserRecibe;
 //    alert(ruta);
