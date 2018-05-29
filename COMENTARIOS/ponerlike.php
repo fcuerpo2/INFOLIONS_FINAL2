@@ -12,5 +12,5 @@ $_SESSION['TodosLikes'] = "";
   $_SESSION['TodosLikes'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
   
   desconectarBD();
-  echo "Poner Likes";
+  echo "Poner Likes ".$_GET['NumTag'];
 ?>
