@@ -27,7 +27,6 @@ if (file_exists($nombre_fichero)) {
 } else {
     $texto.="<img src='../img/reservoir.png' id='fotoperfil' class='escalar'/>";
 }    
-
      $texto.="</div><br>
       <div class='image-upload' style='margin:0 auto; text-align:center;'>
       <label for='fotoportada' style='margin-bottom:0px; cursor:pointer;'>
