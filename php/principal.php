@@ -94,12 +94,12 @@ include "../ANUNCIOS/anuncios.php";
 echo "                  </div>
    			<div id='imagen'></div>
    			<div id='perfiles' class='sombraNegra'></div>
-   			<div id='tags' class='sombraNegra'>";
+   			<div id='tags'>";
 
 include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
+echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'><img src='../doc/fotoportada/$foto' class='escalar' onclick='verImagen(".$foto.")'>&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'></div>";
