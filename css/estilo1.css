@@ -137,3 +137,6 @@ div#tags {
 .oscurecer:hover {
     opacity: 1 !important;
 }
+.sombraNegra {
+    box-shadow: 5px 10px 18px #888888;
+}
