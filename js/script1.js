@@ -191,5 +191,5 @@ function ponerlike(numTag,UserEnvia,UserRecibe)
 
 function quitarlike(numTag,UserEnvia,UserRecibe)
 {
-    alert("poner Like");
+    alert("Quitar Like");
 }
