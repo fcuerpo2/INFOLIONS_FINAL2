@@ -51,6 +51,7 @@ img{
     margin:0 auto;
     max-width: 600px;
     margin-bottom: 10px;
+    border-radius:10px;
 }
 
 .tag2{
@@ -136,5 +137,5 @@ div#tags {
     opacity: 1 !important;
 }
 .sombraNegra {
-    box-shadow: 5px 10px 18px #888888;
+    box-shadow: 0px 4px 15px 5px #888888;
 }
