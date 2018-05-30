@@ -14,7 +14,7 @@ function miperfil(){
   xhttp.open("GET", "../php/perfil.php", true);
   xhttp.send();   
 }
-
+//-------------------------------------------------------------------------------------------------------------
 //MÉTODOS DE PUBLICIDAD     nuevoAnuncio() --> método para presentar crear anuncio
 //                          publicarAnuncio() --> método para crear en base de datos y volver a principal.php
 
@@ -52,6 +52,29 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
 
 function subirfoto(){
 if(confirm("¿Estás seguro que quieres cambiar la foto?")){
+    var formdata = new FormData($('#subir')[0]);
+    
+    $.ajax({
+        type: 'POST',
+        url: '../php/fichero.php',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+          document.getElementById('foto').innerHTML="<img src='../doc/fotoportada/"+resultado+"' width='200px'/>";
+          document.getElementById('fotop').value=resultado;          
+        }
+    });
+
+
+
+  }
+}
+
+//------------------------------------------------------------------------------------------------------
+
+function subirFotoAnuncio(){
+if(confirm("¿Estás seguro que quieres subir una imagen?<br> Si subes una imagen no podrás indicar la descripcion")){
     var formdata = new FormData($('#subir')[0]);
     
     $.ajax({
