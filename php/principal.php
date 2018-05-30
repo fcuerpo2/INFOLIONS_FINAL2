@@ -112,7 +112,7 @@ echo "
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
   		   	<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
 
-include "../ANUNCIOS/anuncios.php";
+include "../ANUNCIOS/anuncioInicioBlanco.php";
 
 echo "                  </div>
    			<div id='imagen'></div>
