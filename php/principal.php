@@ -90,7 +90,7 @@ echo "
                                     <div id='EspacioChat' style='max-height:350px; overflow: auto; padding: 0px 10px;'>
                                     <div class='chat'";
         	
-        		$_SESSION['user']=$_SESSION['usu']['Nombre']." ".$_SESSION['usu']['Nombre'];
+        		$_SESSION['user']=$_SESSION['usu']['Nombre']." ".$_SESSION['usu']['Apellidos'];
         		include("../chat/config.php");
         		include("../chat/login.php");
           		if(isset($_SESSION['user'])){
