@@ -2,8 +2,7 @@
 header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
-if (session_id() == '') 
-    session_start(); 
+if (session_id() === '') { session_start(); }
 
 if($_SESSION['usu']['idUsuario']!=""){
 
@@ -21,6 +20,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
+            $_SESSION['MisTags'][] = $row;
     }
   }
     desconectarBD();
@@ -31,7 +31,7 @@ echo "
 <html lang='es'>
 <head>
 	<title>InfoLions</title>
-	<link rel='shortcut icon' type='image/x-icon' href='./img/favicon.ico'>
+	<link rel='shortcut icon' type='image/x-icon' href='../img/favicon.ico'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<meta http-equiv='Pragma' content='no-cache'>
 	<meta http-equiv='Expires' content='-1'>
@@ -43,6 +43,9 @@ echo "
 
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>
+    <script src='../chat/chat.js'></script>
+    <link href='../chat/chat.css' rel='stylesheet'/>
+
 
 
 <style>
@@ -50,65 +53,130 @@ echo "
     visibility: hidden;
     width:0px;
     height:0px;
-}</style>
-
+}
+</style>
 </head>
 <body onload='cargarmuro()'>
-      <center>
-
-
-    <div id='cabecera'>
-          <nav class='navbar navbar-inverse'>
-  <div class='container-fluid'>
+<center>
+<div id='cabecera'>
+  <nav class='navbar navbar-inverse'>
+    <div class='container-fluid'>
         <div class='navbar-header'>
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <a class='navbar-brand' href='#'>INFOLIONS</a>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' href='principal.php'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
+        </div>
+        <div class='collapse navbar-collapse' id='myNavbar'>
+            <ul class='nav navbar-nav'>
+                <li><a href='./principal.php'>Home</a></li>
+                <li><a href='./contactos.php'>Contactos</a></li>
+                <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
+            </ul>
+            <ul class='nav navbar-nav navbar-right'>
+                <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
+                <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
+            </ul>
+        </div>
     </div>
-    <div class='collapse navbar-collapse' id='myNavbar'>
-      <ul class='nav navbar-nav'>
-        <li class='active'><a href='./principal.php'>Home</a></li>
-        <li ><a href='#'  onclick='miperfil();'>Mi Perfil</a></li>
-        <li><a href='./contactos.php'>Contactos</a></li>
-      </ul>
-      <ul class='nav navbar-nav navbar-right'>
-        <li><a href='#'><span class='glyphicon glyphicon-user'></span> 
-         Bienvenido $nombre $apellidos</a></li>
-        <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> 
+  </nav> 
+</div>
 
-   </div>
-   <div id='imagen'></div>
-   <div id='perfiles'></div>
-   <div id='tags' style='max-height: 300px; overflow: auto;'>";
+   	<div class='row' style='margin: 0 auto;'>
+  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
+                        <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>
+                                    <div id='EspacioChat' style='max-height:350px; overflow: auto; padding: 0px 10px;'>
+                                    <div class='chat'";
+        	
+        		$_SESSION['user']=$_SESSION['usu']['Nombre']." ".$_SESSION['usu']['Apellidos'];
+        		include("../chat/config.php");
+        		include("../chat/login.php");
+          		if(isset($_SESSION['user'])){
+              		include("../chat/chatbox.php");
+          		}else{	
+              		$display_case=true;
+              		include("../chat/login.php");
+          		}
+        	
+ echo"                              </div>
+                                </div>  
+                                    <form id='msg_form'>
+                                        <input name='msg' type='text' placeholder='Mensaje...' style='border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;' />
+                                    </form>
+	                </div>                        
+  		  	<div id='geolocalizacion' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+  		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+  		</div>
+  		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
+  		   	<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
 
+include "../ANUNCIOS/anuncios.php";
 
+echo "                  </div>
+   			<div id='imagen'></div>
+   			<div id='perfiles' class='sombraNegra'></div>
+   			<div id='tags'>";
+
+include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' onclick=verImagen(".$foto."))/>  ".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
-echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
-echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div class='imagenes'></div>";
-echo "<div class='botones'><input type='button' class='btn btn-primary' value='Me gusta'/><input type='button' class='btn btn-primary' value='Comentario'/></div>";
-echo "<div class='comentarios'></div></div>";
-
+echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'>";
+$nombre_fichero = '../doc/fotoportada/'.$foto;
+if (file_exists($nombre_fichero)) {
+    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' onclick='verImagen(".$foto.")' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;' />";
+} else {
+    echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sin Foto de Perfil' title='Sin Foto de Perfil' style='width: 40px; height: 40px;' />";
+}    
+echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
+echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
+echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
+echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'></div>";
+echo "<div id='Botones-".$miArray[$i]['idTag']."' class='botones' style='margin-top:10px;'>";
+$totalLikes = 0;
+$encontrado="NO";
+for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
+{
+    if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $miArray[$i]['idTag'])
+    {
+        $totalLikes++;
+        if ($_SESSION['TodosLikes'][$z]['IdUsuarioRecibe'] == $miArray[$i]['idUsuario'])
+        {
+            $encontrado="SI";
+        }
+    }        
 }
+if ($encontrado == "NO")
+{
+//        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
+        echo "<img src='../img/megusta.png' class='escalar oscurecer' style='cursor: pointer; height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")' alt='¿ Te Gusta ?' title='¿ Te Gusta ?'>&nbsp;&nbsp;";
+        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
+}
+else
+{
+        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
+        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
+}
+//echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
+echo "</div>";
+echo "<div class='comentarios'>";
 
-echo "</div></center></body>";
-
-
+echo "</div>";
+echo "</div>";
+}
+echo "		</div>
+		</div>
+  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
+  		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+  			 	<div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+  		</div>
+  	</div>		
+	</center>";
 }
 else{
-
   header("location: ../index.php");
-
 }
-
 ?>
+</body>
 </html>
