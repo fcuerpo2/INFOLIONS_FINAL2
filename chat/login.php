@@ -2,7 +2,7 @@
 <?php 
 	session_start();
 include("../chat/config.php");
- $name=$_SESSION['user'];
+ $name=$_SESSION['usu']['Nombre'];
  $sql=$dbh->prepare("SELECT name FROM chatters WHERE name=?");
  $sql->execute(array($name));
  if($sql->rowCount()!=0){
