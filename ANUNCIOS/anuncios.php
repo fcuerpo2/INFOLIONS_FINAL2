@@ -20,7 +20,8 @@ echo "
 				</article>
                                 <article>
                                     <br>
-                                    <button type='button' class='btn btn-primary' name='B1'><span class='glyphicon glyphicon-camera'></span> Foto</button>
+                                    <button type='file'  accept='image/*' class='btn btn-primary' id='fotoAnuncio' name='fotoAnuncio' onchange='subirFotoAnuncio()'><span class='glyphicon glyphicon-camera'></span> Foto</button>
+                                    
                                 </article>
                                     <br>
 				<article>
