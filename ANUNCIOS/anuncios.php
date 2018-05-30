@@ -6,7 +6,10 @@
  * and open the template in the editor.
  */
 echo "
+    
 <div id='perfiles' class='sombraNegra'>
+                        <br>
+                        <h3>PUBLICAR ANUNCIO</h3>
 			<div id='tag' class='tag'>
 				<section>
 				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'><img src='../doc/fotoportada/12-carlos.jpg' id='fotoperfil' class='escalar' alt='Foto de Perfil' title='Foto de Perfil'>                          <span style='text-align:center; margin-top: 10px; width:100%'><span style='font-size:18px; font-weight: 700; text-shadow: 2px 2px 8px #9a96e4;'>Carlos  Acevedo Jiménez</span><br><span style='font-size: 12px; font-style: italic;'>30-05-18 05:00:26pm</span></span>
