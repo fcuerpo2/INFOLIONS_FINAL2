@@ -29,7 +29,6 @@
 		<form id="msg_form">
  	 		<input name="msg" type="text" placeholder="Mensaje..." />
  		</form>
-<
 	</div>
 <!--	
     <div class="users" style='display:none'>

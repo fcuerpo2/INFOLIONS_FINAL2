@@ -1,6 +1,6 @@
 <?php 
 
-include("./chat2/config.php");
+include("../chat/config.php");
 $sql=$dbh->prepare("SELECT * FROM messages ORDER BY Id ASC");
 $sql->execute();
 while($r=$sql->fetch()){
