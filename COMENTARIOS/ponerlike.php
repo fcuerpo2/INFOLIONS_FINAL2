@@ -29,7 +29,7 @@ $totalLikes = 0;
 $encontrado="NO";
 for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
 {
-    if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $miArray[$i]['idTag'])
+    if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $MiNumTag)
     {
         $totalLikes++;
     }        
