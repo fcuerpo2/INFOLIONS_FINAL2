@@ -26,6 +26,7 @@ function nuevoAnuncio(){
       document.getElementById("anuncio-top").style.display="none";
     }
   }
+ 
   xhttp.open("GET", "../ANUNCIOS/anuncios.php", true);
   xhttp.send();   
 }
