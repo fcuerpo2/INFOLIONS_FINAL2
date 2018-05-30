@@ -149,7 +149,7 @@ echo "		</div>
 		</div>
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
   		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
-                                <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'>
+                                <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>
                                     <div id='EspacioChat' style='max-height:350px; overflow: auto; padding: 0px 10px;'>
                                     <div class='chat'";
         	
