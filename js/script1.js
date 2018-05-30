@@ -15,7 +15,7 @@ function miperfil(){
   xhttp.send();   
 }
 
-//Métodos para publicidad   nuevoAnuncio() --> método para presentar crear anuncio
+//MÉTODOS DE PUBLICIDAD     nuevoAnuncio() --> método para presentar crear anuncio
 //                          publicarAnuncio() --> método para crear en base de datos y volver a principal.php
 
 function nuevoAnuncio(){
