@@ -141,7 +141,7 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
     if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $miArray[$i]['idTag'])
     {
         $totalLikes++;
-        if ($_SESSION['TodosLikes'][$z]['IdUsuarioRecibe'] == $miArray[$i]['idUsuario'])
+        if ($_SESSION['TodosLikes'][$z]['IdUsuarioEnvia'] == $_SESSION['usu']['idUsuario'])
         {
             $encontrado="SI";
         }
