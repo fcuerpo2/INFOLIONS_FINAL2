@@ -178,16 +178,21 @@ for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
 }
 if ($encontrado == "NO")
 {
-//        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
-//        echo "<img src='../img/megusta.png' class='escalar oscurecer' style='cursor: pointer; height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")' alt='¿ Te Gusta ?' title='¿ Te Gusta ?'>&nbsp;&nbsp;";
-//        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
-          echo "Sin Comentarios";
+    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
+            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse'>
+                <br /><span>Sin Comentarios</span>
+            </div>";
 }
 else
 {
-    echo "<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#demo'>( $totalComentarios ) Comentarios</button>
-            <div id='demo' class='collapse'>
-                Nº de Comentarios: $totalComentarios
+    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
+            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+                <form name='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
+                    <div class='formComents'>
+                       <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
+                       <textarea cols='80' rows='3' id='mensaje-coment-".$miArray[$i]['idTag']."' type='text' class='form-control' placeholder='Mensaje Comentario' title='Mensaje Comentario'></textarea>                           
+                    </div>
+                </form>
             </div>";
 //          echo "Nº de Comentarios: ".$totalComentarios;
 //        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
