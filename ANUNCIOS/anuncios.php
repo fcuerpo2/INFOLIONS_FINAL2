@@ -18,8 +18,13 @@ echo "
 				<article>
 				<input class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;' type='text'>
 				</article>
+                                <article>
+                                    <br>
+                                    <button type='button' class='btn btn-primary' name='B1'><span class='glyphicon glyphicon-camera'></span> Foto</button>
+                                </article>
+                                    <br>
 				<article>
-				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>
+				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
 				<input name='latitud' type='hidden'>
 				<input name='longitud' type='hidden'>
 				</article>
