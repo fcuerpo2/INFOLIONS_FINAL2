@@ -28,6 +28,9 @@ if (file_exists($nombre_fichero)) {
 				</article>
 				<article>
 				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>
+                                <br/>
+                                <dt><label>Archivos Adjuntos:</label>   <a href='#' onclick='addField()' accesskey='5'>Añadir Archivo</a></dt>
+                                    <dd><div id='files'></div></dd>
 				<input type='hidden' name='latitud'/>
 				<input type='hidden' name='longitud'/>
 				</article>
