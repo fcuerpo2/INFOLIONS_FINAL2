@@ -1,6 +1,8 @@
 <?php
+
+if (session_id() === '') { session_start(); }
+
 if(!isset($dbh)){
- session_start();
  date_default_timezone_set("UTC");
  $musername = "qzw186";
  $mpassword = "Qwerty1";

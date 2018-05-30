@@ -1,4 +1,5 @@
 <?php 
+if (session_id() === '') { session_start(); }
 include("../chat/config.php");
 $sql=$dbh->prepare("SELECT name FROM chatters");
 $sql->execute();

@@ -1,5 +1,5 @@
 <?php 
-
+if (session_id() === '') { session_start(); }
 if(isset($_SESSION['user'])){
  $sqlm=$dbh->prepare("SELECT name FROM chatters WHERE name=?");
  $sqlm->execute(array($_SESSION['user']));
