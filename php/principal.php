@@ -103,7 +103,7 @@ echo "
  echo"                              </div>
                                 </div>  
                                     <form id='msg_form'>
-                                        <input name='msg' type='text' placeholder='Mensaje...' />
+                                        <input name='msg' type='text' placeholder='Mensaje...' style='border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;' />
                                     </form>
 	                </div>                        
   		  	<div id='geolocalizacion' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
