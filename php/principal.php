@@ -86,6 +86,26 @@ echo "
 
    	<div class='row' style='margin: 0 auto;'>
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
+                        <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>
+                                    <div id='EspacioChat' style='max-height:350px; overflow: auto; padding: 0px 10px;'>
+                                    <div class='chat'";
+        	
+        		$_SESSION['user']=$_SESSION['usu']['Nombre'];
+        		include("../chat/config.php");
+        		include("../chat/login.php");
+          		if(isset($_SESSION['user'])){
+              		include("../chat/chatbox.php");
+          		}else{	
+              		$display_case=true;
+              		include("../chat/login.php");
+          		}
+        	
+ echo"                              </div>
+                                </div>  
+                                    <form id='msg_form'>
+                                        <input name='msg' type='text' placeholder='Mensaje...' />
+                                    </form>
+	                </div>                        
   		  	<div id='geolocalizacion' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		</div>
@@ -149,26 +169,6 @@ echo "		</div>
 		</div>
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
   		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
-                                <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>
-                                    <div id='EspacioChat' style='max-height:350px; overflow: auto; padding: 0px 10px;'>
-                                    <div class='chat'";
-        	
-        		$_SESSION['user']=$_SESSION['usu']['Nombre'];
-        		include("../chat/config.php");
-        		include("../chat/login.php");
-          		if(isset($_SESSION['user'])){
-              		include("../chat/chatbox.php");
-          		}else{	
-              		$display_case=true;
-              		include("../chat/login.php");
-          		}
-        	
- echo"                              </div>
-                                </div>  
-                                    <form id='msg_form'>
-                                        <input name='msg' type='text' placeholder='Mensaje...' />
-                                    </form>
-	                        </div>        
   			 	<div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		</div>
   	</div>		
