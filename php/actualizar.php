@@ -10,8 +10,8 @@
     $movil=$_POST['movil'];
     $web=$_POST['web'];
     $id=$_SESSION['usu']['idUsuario'];
-   conectarBD();
-$consulta="UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos',Sexo='$sexo', EstadoCivil='$estadocivil', Telefono='$telefono', Movil='$movil', Web='$web' WHERE idUsuario=$id";
+    conectarBD();
+    $consulta="UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos',Sexo='$sexo', EstadoCivil='$estadocivil', Telefono='$telefono', Movil='$movil', Web='$web' WHERE idUsuario=$id";
   $resultado=$conexion->query($consulta);
   desconectarBD();
 

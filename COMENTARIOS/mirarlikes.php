@@ -9,4 +9,13 @@ $_SESSION['TodosLikes'] = "";
   $_SESSION['TodosLikes'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
   
   desconectarBD();
+  
+  conectarBD();
+  $consulta="SELECT * FROM Comentarios";
+  $resultado=$conexion->query($consulta);
+  
+  $_SESSION['TodosComentarios'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+  
+  desconectarBD();
+  
 ?>

@@ -112,7 +112,7 @@ echo "
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
   		   	<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
 
-include "../ANUNCIOS/anuncios.php";
+include "../ANUNCIOS/anuncioInicioBlanco.php";
 
 echo "                  </div>
    			<div id='imagen'></div>
@@ -141,7 +141,7 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
     if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $miArray[$i]['idTag'])
     {
         $totalLikes++;
-        if ($_SESSION['TodosLikes'][$z]['IdUsuarioRecibe'] == $miArray[$i]['idUsuario'])
+        if ($_SESSION['TodosLikes'][$z]['IdUsuarioEnvia'] == $_SESSION['usu']['idUsuario'])
         {
             $encontrado="SI";
         }
@@ -160,7 +160,41 @@ else
 }
 //echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
 echo "</div>";
-echo "<div class='comentarios'>";
+echo "<div class='comentarios' style='margin-top:15px;'>";
+
+$totalComentarios = 0;
+$encontrado="NO";
+for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
+{
+    if ($_SESSION['TodosComentarios'][$z]['idTag'] == $miArray[$i]['idTag'])
+    {
+        $totalComentarios++;
+        $encontrado="SI";
+//        if ($_SESSION['TodosComentarios'][$z]['IdUsuarioEnvia'] == $_SESSION['usu']['idUsuario'])
+//        {
+//            $encontrado="SI";
+//        }
+    }        
+}
+if ($encontrado == "NO")
+{
+//        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
+//        echo "<img src='../img/megusta.png' class='escalar oscurecer' style='cursor: pointer; height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")' alt='¿ Te Gusta ?' title='¿ Te Gusta ?'>&nbsp;&nbsp;";
+//        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
+          echo "Sin Comentarios";
+}
+else
+{
+    echo "<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#demo'>( $totalComentarios ) Comentarios</button>
+            <div id='demo' class='collapse'>
+                Nº de Comentarios: $totalComentarios
+            </div>";
+//          echo "Nº de Comentarios: ".$totalComentarios;
+//        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
+//        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
+}
+
+
 
 echo "</div>";
 echo "</div>";

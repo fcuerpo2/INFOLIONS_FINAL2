@@ -11,8 +11,9 @@ $MiUserRecibe = $_GET['UserRecibe'];
 $_SESSION['TodosLikes'] = "";
 //include '../lib/lib1.php';
   conectarBD();
-
-  $consulta="INSERT INTO Likes(idComentario,IdUsuarioEnvia,IdUsuarioRecibe) VALUES ($MiNumTag,$MiUserEnvia,$MiUserRecibe)";
+  
+//  $consulta="INSERT INTO Likes(idComentario,IdUsuarioEnvia,IdUsuarioRecibe) VALUES ($MiNumTag,$MiUserEnvia,$MiUserRecibe)";
+  $consulta="DELETE FROM Likes WHERE idComentario=".$MiNumTag." AND IdUsuarioEnvia=".$MiUserEnvia." AND IdUsuarioRecibe=".$MiUserRecibe;  
 
   $resultado=$conexion->query($consulta);
 
@@ -35,6 +36,6 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
     }        
 }
   desconectarBD();
-        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$MiNumTag.",".$MiUserEnvia.",".$MiUserRecibe.")'>&nbsp;&nbsp;";
+        echo "<img src='../img/megusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='¿ Me Gusta ?' title='¿ Te Gusta ?' onclick='ponerlike(".$MiNumTag.",".$MiUserEnvia.",".$MiUserRecibe.")'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 ?>

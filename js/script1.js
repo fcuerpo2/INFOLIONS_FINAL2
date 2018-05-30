@@ -15,6 +15,8 @@ function miperfil(){
   xhttp.send();   
 }
 
+//MÉTODOS DE PUBLICIDAD     nuevoAnuncio() --> método para presentar crear anuncio
+//                          publicarAnuncio() --> método para crear en base de datos y volver a principal.php
 
 function nuevoAnuncio(){
  var xhttp;
@@ -26,10 +28,26 @@ function nuevoAnuncio(){
       document.getElementById("anuncio-top").style.display="none";
     }
   }
+ 
   xhttp.open("GET", "../ANUNCIOS/anuncios.php", true);
   xhttp.send();   
 }
 
+function publicarAnuncio(){
+if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
+        $.ajax({
+        type: 'POST',
+        url: '../php/subirAnuncio.php',
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+          alert(resultado);
+         window.location.assign("../principal.php");
+         // document.getElementById('fotop').value=resultado;          
+        }
+    });
+  }
+}
 
 
 function subirfoto(){
@@ -170,7 +188,7 @@ function mostrarTags(obj){
 
 function crearTags(miTexto,index){
 	var idTag=miTexto.idTag;
-   t+="<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/"+miTexto.FotoPortada+"' onclick='verImagen("+miTexto.FotoPortada+")' class='escalar'>&nbsp;&nbsp;&nbsp;&nbsp;"+miTexto.Nombre+" "+miTexto.Apellidos+" "+miTexto.Fecha+"</div>";
+   t+="<div id='Tag-"+miTexto.idUsuario+"' class='tag sombranegra'><div class='cabecera'><img src='../doc/fotoportada/"+miTexto.FotoPortada+"' onclick='verImagen("+miTexto.FotoPortada+")' class='escalar'>&nbsp;&nbsp;&nbsp;&nbsp;"+miTexto.Nombre+" "+miTexto.Apellidos+" "+miTexto.Fecha+"</div>";
    t+="<div class='titulo' style='padding-bottom:3px;'>"+miTexto.Cabecera+"</div>";
    t+="<div class='texto' style='padding-bottom:3px;'>"+miTexto.Texto+"</div>";
    t+="<div id='imagenes'></div><div id='botones' style='margin-top:10px;'><input type='button' class='btn btn-primary' value='Me gusta'/>&nbsp;&nbsp;&nbsp;<input type='button' class='btn btn-primary' value='Comentario'/></div>";
@@ -203,5 +221,56 @@ function ponerlike(numTag,UserEnvia,UserRecibe)
 
 function quitarlike(numTag,UserEnvia,UserRecibe)
 {
-    alert("Quitar Like");
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("Botones-"+numTag).innerHTML = this.responseText;
+        }
+    }
+    xhttp.open("GET", "../COMENTARIOS/quitarlike.php?NumTag="+numTag+"&UserEnvia="+UserEnvia+"&UserRecibe="+UserRecibe, true);
+    xhttp.send();    
+}
+
+var numero = 0;
+
+// Funciones comunes
+c= function (tag) { // Crea un elemento
+   return document.createElement(tag);
+}
+d = function (id) { // Retorna un elemento en base al id
+   return document.getElementById(id);
+}
+e = function (evt) { // Retorna el evento
+   return (!evt) ? event : evt;
+}
+f = function (evt) { // Retorna el objeto que genera el evento
+   return evt.srcElement ?  evt.srcElement : evt.target;
+}
+
+addField = function () {
+   container = d('files');
+   
+   span = c('SPAN');
+   span.className = 'file';
+   span.id = 'file' + (++numero);
+
+   field = c('INPUT');   
+   field.name = 'archivos[]';
+   field.type = 'file';
+   
+   a = c('A');
+   a.name = span.id;
+   a.href = '#';
+   a.onclick = removeField;
+   a.innerHTML = 'Quitar';
+
+   span.appendChild(field);
+   span.appendChild(a);
+   container.appendChild(span);
+}
+removeField = function (evt) {
+   lnk = f(e(evt));
+   span = d(lnk.name);
+   span.parentNode.removeChild(span);
 }
