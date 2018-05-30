@@ -21,12 +21,14 @@ echo "
 				<input name='longitud' type='hidden'>
 				</article>
 				<footer>
-				<input class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='Publicar' style='margin-top:10px;' id='botPubliTag' type='button'>
+				<input class='btn btn-lg btn-primary btn-block' onclick='publicarAnuncio();' value='Publicar' style='margin-top:10px;' id='botPubliTag' type='button'>
 				</footer>
 				</form></section>
 				
 			</div></div>
                                         ";
+
+//enviartag()
 
 ?>
 

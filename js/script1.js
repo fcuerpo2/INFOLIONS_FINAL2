@@ -15,6 +15,8 @@ function miperfil(){
   xhttp.send();   
 }
 
+//Métodos para publicidad   nuevoAnuncio() --> método para presentar crear anuncio
+//                          publicarAnuncio() --> método para crear en base de datos y volver a principal.php
 
 function nuevoAnuncio(){
  var xhttp;
@@ -31,6 +33,21 @@ function nuevoAnuncio(){
   xhttp.send();   
 }
 
+function publicarAnuncio(){
+if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
+        $.ajax({
+        type: 'POST',
+        url: '../php/subirAnuncio.php',
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+          alert(resultado);
+         window.location.assign("../principal.php");
+         // document.getElementById('fotop').value=resultado;          
+        }
+    });
+  }
+}
 
 
 function subirfoto(){
