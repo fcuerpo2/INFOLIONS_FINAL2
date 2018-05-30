@@ -20,7 +20,7 @@ if (file_exists($nombre_fichero)) {
 } else {
     echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sube una Foto de Perfil' title='Sube una Foto de Perfil' />";
 }    
-        echo "                          <span style='margin-left:15px; text-align:center; margin-top: 10px;'>$nombre $apellidos<br />$fecha</span>
+        echo "                          <span style='text-align:center; margin-top: 10px; width:100%'><span style='font-size:18px; font-weight: 700; text-shadow: 2px 2px 8px #9a96e4;'>$nombre $apellidos</span><br /><span style='font-size: 12px; font-style: italic;'>$fecha</span></span>
 				</header>
 				<form id='ftag' method='POST' style='margin-bottom:0px;'>
 				<article>
