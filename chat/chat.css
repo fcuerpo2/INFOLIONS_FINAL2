@@ -181,7 +181,7 @@ form#msg_form input{
 	bottom: 0px;
 	left: 0px;
 	margin-top: 0px;
-        border: 1px solid #333;
+        border: 3px solid #333;
 }
 
 form#msg_form input:focus{
