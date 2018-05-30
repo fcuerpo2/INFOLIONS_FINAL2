@@ -16,7 +16,11 @@ $_SESSION['TodosLikes'] = "";
 
   $resultado=$conexion->query($consulta);
 
-  $consulta="SELECT * FROM Likes";  
+  desconectarBD();  
+  
+  echo "Poner Likes ".$_GET['NumTag'];
+
+/*  $consulta="SELECT * FROM Likes";  
   
   $resultado=$conexion->query($consulta);
   $_SESSION['TodosLikes'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
@@ -37,4 +41,5 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
 //  echo "Poner Likes ".$_GET['NumTag'];
         echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$MiNumTag.",".$MiUserEnvia.",".$MiUserRecibe.")'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
+ */
 ?>
