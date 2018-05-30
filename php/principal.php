@@ -102,7 +102,7 @@ $foto=$miArray[$i]['FotoPortada'];
 echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'>";
 $nombre_fichero = '../doc/fotoportada/'.$foto;
 if (file_exists($nombre_fichero)) {
-    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' onclick='verImagen(".$foto.")' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;'/>";
+    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' onclick='verImagen('".$foto."')' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;'/>";
 } else {
     echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sin Foto de Perfil' title='Sin Foto de Perfil' style='width: 40px; height: 40px;' />";
 }    
