@@ -54,7 +54,7 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
 function subirFotoAnuncio(){
 if(confirm("¿Estás seguro que quieres subir una imagen? \n\
 (imagen y descripcion son EXCLUYENTES)")){
-    var formdata = new FormData($('#subir')[0]);
+    var formdata = new FormData($('#formAnuncio')[0]);
     
     $.ajax({
         type: 'POST',
