@@ -14,7 +14,7 @@ echo "
 				<section>
 				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'><img src='../doc/fotoportada/12-carlos.jpg' id='fotoperfil' class='escalar' alt='Foto de Perfil' title='Foto de Perfil'>                          <span style='text-align:center; margin-top: 10px; width:100%'><span style='font-size:18px; font-weight: 700; text-shadow: 2px 2px 8px #9a96e4;'>Carlos  Acevedo Jiménez</span><br><span style='font-size: 12px; font-style: italic;'>30-05-18 05:00:26pm</span></span>
 				</header>
-				<form id='ftag' method='POST' style='margin-bottom:0px;'>
+				<form id='formAnuncio' method='POST' style='margin-bottom:0px;'>
 				<article>
 				<input class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;' type='text'>
 				</article>
