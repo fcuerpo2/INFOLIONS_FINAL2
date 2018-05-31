@@ -289,7 +289,8 @@ addField = function () {
    a.name = span.id;
    a.href = '#';
    a.onclick = removeField;
-   a.innerHTML = 'Quitar';
+//   a.innerHTML = "<span style='padding:5px; background-color:#0000ff; border-radius: 5px; color:#fff; text-decoration: none;'>Quitar</span><br />";
+   a.innerHTML = 'QUITAR';
 
    span.appendChild(field);
    span.appendChild(a);

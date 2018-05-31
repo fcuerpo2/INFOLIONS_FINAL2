@@ -3,7 +3,7 @@ header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
 if (session_id() === '') { session_start(); }
-
+$_SESSION['MisTags']=array();
 if($_SESSION['usu']['idUsuario']!=""){
 
   $nombre=$_SESSION['usu']['Nombre'];
@@ -24,8 +24,6 @@ if($_SESSION['usu']['idUsuario']!=""){
     }
   }
     desconectarBD();
-
-
 
 echo "
 <html lang='es'>
@@ -115,14 +113,29 @@ echo "
 include "../ANUNCIOS/anuncioInicioBlanco.php";
 
 echo "                  </div>
-   			<div id='imagen'></div>
-   			<div id='perfiles' class='sombraNegra'></div>
-   			<div id='tags'>";
+   			<div id='imagen'></div>";
+if ($_SESSION['usu']['FotoFondo'] == "")
+{
+echo "   			<div id='perfiles' class='sombraNegra'></div>";
+}
+else
+{
+    $nombre_fondo = '../doc/fotofondo/'.$_SESSION['usu']['FotoFondo'];
+    if (file_exists($nombre_fondo)) 
+        {
+echo "   			<div id='perfiles' class='sombraNegra' style='background-image: url(../doc/fotofondo/".$_SESSION['usu']['FotoFondo']."); background-repeat: no-repeat; background-size: cover;'></div>";        
+        }
+    else
+        {
+echo "   			<div id='perfiles' class='sombraNegra'></div>";        
+        }
+}
+echo "   			<div id='tags'>";
 
 include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
 $foto=$miArray[$i]['FotoPortada'];
-echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'>";
+echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div id='Cabecera-".$miArray[$i]['idTag']."' class='cabecera'>";
 $nombre_fichero = '../doc/fotoportada/'.$foto;
 if (file_exists($nombre_fichero)) {
     echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' onclick='verImagen(".$foto.")' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;' />";
@@ -186,17 +199,15 @@ if ($encontrado == "NO")
 else
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse in' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form name='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>
                        <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
-                       <textarea cols='80' rows='3' id='mensaje-coment-".$miArray[$i]['idTag']."' type='text' class='form-control' placeholder='Mensaje Comentario' title='Mensaje Comentario'></textarea>                           
+                       <textarea cols='80' rows='3' id='mensaje-coment-".$miArray[$i]['idTag']."' type='text' class='form-control' placeholder='Mensaje Comentario' title='Mensaje Comentario'></textarea>
+                       <input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviarcomentario();' value='Publicar Comentario' style='margin-top:10px;' id='botPubliCom-".$miArray[$i]['idTag']."'>
                     </div>
                 </form>
             </div>";
-//          echo "Nº de Comentarios: ".$totalComentarios;
-//        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
-//        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 }
 
 
