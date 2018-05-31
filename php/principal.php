@@ -191,15 +191,16 @@ for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
 }
 if ($encontrado == "NO")
 {
-    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
+    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#PublicaComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
             <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse'>
                 <br /><span>Sin Comentarios</span>
             </div>";
 }
 else
 {
-    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#BotComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
+            <div id='BotComent-".$miArray[$i]['idTag']."'>
+              <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form name='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>
                        <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
@@ -226,11 +227,12 @@ echo "<div id='ImagenesComent-".$_SESSION['TodosComentarios'][$z]['idComentario'
 echo "</div>";              
     }        
 }
+echo "</div>";
 }
 echo "</div>";
 echo "</div>";
 }
-echo "		</div>
+echo "		</div>           
 		</div>
                 
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
