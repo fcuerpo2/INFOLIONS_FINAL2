@@ -59,8 +59,15 @@ for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
 if ($encontrado == "NO")
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#PublicaComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse'>
-                <br /><span>Sin Comentarios</span>
+            <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+                <form id='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
+                    <div class='formComents'>
+                       <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
+                       <textarea cols='80' rows='3' id='mensaje-coment-".$miArray[$i]['idTag']."' type='text' class='form-control' placeholder='Mensaje Comentario' title='Mensaje Comentario'></textarea>
+                       <input type='hidden' id='NumFormComent' value='".$miArray[$i]['idTag']."'>                           
+                       <input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviarcomentario(".$miArray[$i]['idTag'].");' value='Publicar Comentario' style='margin-top:10px;' id='botPubliCom-".$miArray[$i]['idTag']."'>                       
+                    </div>
+                </form>
             </div>";
 }
 else
