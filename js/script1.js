@@ -62,8 +62,8 @@ if(confirm("¿Estás seguro que quieres subir una imagen?<br> Si subes una image
         contentType: false,
         processData: false,
         success:function(resultado){
-          document.getElementById('foto').innerHTML="<img src='../doc/fotoportada/"+resultado+"' width='200px'/>";
-          document.getElementById('fotop').value=resultado;          
+          document.getElementById('fotoAnuncio').innerHTML="<img src='../doc/fotoportada/"+resultado+"' width='200px'/>";
+          document.getElementById('fotoAnuncioNombre').value=resultado;     
         }
     });
 
