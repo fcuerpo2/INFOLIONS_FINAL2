@@ -55,7 +55,7 @@ function subirFotoAnuncio(){
 if(confirm("¿Estás seguro que quieres subir una imagen? \n\
 (imagen y descripcion son EXCLUYENTES)")){
     var formdata = new FormData($('#formAnuncio')[0]);
-    
+    //TODO: quitar espacio en blanco que aparece delante del nombre
     $.ajax({
         type: 'POST',
         url: '../ANUNCIOS/fotoUp.php',
