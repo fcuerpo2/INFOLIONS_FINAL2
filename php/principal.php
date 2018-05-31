@@ -115,9 +115,24 @@ echo "
 include "../ANUNCIOS/anuncioInicioBlanco.php";
 
 echo "                  </div>
-   			<div id='imagen'></div>
-   			<div id='perfiles' class='sombraNegra'></div>
-   			<div id='tags'>";
+   			<div id='imagen'></div>";
+if ($_SESSION['usu']['FotoFondo'] == "")
+{
+echo "   			<div id='perfiles' class='sombraNegra'></div>";
+}
+else
+{
+    $nombre_fondo = '../doc/fotofondo/'.$_SESSION['usu']['FotoFondo'];
+    if (file_exists($nombre_fondo)) 
+        {
+echo "   			<div id='perfiles' class='sombraNegra' style='background-image: url(../doc/fotofondo/".$_SESSION['usu']['FotoFondo']."); background-repeat: no-repeat; background-size: cover;'></div>";        
+        }
+    else
+        {
+echo "   			<div id='perfiles' class='sombraNegra'></div>";        
+        }
+}
+echo "   			<div id='tags'>";
 
 include "../COMENTARIOS/mirarlikes.php";
 for($i=0;$i<count($miArray);$i++){
