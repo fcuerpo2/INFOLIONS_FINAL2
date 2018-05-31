@@ -9,11 +9,14 @@ body {
   padding-bottom: 10px;
   background-color: #f5f5f5;
 }
-  /*cometario de prueba de git*/
-  /* Comentario prueba de Javi desde Netbeans Casa */
-  /* siguiente por Javi */
-  /* Otro Por Javi */
-  /* Comentario de Javi */
+  
+/*CSS para publicidad */
+[hidden] {
+  display: none !important;
+
+}
+
+/*fin CSS para publicidad */
 
 .form-signin .form-control {
   position: relative;
@@ -61,6 +64,7 @@ img{
     max-width: 350px;
 }
 
+
 .cabecera{
     width: 100%;
     background-color: blue;
@@ -70,6 +74,17 @@ img{
     border-top-right-radius: 10px;
     background: linear-gradient(blue 90%, rgba(220, 223, 245, 0.52));
 }
+
+.cabeceracoment{
+    width: 100%;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: linear-gradient(green 90%, rgba(220, 223, 245, 0.52));
+}
+
 
 .titulo{
     width: 100%;
@@ -148,6 +163,9 @@ input[type="file"] {
 }
 div#files {
     margin-bottom: 7px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 10px;
 }
 .file a {
     font-weight: 700;
