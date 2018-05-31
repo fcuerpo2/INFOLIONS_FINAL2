@@ -32,11 +32,19 @@ echo "
 				<input name='latitud' type='hidden'>
 				<input name='longitud' type='hidden'>
 				</article>
+                                
+                                
+
 				<footer>
 				<input class='btn btn-lg btn-primary btn-block' onclick='publicarAnuncio();' value='Publicar' style='margin-top:10px;' id='botPubliTag' type='button'>
 				</footer>
 				</form></section>
-				
+                                
+                                <div id='fotoAnuncio'>
+                                </div>
+                                <div id='pruebasNombreFoto'>
+                                    <input id='fotoAnuncioNombre' name='fotoAnunNombre' class='form-control' value='nombre' disabled='' type='text'>
+                                </div>
 			</div></div>
                                         ";
 
