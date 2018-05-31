@@ -31,28 +31,21 @@ echo "
 <html lang='es'>
 <head>
 	<title>InfoLions</title>
-	<link rel='shortcut icon' type='image/x-icon' href='./img/favicon.ico'>
+	<link rel='shortcut icon' type='image/x-icon' href='../img/favicon.ico'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<meta http-equiv='Pragma' content='no-cache'>
 	<meta http-equiv='Expires' content='-1'>
-	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css'>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
-	<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css'/>
-	<script type='text/javascript' src='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js'></script> 
-	<script src='https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js'></script>
-	<script src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js'></script>
-	<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-	<meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<!-- parte modificada por edgar -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  
+
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>
+    <script src='../chat/chat.js'></script>
+    <link href='../chat/chat.css' rel='stylesheet'/>
+
 
 
 <style>
@@ -60,40 +53,60 @@ echo "
     visibility: hidden;
     width:0px;
     height:0px;
-}</style>
+}
 
+#borde{
+    border: 1px solid lightblue;
+
+
+}
+
+.container-fluid{
+    
+    background-color: lightblue; 
+}
+#myNavbar{
+    background-color: lightblue;
+}
+#cabecera {
+    color: #000 !important;
+    
+}
+.menu a{
+    color: #000 !important;
+}
+
+</style>
 </head>
 <body onload='cargarmuro()'>
-      <center>
-
-
-    <div id='cabecera'>
-          <nav class='navbar navbar-inverse'>
-  <div class='container-fluid'>
+<center>
+<div id='cabecera'>
+  <nav class='navbar navbar-inverse' id='borde'>
+    <div class='container-fluid'>
         <div class='navbar-header'>
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <a class='navbar-brand' href='#'>INFOLIONS</a>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' id='cabecera' href='principal.php'><img src='../img/reservois.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
+        </div>
+        <div class='collapse navbar-collapse' id='myNavbar'>
+            <ul class='nav navbar-nav'>
+                <li class='menu'><a href='./principal.php'>Home</a></li>
+                <li class='menu'><a href='#'>Usuarios</a></li>
+                <li class='menu'><a href='#'>Tags</a></li>
+                <li class='menu'><a href='./contactos.php'>Contactos</a></li>
+                <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
+            </ul>
+            <ul class='nav navbar-nav navbar-right'>
+                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
+                <li class='menu'><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
+            </ul>
+        </div>
     </div>
-    <div class='collapse navbar-collapse' id='myNavbar'>
-      <ul class='nav navbar-nav'>
-        <li class='active'><a href='./principal.php'>Home</a></li>
-        <li ><a href='#'  onclick='miperfil();'>Mi Perfil</a></li>
-        <li><a href='./contactos.php'>Contactos</a></li>
-      </ul>
-      <ul class='nav navbar-nav navbar-right'>
-        <li><a href='#'><span class='glyphicon glyphicon-user'></span> 
-         Bienvenido $nombre $apellidos</a></li>
-        <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> 
-
-   </div>
+  </nav> 
+</div>
    <div id='imagen'></div>
    <div id='perfiles'></div>
    <div id='tags' style='max-height: 300px; overflow: auto;'>";
