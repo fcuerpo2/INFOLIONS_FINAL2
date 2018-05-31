@@ -15,10 +15,11 @@
     $consulta="INSERT INTO Tags(idUsuario,Cabecera,Texto,Latitud,Longitud) VALUES ($idusuario,'$cabecera','$texto','$latitud','$longitud')";
     $conexion->query($consulta);
        desconectarBD();
-
+ }
+ include './dibujartags.php';
       //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
-    $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
+/*    $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
 
     conectarBD();
     $miArray = array();
@@ -33,4 +34,6 @@
     echo json_encode($miArray);
 
   }
+ */ 
+ 
 ?>
