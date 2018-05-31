@@ -9,11 +9,14 @@ body {
   padding-bottom: 10px;
   background-color: #f5f5f5;
 }
-  /*cometario de prueba de git*/
-  /* Comentario prueba de Javi desde Netbeans Casa */
-  /* siguiente por Javi */
-  /* Otro Por Javi */
-  /* Comentario de Javi */
+  
+/*CSS para publicidad */
+[hidden] {
+  display: none !important;
+
+}
+
+/*fin CSS para publicidad */
 
 .form-signin .form-control {
   position: relative;

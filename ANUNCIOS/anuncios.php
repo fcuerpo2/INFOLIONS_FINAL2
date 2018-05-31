@@ -19,10 +19,12 @@ echo "
 				<input class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;' type='text'>
 				</article>
                                 <article>
-                                    <br>
-                                    <button type='file'  accept='image/*' class='btn btn-primary' id='fotoAnuncio' name='fotoAnuncio' onchange='subirFotoAnuncio();'>
-                                    <span class='glyphicon glyphicon-camera'></span> Foto</button>
-                                    
+                                    <br>                
+                                    <label class='btn btn-primary'>
+                                        <span class='glyphicon glyphicon-camera'></span>
+                                           &nbsp; &nbsp;Foto
+                                           <input type='file' accept='image/*' onchange='subirFotoAnuncio();' id='fotoAnuncio' name='fotoAnuncio'  hidden>
+                                    </label>    
                                 </article>
                                     <br>
 				<article>
