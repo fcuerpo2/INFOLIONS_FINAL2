@@ -4,7 +4,7 @@
 
  if(isset($_POST['texto'])){
   //recibimos las variables por POST
-    $_SESSION['MisArchivos']=$_FILES;
+    $_SESSION['MisArchivos'][]=$_FILES;
     $texto=$_POST['texto'];
     $cabecera=$_POST['cabecera'];
     $latitud=$_POST['latitud'];
