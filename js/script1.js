@@ -52,8 +52,9 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
 
 
 function subirFotoAnuncio(){
-if(confirm("¿Estás seguro que quieres subir una imagen?<br> Si subes una imagen no podrás indicar la descripcion")){
-    var formdata = new FormData($('#subir')[0]);
+if(confirm("¿Estás seguro que quieres subir una imagen? \n\
+(imagen y descripcion son EXCLUYENTES)")){
+    var formdata = new FormData($('#formAnuncio')[0]);
     
     $.ajax({
         type: 'POST',
@@ -70,6 +71,14 @@ if(confirm("¿Estás seguro que quieres subir una imagen?<br> Si subes una image
 
 
   }
+}
+
+function compruebaCompatibilidadLocalStorage() {
+    if (window.sessionStorage && window.localStorage) {
+        alert('Tu navegador acepta almacenamiento local'); 
+    } else {			
+        alert('Lo siento, pero tu navegador no acepta almacenamiento local');		
+             }
 }
 //------------------------------------------------------------------------------------------------------
 
