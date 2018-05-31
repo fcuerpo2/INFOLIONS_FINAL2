@@ -195,8 +195,9 @@ function registrar(){
         contentType: false,
         processData: false,
         success:function(resultado){
-       	objeto = JSON.parse(resultado); 
-    	mostrarTags(objeto);
+        document.getElementById("tags").innerHTML=resultado;            
+//       	objeto = JSON.parse(resultado); 
+//    	mostrarTags(objeto);
         document.getElementById("botPubliTag").value="Publicado";
  		}
     });  
@@ -324,7 +325,8 @@ removeField = function (evt) {
         success:function(resultado){
 //       	objeto = JSON.parse(resultado); 
 //    	mostrarTags(objeto);
-        alert("Correcto: "+resultado);
+//        alert("Correcto: "+resultado);
+        document.getElementById("tags").innerHTML=resultado;
         document.getElementById("botPubliCom-"+NumForm).value="Comentario Publicado";
  		}
     });  

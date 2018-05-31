@@ -30,6 +30,6 @@
 //  }
 //  else
 //  {
-      echo $_GET['NumForm']. " / ".$_GET['Cabecera']. " / ".$_GET['Mensaje'];
+      include './dibujartags.php';
 //  }
 ?>
