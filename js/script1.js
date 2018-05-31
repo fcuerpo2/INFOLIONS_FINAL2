@@ -298,3 +298,29 @@ removeField = function (evt) {
    span = d(lnk.name);
    span.parentNode.removeChild(span);
 }
+  function enviarcomentario(NumForm){
+
+      document.getElementById("botPubliCom-"+NumForm).value="Publicando Comentario...";
+      MiCabecera=document.getElementById("cabecera-coment-"+NumForm).value;
+      MiMensaje=document.getElementById("mensaje-coment-"+NumForm).value;
+      var tags="";
+//      var formdata = new FormData($('#Form-Com-'+NumForm)[0]);
+        var formdata = new FormData($('#Form-Com-39')[0]);
+        $.ajax({
+        type: 'POST',
+        url: '../php/insertarcoment.php?NumForm='+NumForm+'&Cabecera='+MiCabecera+'&Mensaje='+MiMensaje,
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+//       	objeto = JSON.parse(resultado); 
+//    	mostrarTags(objeto);
+        alert("Correcto: "+resultado);
+        document.getElementById("botPubliCom-"+NumForm).value="Comentario Publicado";
+ 		}
+    });  
+
+//		document.getElementById("cab").value="";
+//		document.getElementById("text").value="";
+
+ }
