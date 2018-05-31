@@ -57,7 +57,7 @@ if(confirm("¿Estás seguro que quieres subir una imagen?<br> Si subes una image
     
     $.ajax({
         type: 'POST',
-        url: '../php/fichero.php',
+        url: '../ANUNCIOS/fotoUp.php',
         data: formdata,
         contentType: false,
         processData: false,
