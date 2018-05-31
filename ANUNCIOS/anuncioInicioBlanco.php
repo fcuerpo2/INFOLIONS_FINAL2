@@ -5,5 +5,5 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-echo "<h4>AQUÍ TENDEREMOS EL CONTENIDO ANUNCIO INCIAL</h4>";
+echo "<h4>CONTENIDO ANUNCIO INCIAL</h4>";
 ?>
