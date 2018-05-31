@@ -192,14 +192,14 @@ for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
 if ($encontrado == "NO")
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse'>
+            <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse'>
                 <br /><span>Sin Comentarios</span>
             </div>";
 }
 else
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+            <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form name='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>
                        <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
@@ -208,20 +208,36 @@ else
                     </div>
                 </form>
             </div>";
+    for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
+{
+    if ($_SESSION['TodosComentarios'][$z]['idTag'] == $miArray[$i]['idTag'])
+    {
+        echo "<div id='TagComentario-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='tag sombraNegra' style='max-width: 85%; margin-top:15px;'><div id='CabeceraComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='cabeceracoment'>";
+$nombre_fichero = '../doc/fotoportada/'.$_SESSION['TodosComentarios'][$z]['FotoPortada'];
+if (file_exists($nombre_fichero)) {
+    echo "<img src='../doc/fotoportada/".$_SESSION['TodosComentarios'][$z]['FotoPortada']."' id='fotoperfil' onclick='verImagen(".$_SESSION['TodosComentarios'][$z]['FotoPortada'].")' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;' />";
+} else {
+    echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sin Foto de Perfil' title='Sin Foto de Perfil' style='width: 40px; height: 40px;' />";
+}    
+echo "&nbsp;&nbsp;&nbsp;".$_SESSION['TodosComentarios'][$z]['Nombre']." ".$_SESSION['TodosComentarios'][$z]['Apellidos']."      ".$_SESSION['TodosComentarios'][$z]['Fecha']."</div>";
+echo "<div id='TituloComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='titulo'>".$_SESSION['TodosComentarios'][$z]['Cabecera']."</div>";
+echo "<div id='TextoComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='texto'>".$_SESSION['TodosComentarios'][$z]['Texto']."</div>"; 
+echo "<div id='ImagenesComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='imagenes'></div>";
+echo "</div>";              
+    }        
 }
-
-
-
+}
 echo "</div>";
 echo "</div>";
 }
 echo "		</div>
 		</div>
+                </div>
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
   		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   			 	<div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		</div>
-  	</div>		
+  	</div>		        
 	</center>";
 }
 else{
