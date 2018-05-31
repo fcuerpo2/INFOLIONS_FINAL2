@@ -232,7 +232,7 @@ echo "</div>";
 }
 echo "		</div>
 		</div>
-                </div>
+                
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
   		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   			 	<div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
