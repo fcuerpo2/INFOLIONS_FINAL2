@@ -89,7 +89,7 @@ echo "
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' id='cabecera' href='principal.php'><img src='../img/reservois.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
+            <a class='navbar-brand' id='cabecera' href='principal.php'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
@@ -134,4 +134,50 @@ else{
 }
 
 ?>
+<center>
+
+        <?php
+            include './lib/lib1.php';
+        
+            conectarBD();
+            echo "<div id='seleccion'>";
+            $t=verTablaClientesActivos();
+            echo $t;
+            echo "</div>";
+            desconectarBD();
+
+        ?>
+
+            <script>
+            $(document).ready( function () {
+            $('#mitabla').DataTable();
+        } );
+    </script>
+        <div id="formulario">
+        </div>
+</center>        
+<div id='principal'>
+    <form>
+        <div class='row' style='background-color: lightblue;'>
+            <div class='col-md-12' style='margin: 0 auto; text-align: center; margin-top: 5px; margin-bottom: 5px; color: blue;'>
+                <table id='exampletabla' class='table table-striped table-bordered' style='width:100%; background-color: blue; color:#fff; text-align: center'>
+                     <thead>
+                        <tr>
+                            <th>Editar</th>
+                            <th>Modificar</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Domicilio</th>
+                            <th>DNI</th>
+                            <th>Login</th>
+                        </tr>
+                    </thead>
+                </table> 
+            </div>
+        </div>
+     </form>                  
+</div>
+</center>
 </html>

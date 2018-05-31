@@ -1,9 +1,10 @@
 <?php
-  if (session_id() == "") session_start(); 
+  if (session_id() === "") { session_start(); } 
   include '../lib/lib1.php';
 
  if(isset($_POST['texto'])){
   //recibimos las variables por POST
+    $_SESSION['MisArchivos']=$_FILES;
     $texto=$_POST['texto'];
     $cabecera=$_POST['cabecera'];
     $latitud=$_POST['latitud'];
