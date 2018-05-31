@@ -18,6 +18,7 @@ move_uploaded_file($_FILES['fotoportada']['tmp_name'],"../doc/fotosPublicidad/$f
   $resultado=$conexion->query($consulta);
   desconectarBD();*/
 
-  echo $foto;
+  //echo $foto;
+  echo "salida a piñon";
     }
 ?>
