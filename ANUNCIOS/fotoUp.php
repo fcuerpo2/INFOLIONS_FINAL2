@@ -20,6 +20,7 @@
 
     echo $foto;
  
+    }else{
+        echo 'no hay foto valida en fotoUp.php';
     }
-    echo 'no hay foto valida en fotoUp.php'
 ?>
