@@ -30,8 +30,8 @@ if (file_exists($nombre_fichero)) {
 				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>                                
                                 <dt style='border-radius:10px; padding: 5px 5px 1px 5px; background-color: #fff; margin-top: 5px; margin-bottom: 5px;'><label>Archivos Adjuntos:</label>   <a href='#' onclick='addField()' accesskey='5'><span style='font-size: 20px; vertical-align: sub;' class='glyphicon glyphicon-camera'></span></a></dt>
                                     <dd style='overflow: hidden;'><div id='files'></div></dd>
-				<input type='hidden' name='latitud'/>
-				<input type='hidden' name='longitud'/>
+				<input type='hidden' name='latitud' id='latitud' />
+				<input type='hidden' name='longitud' id='longitud' />
 				</article>
 				<footer>
 				<input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='Publicar' style='margin-top:10px;' id='botPubliTag'></input>

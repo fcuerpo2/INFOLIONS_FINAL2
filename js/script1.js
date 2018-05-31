@@ -178,16 +178,13 @@ function registrar(){
 
         }
     });
-       
+ if (navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(showPosition);
+  }    
  }
 
   function enviartag(){
 
- if (navigator.geolocation){
-//  navigator.geolocation.getCurrentPosition(showPosition);
-  }else{
-
-  }
       document.getElementById("botPubliTag").value="Publicando...";
       var tags="";
       var formdata = new FormData($('#ftag')[0]);
@@ -209,7 +206,7 @@ function registrar(){
 
  }
 
-  function showPosition(){
+  function showPosition(position){
   document.getElementById('latitud').value=position.coords.latitude;
   document.getElementById('longitud').value=position.coords.longitude;
  }
