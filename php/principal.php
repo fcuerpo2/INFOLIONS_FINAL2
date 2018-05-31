@@ -14,7 +14,7 @@ if($_SESSION['usu']['idUsuario']!=""){
     $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
 
     conectarBD();
-    $miArray = array();
+    $miArray = [];
 
     if ($resultado= $conexion->query($consulta)) {
 
