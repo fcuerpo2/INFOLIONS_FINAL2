@@ -55,14 +55,13 @@ echo "
 }
 </style>
 <script>
-$('[data-fancybox]').fancybox({
-	thumbs : {
-		autoStart : true
-	},
-        fullScreen : {
-	autoStart : true,
+    $('.fancybox').fancybox({
+        toolbar  : false,
+        smallBtn : true,
+        iframe : {
+            preload : false
         }
-});
+    })
 </script>
 </head>
 <body onload='cargarmuro()'>
