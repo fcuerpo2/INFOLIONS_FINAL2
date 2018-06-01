@@ -4,6 +4,15 @@ header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
 if (session_id() === '') {session_start();}
 
+  conectarBD();
+  $consulta="SELECT * FROM usuarios";
+  $resultado=$conexion->query($consulta);
+  
+  $_SESSION['TodosUsuarios'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+  
+  desconectarBD();
+
+
 if($_SESSION['usu']['idUsuario']!=""){
 
   $nombre=$_SESSION['usu']['Nombre'];
@@ -45,14 +54,40 @@ echo "
   
 
     <script src='../js/script1.js'></script>
-    <link rel='stylesheet' href='../css/estilo1.css'>
+    <link rel='stylesheet' href='../css/estilo1.css'>";
+?>
     <script>
-      $(document).ready( function () {
-        $('#exampletabla').DataTable();
-    } );
-    </script>
+      $(document).ready(function() {
+        var table = $('#exampletabla').DataTable( {
+          responsive: true,
+//          order: [[ 0, "desc" ]],
+          language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Perfiles",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total Perfiles)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Perfiles",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        			}
+    	}
+        } );
+//        new $.fn.dataTable.FixedHeader( table );
+      } );      
+      </script>	
 
-<style>
+<?php
+echo"<style>
 .image-upload > input{
     visibility: hidden;
     width:0px;
@@ -79,11 +114,23 @@ echo "
 .menu a{
     color: #000 !important;
 }
-
-</style>
-</head>
-<body onload='cargarmuro()'>";
+th {
+    background-color: blue;
+    text-align:center;
+}
+h1{
+text-align:center;
+color: darkblue;
+</style>";
 ?>
+<script>
+    function modificar(IdUsuario)
+    {
+        window.location.href='editarusuario.php?IdUsuario='+IdUsuario;
+    }
+</script>
+</head>
+<body onload='cargarmuro()'>
 <div id='cabecera'>
   <nav class='navbar navbar-inverse' id='borde'>
     <div class='container-fluid'>
@@ -114,11 +161,9 @@ echo "
 <div class="row" style="margin: 0 auto;">
 <div class="col-md-12">
 <div id='principal'>
-    <h1>ACTUALIZACIÓN DE USUARIO</h1>
-    <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; background-color: blue; color: #fff; text-align: center'>
+    <h1>MODIFICAR Y BLOQUEAR USUARIO</h1>
+    <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; color: #fff; text-align: center'>
         <thead>
-        
-        </button>	
             <tr>
             	<th>Modificar</th>
             	<th>Borrar</th>
@@ -127,32 +172,52 @@ echo "
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Domicilio</th>
-                <th>DNI</th>
-                <th>Login</th>
+                <th>Provincia</th>
+                <th>Ciudad</th>
+                <th>Pais</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-            	<th>
-            		<button onclick='modificar();'>
+<?php
+    for($misUsuarios=0;$misUsuarios<count($_SESSION['TodosUsuarios']);$misUsuarios++)
+    {
+        echo "<tr>
+            	<td style='text-align:center;'>
+            		<button onclick='modificar(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
         				<img src='../img/editar.png' alt='modificar' id='modificar'>
         			</button>
-            	</th>
-            	<th>
-        			<button onclick='bloquear();'>
+            	</td>
+            	<td style='text-align:center;'>
+        			<button onclick='bloquear(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
         				<img src='../img/borrar2.png' alt='borrar' id='borrar'>
         			</button>
         		</th>	
-                <th>Javier</th>
-                <th>Garcia</th>
-                <th>dfgdfg@dfhgdf.com</th>
-                <th>666</th>
-                <th>c/ Aqui</th>
-                <th>xgdfgf-b</th>
-                <th>Login</th>
-            </tr>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Nombre']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Apellidos']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Email']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Telefono']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Direccion']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Provincia']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Ciudad']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Pais']."</td>                    
+             </tr>";
+    }
+?>
         </tbody>
-
+        <tfooter>
+            <tr>
+            	<th>Modificar</th>
+            	<th>Borrar</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Domicilio</th>
+                <th>Provincia</th>
+                <th>Ciudad</th>
+                <th>Pais</th>
+            </tr>
+        </tfooter>
   </table>
   </div>
 </div>    
