@@ -90,7 +90,7 @@ function compruebaCompatibilidadLocalStorage() {
 }
 
 //var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
-//var myVar = setInterval(refrescarPublicidad, 1000);
+//var myVar = setInterval(refrescarPublicidad, tiempo);
 
 function refrescarPublicidad() {
     //TODO: introducir un delay entre cada llamada de unos 3 segundos
@@ -103,8 +103,7 @@ function refrescarPublicidad() {
 function recuperarAnuncioPersistencia(){
        $.ajax({
         type: 'POST',
-        url: '../ANUNCIOS/fotoUp.php',
-        data: formdata,
+        url: '../ANUNCIOS/recuperarAnuncioPersistencia.php',
         contentType: false,
         processData: false,
         success:function(resultado){
