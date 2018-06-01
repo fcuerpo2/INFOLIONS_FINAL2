@@ -23,6 +23,7 @@
     {
         if ($_SESSION['MisArchivos']['archivos']['name'][$i] != "")
         {
+            $_SESSION['Foto']=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
             $foto=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
             move_uploaded_file($_SESSION['MisArchivos']['archivos']['tmp_name'][$i],"../doc/Imagenes/$foto");
 
