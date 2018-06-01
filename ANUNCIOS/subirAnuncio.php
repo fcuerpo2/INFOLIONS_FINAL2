@@ -16,7 +16,7 @@
    
     conectarBD();
     $sqlInsert="INSERT INTO publicidad (idUsuario, fecha_creacion, titulo, imagen, descripcion, visto)"
-            . "VALUES($idUsuario, $fechaCreacion,'$titulo','$foto','$descripcion',0)";
+            . "VALUES($idUsuario, FROM_UNIXTIME($fechaCreacion),'$titulo','$foto','$descripcion',0)";
 
     $resultado=$conexion->query($sqlInsert);
     desconectarBD();
