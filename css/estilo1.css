@@ -16,6 +16,12 @@ body {
 
 }
 
+.fotoAnuncio{
+    width: 80%;
+    height: 80%;
+    border-radius: 10%;
+}
+
 /*fin CSS para publicidad */
 
 .form-signin .form-control {
