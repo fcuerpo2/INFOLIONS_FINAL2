@@ -15,8 +15,7 @@
     //creamos la consulta de inserción del tag y la ejecutamos
     $consulta="INSERT INTO Tags(idUsuario,Cabecera,Texto,Latitud,Longitud) VALUES ($idusuario,'$cabecera','$texto','$latitud','$longitud')";
     $conexion->query($consulta);
-//    $consulta2 = "SELECT LAST_INSERT_ID()";
-//    $MiUltimoID=$conexion->query($consulta2);
+    $_SESSION['lastID'] = mysqli_insert_id($conexion);
     desconectarBD();
     // Vamos a Subir las Imagenes
     for($i=0;$i<count($_SESSION['MisArchivos']['archivos']['name']);$i++)
