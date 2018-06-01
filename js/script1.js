@@ -88,6 +88,30 @@ function compruebaCompatibilidadLocalStorage() {
         alert('Lo siento, pero tu navegador no acepta almacenamiento local');		
              }
 }
+
+//var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
+//var myVar = setInterval(refrescarPublicidad, 1000);
+
+function refrescarPublicidad() {
+    //TODO: introducir un delay entre cada llamada de unos 3 segundos
+    document.getElementById("anuncio-right").innerHTML = recuperarAnuncioPersistencia();
+    document.getElementById("anuncio-top").innerHTML = recuperarAnuncioPersistencia();
+    document.getElementById("anuncio-left").innerHTML = recuperarAnuncioPersistencia();
+} 
+
+
+function recuperarAnuncioPersistencia(){
+       $.ajax({
+        type: 'POST',
+        url: '../ANUNCIOS/fotoUp.php',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+         return resultado;
+        }
+    });
+}
 //------------------------------------------------------------------------------------------------------
 
 
