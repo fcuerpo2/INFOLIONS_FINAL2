@@ -15,8 +15,8 @@
     //creamos la consulta de inserción del tag y la ejecutamos
     $consulta="INSERT INTO Tags(idUsuario,Cabecera,Texto,Latitud,Longitud) VALUES ($idusuario,'$cabecera','$texto','$latitud','$longitud')";
     $conexion->query($consulta);
-    $consulta2 = "SELECT LAST_INSERT_ID()";
-    $MiUltimoID=$conexion->query($consulta2);
+//    $consulta2 = "SELECT LAST_INSERT_ID()";
+//    $MiUltimoID=$conexion->query($consulta2);
     desconectarBD();
     // Vamos a Subir las Imagenes
     for($i=0;$i<count($_SESSION['MisArchivos']['archivos']['name']);$i++)
@@ -28,7 +28,7 @@
 
                 conectarBD();
                 //creamos la consulta de inserción de las Imagenes
-                $consulta="INSERT INTO Fotos(idUsuario,IdTag,Nombre,Ruta) VALUES ($idusuario,$MiUltimoID,'$foto','$foto')";
+                $consulta="INSERT INTO Fotos(idUsuario,IdTag,Nombre,Ruta) VALUES ($idusuario,0,'$foto','$foto')";
                 $conexion->query($consulta);
                 desconectarBD();
         }
