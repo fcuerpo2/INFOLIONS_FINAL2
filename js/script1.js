@@ -35,9 +35,11 @@ function nuevoAnuncio(){
 
 function publicarAnuncio(){
 if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
+      var formdata = new FormData($('#formAnuncio')[0]);
         $.ajax({
         type: 'POST',
         url: '../php/subirAnuncio.php',
+        data: formdata,
         contentType: false,
         processData: false,
         success:function(resultado){
@@ -64,15 +66,17 @@ if(confirm("¿Estás seguro que quieres subir una imagen? \n\
         contentType: false,
         processData: false,
         success:function(resultado){
-          document.getElementById('fotoAnuncioSelect').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' width='200px' alt='sin acceso a la foto'/>";
+          document.getElementById('fotoAnuncioSelect').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' class='fotoAnuncio' alt='sin acceso a la foto'/>";
           document.getElementById('fotoAnuncioNombre').value=resultado;
-          document.getElementById('textDescripcion').type='hidden';
+         //TODO: no hace nada del hidden
+            document.getElementById('textDescripcion').type='hidden';
         }
     });
 
 
 
   }else{
+       //TODO: no hace nada del hidden
      //  textDescripcion.type='text';
   }
 }
