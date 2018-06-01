@@ -104,7 +104,7 @@ text-align:center;
 color: darkblue;
 </style>
 </head>
-<body onload='cargarmuro()'>";
+<body onload='cargarmuro()'>
 <div id='cabecera'>
   <nav class='navbar navbar-inverse' id='borde'>
     <div class='container-fluid'>
