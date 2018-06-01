@@ -27,6 +27,11 @@ echo "
                                     </label>    
                                 </article>
                                     <br>
+                                <article>
+                                    <div id='fotoAnuncioSelect'>
+                                    </div>
+                                </article>
+                                 
 				<article>
 				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
 				<input name='latitud' type='hidden'>
@@ -40,8 +45,7 @@ echo "
 				</footer>
 				</form></section>
                                 
-                                <div id='fotoAnuncioSelect'>
-                                </div>
+                                
                                 <div id='pruebasNombreFoto'>
                                     <input id='fotoAnuncioNombre' name='fotoAnunNombre' class='form-control' value='nombre' disabled='' type='text'>
                                 </div>
