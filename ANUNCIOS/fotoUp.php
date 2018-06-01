@@ -3,7 +3,7 @@
   include '../lib/lib1.php';
 
 
-  if(isset($_FILES['fotoAnuncio'])){
+  if(isset($_FILES['fotoAnuncio']) &&  isset($_SESSION['usu']['idUsuario'])){
   
     $foto=$_SESSION['usu']['idUsuario']."-".$_FILES['fotoAnuncio']['name'];
 
