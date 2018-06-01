@@ -124,8 +124,8 @@ if(confirm("¿Estás seguro que quieres actualizar los datos?")){
         contentType: false,
         processData: false,
         success:function(resultado){
-          alert(resultado);
-         // document.getElementById('fotop').value=resultado;          
+          alert('Perfil Actualizado');
+          document.getElementById('nomUserMenu').innerHTML=resultado;          
         }
     });
   }

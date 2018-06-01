@@ -77,7 +77,7 @@ echo "
                 <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
-                <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
+                <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><span id='nomUserMenu'> Bienvenido/a $nombre $apellidos</span></a></li>
                 <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
             </ul>
         </div>
