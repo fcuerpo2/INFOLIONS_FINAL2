@@ -73,8 +73,8 @@ if ($encontrado == "NO")
 else
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#BotComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='BotComent-".$miArray[$i]['idTag']."'>
-              <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+            <div id='BotComent-".$miArray[$i]['idTag']."' class='collapse show'>
+              <div id='PublicaComent-".$miArray[$i]['idTag']."' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form id='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>
                        <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
