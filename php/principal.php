@@ -59,7 +59,7 @@ echo "
 </head>
 <body onload='cargarmuro()'>
 <center>
-<div id='cabecera'>
+<div id='cabecera' class='navbar-fixed-top' style='position:sticky;'>
   <nav class='navbar navbar-inverse'>
     <div class='container-fluid'>
         <div class='navbar-header'>

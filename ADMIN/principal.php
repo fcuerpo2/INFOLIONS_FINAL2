@@ -2,8 +2,7 @@
 header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
-if (session_id() == '') 
-    session_start(); 
+if (session_id() === '') {session_start();}
 
 if($_SESSION['usu']['idUsuario']!=""){
 
@@ -25,8 +24,6 @@ if($_SESSION['usu']['idUsuario']!=""){
   }
     desconectarBD();
 
-
-
 echo "
 <html lang='es'>
 <head>
@@ -36,17 +33,24 @@ echo "
 	<meta http-equiv='Pragma' content='no-cache'>
 	<meta http-equiv='Expires' content='-1'>
 	<!-- parte modificada por edgar -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css'/>
+        <script type='text/javascript' src='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js'></script> 
+        <script src='https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js'></script>
+        <script src='https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js'></script>
+        <script src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js'></script>
+        <script type='text/javascript' src='https:////cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'></script>
   
 
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>
-    <script src='../chat/chat.js'></script>
-    <link href='../chat/chat.css' rel='stylesheet'/>
-
-
+    <script>
+      $(document).ready( function () {
+        $('#exampletabla').DataTable();
+    } );
+    </script>
 
 <style>
 .image-upload > input{
@@ -78,8 +82,8 @@ echo "
 
 </style>
 </head>
-<body onload='cargarmuro()'>
-<center>
+<body onload='cargarmuro()'>";
+?>
 <div id='cabecera'>
   <nav class='navbar navbar-inverse' id='borde'>
     <div class='container-fluid'>
@@ -89,50 +93,77 @@ echo "
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' id='cabecera' href='principal.php'><img src='../img/reservois.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
+            <a class='navbar-brand' id="cabecera" href='principal.php'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
                 <li class='menu'><a href='./principal.php'>Home</a></li>
-                <li class='menu'><a href='#'>Usuarios</a></li>
+                <li class='menu'><a href='../actualizar.php'>Usuarios</a></li>
                 <li class='menu'><a href='#'>Tags</a></li>
                 <li class='menu'><a href='./contactos.php'>Contactos</a></li>
                 <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
-                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span> Bienvenido $nombre $apellidos</a></li>
+                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><?php echo "Bienvenido $nombre $apellidos"; ?></a></li>
                 <li class='menu'><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
             </ul>
         </div>
     </div>
   </nav> 
 </div>
-   <div id='imagen'></div>
-   <div id='perfiles'></div>
-   <div id='tags' style='max-height: 300px; overflow: auto;'>";
+<div class="row" style="margin: 0 auto;">
+<div class="col-md-12">
+<div id='principal'>
+    <h1>ACTUALIZACIÓN DE USUARIO</h1>
+    <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; background-color: blue; color: #fff; text-align: center'>
+        <thead>
+        
+        </button>	
+            <tr>
+            	<th>Modificar</th>
+            	<th>Borrar</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Domicilio</th>
+                <th>DNI</th>
+                <th>Login</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            	<th>
+            		<button onclick='modificar();'>
+        				<img src='../img/editar.png' alt='modificar' id='modificar'>
+        			</button>
+            	</th>
+            	<th>
+        			<button onclick='bloquear();'>
+        				<img src='../img/borrar2.png' alt='borrar' id='borrar'>
+        			</button>
+        		</th>	
+                <th>Javier</th>
+                <th>Garcia</th>
+                <th>dfgdfg@dfhgdf.com</th>
+                <th>666</th>
+                <th>c/ Aqui</th>
+                <th>xgdfgf-b</th>
+                <th>Login</th>
+            </tr>
+        </tbody>
 
-
-for($i=0;$i<count($miArray);$i++){
-$foto=$miArray[$i]['FotoPortada'];
-echo "<div class='tag'><div class='cabecera'><img src='../doc/fotoportada/$foto' onclick=verImagen(".$foto."))/>  ".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
-echo "<div class='titulo'>".$miArray[$i]['Cabecera']."</div>";
-echo "<div class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div class='imagenes'></div>";
-echo "<div class='botones'><input type='button' class='btn btn-primary' value='Me gusta'/><input type='button' class='btn btn-primary' value='Comentario'/></div>";
-echo "<div class='comentarios'></div></div>";
-
-}
-
-echo "</div></center></body>";
-
-
+  </table>
+  </div>
+</div>    
+</div>
+<?php
 }
 else{
 
   header("location: ../index.php");
 
 }
-
 ?>
-
+</body>
 </html>

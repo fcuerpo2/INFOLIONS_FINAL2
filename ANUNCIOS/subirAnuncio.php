@@ -4,21 +4,27 @@
   
   if( isset($_SESSION['usu']['idUsuario'])){
   
-    $titulo=$_SESSION['anuncio'][''];
+    $idUsuario = $_SESSION['usu']['idUsuario'];
+    $titulo= $_POST['cabecera'];
+    $_SESSION['anuncio']['titulo']=$titulo;
     $foto=$_SESSION['anuncio']['fotoAnuncio'];
-    $descripcion=$_SESSION['anuncio'][''];
-    //TODO: colocar código relacionar foto con foto subida
-    /*
+    $descripcion=$_POST['textDescripcion'];
+    $_SESSION['anuncio']['descripcion']=$descripcion;
+    
+    $fecha = new DateTime();
+    $fechaCreacion=$fecha->getTimestamp();
+   
     conectarBD();
-    $consulta="UPDATE usuarios SET FotoPortada='$foto' WHERE idUsuario=".$_SESSION['usu']['idUsuario'];
+    $sqlInsert="INSERT INTO publicidad (idUsuario, fecha_creacion, titulo, imagen, descripcion, visto)"
+            . "VALUES($idUsuario, FROM_UNIXTIME($fechaCreacion),'$titulo','$foto','$descripcion',0)";
 
-    $resultado=$conexion->query($consulta);
-    desconectarBD();*/
+    $resultado=$conexion->query($sqlInsert);
+    desconectarBD();
 
-    echo $foto;
+    echo $titulo.$foto.$descripcion;
  
     }else{
-        echo 'no has accedido de forma correcta fotoUp.php';
+        echo 'no has accedido de forma correcta subirAnuncio.php';
     }
 
 ?>
