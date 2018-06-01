@@ -33,4 +33,13 @@ $_SESSION['TodosLikes'] = "";
   
   desconectarBD();
   
+    conectarBD();
+  $consulta="SELECT * FROM Foto";
+  $resultado=$conexion->query($consulta);
+  
+  $_SESSION['TodasFotos'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+  
+  desconectarBD();
+
+  
 ?>

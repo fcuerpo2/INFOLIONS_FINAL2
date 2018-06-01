@@ -114,8 +114,9 @@ img{
 
   max-width:100%;
   text-align:center;
-  display:flex;
+  display:block;
   margin: 0 auto;
+  margin-top:35px;
 
 }
 .fotologin{

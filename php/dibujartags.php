@@ -12,7 +12,15 @@ if (file_exists($nombre_fichero)) {
 echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'></div>";
+echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'>";
+
+$totalFotos = 0;
+$encontrado="NO";
+for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
+{
+}
+
+echo "</div>";
 echo "<div id='Botones-".$miArray[$i]['idTag']."' class='botones' style='margin-top:10px;'>";
 $totalLikes = 0;
 $encontrado="NO";
@@ -73,8 +81,8 @@ if ($encontrado == "NO")
 else
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#BotComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='BotComent-".$miArray[$i]['idTag']."'>
-              <div id='PublicaComent-".$miArray[$i]['idTag']."' class='collapse show' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
+            <div id='BotComent-".$miArray[$i]['idTag']."' class='collapse show'>
+              <div id='PublicaComent-".$miArray[$i]['idTag']."' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form id='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>
                        <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
