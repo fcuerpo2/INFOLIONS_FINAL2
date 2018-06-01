@@ -45,7 +45,7 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
         success:function(resultado){
           alert(resultado);
          window.location.assign("../principal.php");
-         // document.getElementById('fotop').value=resultado;          
+              
         }
     });
   }
