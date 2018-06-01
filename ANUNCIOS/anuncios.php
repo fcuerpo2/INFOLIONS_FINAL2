@@ -31,7 +31,7 @@ echo "
                                     <div id='fotoAnuncioSelect'>
                                     </div>
                                 </article>
-                                 
+                                 <br>
 				<article>
 				<textarea cols='80' rows='3' id='textDescripcion' type='text' class='form-control' name='texto' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
 				<input name='latitud' type='hidden'>
