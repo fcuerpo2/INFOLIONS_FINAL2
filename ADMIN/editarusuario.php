@@ -2,36 +2,22 @@
 header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
+$_SESSION['FichaUsuario'] = "";
 if (session_id() === '') {session_start();}
+  
+  $recibirID=$_GET['IdUsuario'];
 
   conectarBD();
-  $consulta="SELECT * FROM usuarios";
+  
+  $consulta="SELECT * FROM usuarios where idUsuario=".$recibirID;
   $resultado=$conexion->query($consulta);
   
-  $_SESSION['TodosUsuarios'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+  $_SESSION['FichaUsuario'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
   
   desconectarBD();
 
 
 if($_SESSION['usu']['idUsuario']!=""){
-
-  $nombre=$_SESSION['usu']['Nombre'];
-  $apellidos=$_SESSION['usu']['Apellidos'];
-
- //creamos la consulta de seleccion del tag y le damos formato 
-       //JSON Y LA RETORNAMOS
-    $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
-
-    conectarBD();
-    $miArray = array();
-
-    if ($resultado= $conexion->query($consulta)) {
-
-    while($row = $resultado->fetch_assoc()) {
-            $miArray[] = $row;
-    }
-  }
-    desconectarBD();
 
 echo "
 <html lang='es'>
@@ -46,16 +32,27 @@ echo "
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
         <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css'/>
-        <script type='text/javascript' src='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js'></script> 
-        <script src='https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js'></script>
-        <script src='https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js'></script>
-        <script src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js'></script>
-        <script type='text/javascript' src='https:////cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'></script>
-  
+	<script type='text/javascript' src='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js'></script> 
+	<script src='https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js'></script>
+	<script src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js'></script>  
 
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>";
-?>
+?>  
+<script>
+    function bloquear(IdUsuario)
+    {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("bloqueado "+IdUsuario);
+        }
+    }
+    xhttp.open("GET", "../ADMIN/bloquear.php?NumID="+IdUsuario, true);
+    xhttp.send();
+    }
+</script>
     <script>
       $(document).ready(function() {
         var table = $('#exampletabla').DataTable( {
@@ -85,9 +82,7 @@ echo "
 //        new $.fn.dataTable.FixedHeader( table );
       } );      
       </script>	
-
-<?php
-echo"<style>
+<style>
 .image-upload > input{
     visibility: hidden;
     width:0px;
@@ -121,14 +116,7 @@ th {
 h1{
 text-align:center;
 color: darkblue;
-</style>";
-?>
-<script>
-    function modificar(IdUsuario)
-    {
-        window.location.href='editarusuario.php?IdUsuario='+IdUsuario;
-    }
-</script>
+</style>
 </head>
 <body>
 <div id='cabecera'>
@@ -151,7 +139,7 @@ color: darkblue;
                 <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
-                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><?php echo "Bienvenido $nombre $apellidos"; ?></a></li>
+                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><?php echo "Bienvenido ".$_SESSION['user']; ?></a></li>
                 <li class='menu'><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
             </ul>
         </div>
@@ -159,75 +147,28 @@ color: darkblue;
   </nav> 
 </div>
 <div class="row" style="margin: 0 auto;">
-<div class="col-md-12">
-<div id='principal'>
-    <h1>MODIFICAR Y BLOQUEAR USUARIO</h1>
-    <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; color: #fff; text-align: center'>
-        <thead>
-            <tr>
-            	<th>Modificar</th>
-            	<th>Borrar</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Domicilio</th>
-                <th>Provincia</th>
-                <th>Ciudad</th>
-                <th>Pais</th>
-            </tr>
-        </thead>
-        <tbody>
-<?php
-    for($misUsuarios=0;$misUsuarios<count($_SESSION['TodosUsuarios']);$misUsuarios++)
-    {
-        echo "<tr>
-            	<td style='text-align:center;'>
-            		<button onclick='modificar(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
-        				<img src='../img/editar.png' alt='modificar' id='modificar'>
-        			</button>
-            	</td>
-            	<td style='text-align:center;'>
-        			<button onclick='bloquear(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
-        				<img src='../img/borrar2.png' alt='borrar' id='borrar'>
-        			</button>
-        		</th>	
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Nombre']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Apellidos']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Email']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Telefono']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Direccion']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Provincia']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Ciudad']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Pais']."</td>                    
-             </tr>";
-    }
-?>
-        </tbody>
-        <tfooter>
-            <tr>
-            	<th>Modificar</th>
-            	<th>Borrar</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Domicilio</th>
-                <th>Provincia</th>
-                <th>Ciudad</th>
-                <th>Pais</th>
-            </tr>
-        </tfooter>
-  </table>
-  </div>
-</div>    
+<div class="col-md-12" style="width:100%; margin: 0 auto;">
+<h1>MODIFICAR UN USUARIO </h1>
+    <form id="Frm_FichaUsuario" method='POST'>
+		<table class='table table-striped table-bordered' style='width: 100%; background-color: lightblue; max-width:600px; margin: 0 auto;' id='tabla'><tbody>
+			<input type='hidden' name='idcliente' value='.$fila['idCliente'].' />
+			<tr><td id='datos'>Nombre:</td><td><input type='text' class="form-control" id='Frm_Nombre' value='<?php echo $_SESSION['FichaUsuario'][0]['Nombre']; ?>' /></td></tr>
+			<tr><td id='datos'>Apellidos:</td><td><input type='text' class="form-control" id='Frm_Apellidos' value='<?php echo $_SESSION['FichaUsuario'][0]['Apellidos']; ?>' /></td></tr>
+			<tr><td id='datos'>Email:</td><td><input type='text' class="form-control" id='Frm_Email' value='<?php echo $_SESSION['FichaUsuario'][0]['Email']; ?>' /></td></tr>
+			<tr><td id='datos'>Teléfono:</td><td><input type='text' class="form-control" id='Frm_Telefono' value='<?php echo $_SESSION['FichaUsuario'][0]['Telefono']; ?>' /></td></tr>
+			<tr><td id='datos'>Domicilio:</td><td><input type='text' class="form-control" id='Frm_Domicilio' value='<?php echo $_SESSION['FichaUsuario'][0]['Direccion']; ?>' /></td></tr>
+			<tr><td id='datos'>Ciudad:</td><td><input type='text' class="form-control" id='Frm_ciudad' value='<?php echo $_SESSION['FichaUsuario'][0]['Ciudad']; ?>' /></td></tr>
+			<tr><td id='datos' >Provincia:</td><td><input type='text' class="form-control" id='Frm_Provincia' value='<?php echo $_SESSION['FichaUsuario'][0]['Provincia']; ?>' /></td></tr>
+                        <tr><td id='datos' >Provincia:</td><td><input type='text' class="form-control" id='Frm_Pais' value='<?php echo $_SESSION['FichaUsuario'][0]['Pais']; ?>' /></td></tr>
+			<tr><td></td><td id='botones'><input type='submit' value='Modificar' class='modificar' /><input type='button' value='Bloquear' class='bloquear' onclick="bloquear(13)" /></td></tr>
+                </table>
+    </form>
+</div>
 </div>
 <?php
 }
 else{
-
   header("location: ../index.php");
-
 }
 ?>
 </body>
