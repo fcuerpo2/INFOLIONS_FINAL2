@@ -44,7 +44,7 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
         processData: false,
         success:function(resultado){
           alert(resultado);
-         window.location.assign("../principal.php");
+         window.location.assign("../php/principal.php");
               
         }
     });
