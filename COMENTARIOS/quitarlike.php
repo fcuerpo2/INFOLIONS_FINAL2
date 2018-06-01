@@ -36,6 +36,6 @@ for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
     }        
 }
   desconectarBD();
-        echo "<img src='../img/megusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='¿ Me Gusta ?' title='¿ Te Gusta ?' onclick='ponerlike(".$MiNumTag.",".$MiUserEnvia.",".$MiUserRecibe.")'>&nbsp;&nbsp;";
+        echo "<img src='../img/megusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px; opacity: 0.5;' alt='¿ Me Gusta ?' title='¿ Te Gusta ?' onclick='ponerlike(".$MiNumTag.",".$MiUserEnvia.",".$MiUserRecibe.")'>&nbsp;&nbsp;";
         echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
 ?>
