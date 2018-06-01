@@ -46,6 +46,19 @@ if (file_exists($nombre_fichero)) {
     $texto.="<tr><td>Web:</td><td><input type='text' class='form-control' name='web' value='$web'/></td></tr>";
     $texto.="<tr><td>Foto:</td><td><input type='text' id='fotop' name='fotoportada' class='form-control' value='$fotoportada' disabled/></td></tr>";
     $texto.="<tr><td><input type='reset' class='form-control btn btn-default' value='Borrar' style='margin-top:10px;'/></td><td><input type='button' onclick='actualizar()' class='form-control btn btn-primary' value='Enviar' style='margin-top: 10px;'/></td></tr></table></form></div></div>";
+    $texto.="<p class='imglist' style='max-width: 1000px;'>";
+$totalFotos = 0;
+$encontrado="NO";
+for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
+{
+    if ($_SESSION['TodasFotos'][$MisFotos]['idUsuario'] == $miArray[$i]['idUsuario'])
+    {
+        echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
+                <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
+              </a>";
+    }
+}
+echo "</p>";"
     echo $texto;
   }else{
     header("location:../index.php");
