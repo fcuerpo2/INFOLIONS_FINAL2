@@ -5,7 +5,7 @@
   if( isset($_SESSION['usu']['idUsuario'])){
   
     $idUsuario = $_SESSION['usu']['idUsuario'];
-    $titulo= $_POST['cab'];
+    $titulo= $_POST['cabecera'];
     $_SESSION['anuncio']['titulo']=$titulo;
     $foto=$_SESSION['anuncio']['fotoAnuncio'];
     $descripcion=$_POST['textDescripcion'];
