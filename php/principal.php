@@ -58,7 +58,10 @@ echo "
 $('[data-fancybox]').fancybox({
 	thumbs : {
 		autoStart : true
-	}
+	},
+        fullScreen : {
+	autoStart : true,
+        }
 });
 </script>
 </head>
