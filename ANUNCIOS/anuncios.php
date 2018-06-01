@@ -33,7 +33,7 @@ echo "
                                 </article>
                                  <br>
 				<article>
-				<textarea cols='80' rows='3' id='textDescripcion' type='text' class='form-control' name='texto' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
+				<textarea cols='80' rows='3' id='textDescripcion' type='text' class='form-control' name='textDescripcion' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
 				<input name='latitud' type='hidden'>
 				<input name='longitud' type='hidden'>
 				</article>
