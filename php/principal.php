@@ -54,6 +54,13 @@ echo "
     height:0px;
 }
 </style>
+<script>
+$('[data-fancybox]').fancybox({
+	thumbs : {
+		autoStart : true
+	}
+});
+</script>
 </head>
 <body onload='cargarmuro()'>
 <center>
