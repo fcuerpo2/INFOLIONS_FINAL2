@@ -5,9 +5,11 @@
   if( isset($_SESSION['usu']['idUsuario'])){
   
     $idUsuario = $_SESSION['usu']['idUsuario'];
-    $titulo=$_SESSION['anuncio'][''];
+    $titulo= $_POST['cab'];
+    $_SESSION['anuncio']['titulo']=$titulo;
     $foto=$_SESSION['anuncio']['fotoAnuncio'];
-    $descripcion=$_SESSION['anuncio'][''];
+    $descripcion=$_POST['textDescripcion'];
+    $_SESSION['anuncio']['descripcion']=$descripcion;
     
     $fecha = new DateTime();
     $fechaCreacion=$fecha->getTimestamp();
