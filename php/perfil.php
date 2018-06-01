@@ -58,9 +58,9 @@ for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
               </a>";
     }
 }
-echo "</p>";"
-    echo $texto;
+echo "</p>";
+echo $texto;
   }else{
-    header("location:../index.php");
+    header('location:../index.php');
   }
 ?>
