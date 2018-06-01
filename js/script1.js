@@ -73,7 +73,7 @@ if(confirm("¿Estás seguro que quieres subir una imagen? \n\
 
 
   }else{
-      textDescripcion.setAttribute("hidden", false);
+     // textDescripcion.setAttribute("hidden", false);
   }
 }
 
