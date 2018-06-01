@@ -14,14 +14,17 @@ echo "
 				<section>
 				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'><img src='../doc/fotoportada/12-carlos.jpg' id='fotoperfil' class='escalar' alt='Foto de Perfil' title='Foto de Perfil'>                          <span style='text-align:center; margin-top: 10px; width:100%'><span style='font-size:18px; font-weight: 700; text-shadow: 2px 2px 8px #9a96e4;'>Carlos  Acevedo Jiménez</span><br><span style='font-size: 12px; font-style: italic;'>30-05-18 05:00:26pm</span></span>
 				</header>
-				<form id='ftag' method='POST' style='margin-bottom:0px;'>
+				<form id='formAnuncio' method='POST' style='margin-bottom:0px;'>
 				<article>
 				<input class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;' type='text'>
 				</article>
                                 <article>
-                                    <br>
-                                    <button type='file'  accept='image/*' class='btn btn-primary' id='fotoAnuncio' name='fotoAnuncio' onchange='subirFotoAnuncio()'><span class='glyphicon glyphicon-camera'></span> Foto</button>
-                                    
+                                    <br>                
+                                    <label class='btn btn-primary'>
+                                        <span class='glyphicon glyphicon-camera'></span>
+                                           &nbsp; &nbsp;Foto
+                                           <input type='file' accept='image/*' onchange='subirFotoAnuncio();' id='fotoAnuncio' name='fotoAnuncio'  hidden>
+                                    </label>    
                                 </article>
                                     <br>
 				<article>
@@ -29,11 +32,19 @@ echo "
 				<input name='latitud' type='hidden'>
 				<input name='longitud' type='hidden'>
 				</article>
+                                
+                                
+
 				<footer>
 				<input class='btn btn-lg btn-primary btn-block' onclick='publicarAnuncio();' value='Publicar' style='margin-top:10px;' id='botPubliTag' type='button'>
 				</footer>
 				</form></section>
-				
+                                
+                                <div id='fotoAnuncio'>
+                                </div>
+                                <div id='pruebasNombreFoto'>
+                                    <input id='fotoAnuncioNombre' name='fotoAnunNombre' class='form-control' value='nombre' disabled='' type='text'>
+                                </div>
 			</div></div>
                                         ";
 

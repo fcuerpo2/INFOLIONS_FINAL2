@@ -17,20 +17,12 @@ if (session_id() === "") { session_start(); }
     //HAY ALGÚN USUARIO 
     $fila=mysqli_fetch_assoc($resultado);
     $_SESSION['usu']=$fila;
+    desconectarBD();
    header('location:./principal.php');
-
 
   }else{
     //NO HAY NINGÚN USUARIO
        header('location:../index.php');
-
-
   }
-
-
-
   desconectarBD();
-
-
-
 ?>

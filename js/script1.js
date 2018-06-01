@@ -25,7 +25,7 @@ function nuevoAnuncio(){
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("tags").innerHTML = this.responseText;
       document.getElementById("perfiles").style.display="none";
-      document.getElementById("anuncio-top").style.display="none";
+     // document.getElementById("anuncio-top").style.display="none";
     }
   }
  
@@ -50,6 +50,39 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
 }
 
 
+
+function subirFotoAnuncio(){
+if(confirm("¿Estás seguro que quieres subir una imagen? \n\
+(imagen y descripcion son EXCLUYENTES)")){
+    var formdata = new FormData($('#formAnuncio')[0]);
+    //TODO: quitar espacio en blanco que aparece delante del nombre
+    $.ajax({
+        type: 'POST',
+        url: '../ANUNCIOS/fotoUp.php',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+          document.getElementById('fotoAnuncio').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' width='200px' alt='sin acceso a la foto'/>";
+          document.getElementById('fotoAnuncioNombre').value=resultado;     
+        }
+    });
+
+
+
+  }
+}
+
+function compruebaCompatibilidadLocalStorage() {
+    if (window.sessionStorage && window.localStorage) {
+        alert('Tu navegador acepta almacenamiento local'); 
+    } else {			
+        alert('Lo siento, pero tu navegador no acepta almacenamiento local');		
+             }
+}
+//------------------------------------------------------------------------------------------------------
+
+
 function subirfoto(){
 if(confirm("¿Estás seguro que quieres cambiar la foto?")){
     var formdata = new FormData($('#subir')[0]);
@@ -71,28 +104,7 @@ if(confirm("¿Estás seguro que quieres cambiar la foto?")){
   }
 }
 
-//------------------------------------------------------------------------------------------------------
 
-function subirFotoAnuncio(){
-if(confirm("¿Estás seguro que quieres subir una imagen?<br> Si subes una imagen no podrás indicar la descripcion")){
-    var formdata = new FormData($('#subir')[0]);
-    
-    $.ajax({
-        type: 'POST',
-        url: '../php/fichero.php',
-        data: formdata,
-        contentType: false,
-        processData: false,
-        success:function(resultado){
-          document.getElementById('foto').innerHTML="<img src='../doc/fotoportada/"+resultado+"' width='200px'/>";
-          document.getElementById('fotop').value=resultado;          
-        }
-    });
-
-
-
-  }
-}
 
 function actualizar(){
 if(confirm("¿Estás seguro que quieres actualizar los datos?")){
@@ -166,16 +178,13 @@ function registrar(){
 
         }
     });
-       
+ if (navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(showPosition);
+  }    
  }
 
   function enviartag(){
 
- if (navigator.geolocation){
-//  navigator.geolocation.getCurrentPosition(showPosition);
-  }else{
-
-  }
       document.getElementById("botPubliTag").value="Publicando...";
       var tags="";
       var formdata = new FormData($('#ftag')[0]);
@@ -186,8 +195,9 @@ function registrar(){
         contentType: false,
         processData: false,
         success:function(resultado){
-       	objeto = JSON.parse(resultado); 
-    	mostrarTags(objeto);
+        document.getElementById("tags").innerHTML=resultado;            
+//       	objeto = JSON.parse(resultado); 
+//    	mostrarTags(objeto);
         document.getElementById("botPubliTag").value="Publicado";
  		}
     });  
@@ -197,7 +207,7 @@ function registrar(){
 
  }
 
-  function showPosition(){
+  function showPosition(position){
   document.getElementById('latitud').value=position.coords.latitude;
   document.getElementById('longitud').value=position.coords.longitude;
  }
@@ -286,7 +296,8 @@ addField = function () {
    a.name = span.id;
    a.href = '#';
    a.onclick = removeField;
-   a.innerHTML = 'Quitar';
+//   a.innerHTML = "<span style='padding:5px; background-color:#0000ff; border-radius: 5px; color:#fff; text-decoration: none;'>Quitar</span><br />";
+   a.innerHTML = 'QUITAR';
 
    span.appendChild(field);
    span.appendChild(a);
@@ -297,3 +308,30 @@ removeField = function (evt) {
    span = d(lnk.name);
    span.parentNode.removeChild(span);
 }
+  function enviarcomentario(NumForm){
+
+      document.getElementById("botPubliCom-"+NumForm).value="Publicando Comentario...";
+      MiCabecera=document.getElementById("cabecera-coment-"+NumForm).value;
+      MiMensaje=document.getElementById("mensaje-coment-"+NumForm).value;
+      var tags="";
+//      var formdata = new FormData($('#Form-Com-'+NumForm)[0]);
+        var formdata = new FormData($('#Form-Com-39')[0]);
+        $.ajax({
+        type: 'POST',
+        url: '../php/insertarcoment.php?NumForm='+NumForm+'&Cabecera='+MiCabecera+'&Mensaje='+MiMensaje,
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+//       	objeto = JSON.parse(resultado); 
+//    	mostrarTags(objeto);
+//        alert("Correcto: "+resultado);
+        document.getElementById("tags").innerHTML=resultado;
+        document.getElementById("botPubliCom-"+NumForm).value="Comentario Publicado";
+ 		}
+    });  
+
+//		document.getElementById("cab").value="";
+//		document.getElementById("text").value="";
+
+ }

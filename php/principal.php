@@ -3,7 +3,7 @@ header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
 if (session_id() === '') { session_start(); }
-
+$_SESSION['MisTags']=array();
 if($_SESSION['usu']['idUsuario']!=""){
 
   $nombre=$_SESSION['usu']['Nombre'];
@@ -25,8 +25,6 @@ if($_SESSION['usu']['idUsuario']!=""){
   }
     desconectarBD();
 
-
-
 echo "
 <html lang='es'>
 <head>
@@ -39,7 +37,8 @@ echo "
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js'></script>
 
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>
@@ -115,102 +114,33 @@ echo "
 include "../ANUNCIOS/anuncioInicioBlanco.php";
 
 echo "                  </div>
-   			<div id='imagen'></div>
-   			<div id='perfiles' class='sombraNegra'></div>
-   			<div id='tags'>";
-
-include "../COMENTARIOS/mirarlikes.php";
-for($i=0;$i<count($miArray);$i++){
-$foto=$miArray[$i]['FotoPortada'];
-echo "<div id='Tag-".$miArray[$i]['idTag']."' class='tag sombraNegra'><div class='cabecera'>";
-$nombre_fichero = '../doc/fotoportada/'.$foto;
-if (file_exists($nombre_fichero)) {
-    echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' onclick='verImagen(".$foto.")' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' style='width: 40px; height: 40px;' />";
-} else {
-    echo "<img src='../img/fotoportada-vacia.png' id='fotoperfil' class='escalar' alt='Sin Foto de Perfil' title='Sin Foto de Perfil' style='width: 40px; height: 40px;' />";
-}    
-echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
-echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
-echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'></div>";
-echo "<div id='Botones-".$miArray[$i]['idTag']."' class='botones' style='margin-top:10px;'>";
-$totalLikes = 0;
-$encontrado="NO";
-for($z=0;$z<count($_SESSION['TodosLikes']);$z++)
+   			<div id='imagen'></div>";
+if ($_SESSION['usu']['FotoFondo'] == "")
 {
-    if ($_SESSION['TodosLikes'][$z]['IdComentario'] == $miArray[$i]['idTag'])
-    {
-        $totalLikes++;
-        if ($_SESSION['TodosLikes'][$z]['IdUsuarioEnvia'] == $_SESSION['usu']['idUsuario'])
+echo "   			<div id='perfiles' class='sombraNegra'></div>";
+}
+else
+{
+    $nombre_fondo = '../doc/fotofondo/'.$_SESSION['usu']['FotoFondo'];
+    if (file_exists($nombre_fondo)) 
         {
-            $encontrado="SI";
+echo "   			<div id='perfiles' class='sombraNegra' style='background-image: url(../doc/fotofondo/".$_SESSION['usu']['FotoFondo']."); background-repeat: no-repeat; background-size: cover;'></div>";        
         }
-    }        
+    else
+        {
+echo "   			<div id='perfiles' class='sombraNegra'></div>";        
+        }
 }
-if ($encontrado == "NO")
-{
-//        echo "<img src='../img/megusta.png' style='height:35px; opacity: 0.7;'>";
-        echo "<img src='../img/megusta.png' class='escalar oscurecer' style='cursor: pointer; height:30px; width:30px; border-radius: 0px; opacity: 0.5;' onclick='ponerlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")' alt='¿ Te Gusta ?' title='¿ Te Gusta ?'>&nbsp;&nbsp;";
-        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
-}
-else
-{
-        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
-        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
-}
-//echo "<input type='button' class='btn btn-primary' value='Comentario'/>";
-echo "</div>";
-echo "<div class='comentarios' style='margin-top:15px;'>";
-
-$totalComentarios = 0;
-$encontrado="NO";
-for($z=0;$z<count($_SESSION['TodosComentarios']);$z++)
-{
-    if ($_SESSION['TodosComentarios'][$z]['idTag'] == $miArray[$i]['idTag'])
-    {
-        $totalComentarios++;
-        $encontrado="SI";
-//        if ($_SESSION['TodosComentarios'][$z]['IdUsuarioEnvia'] == $_SESSION['usu']['idUsuario'])
-//        {
-//            $encontrado="SI";
-//        }
-    }        
-}
-if ($encontrado == "NO")
-{
-    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse'>
-                <br /><span>Sin Comentarios</span>
-            </div>";
-}
-else
-{
-    echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#Comentarios-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='Comentarios-".$miArray[$i]['idTag']."' class='collapse in' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
-                <form name='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
-                    <div class='formComents'>
-                       <input type='text' id='cabecera-coment-".$miArray[$i]['idTag']."' placeholder='Titulo Comentario' class='form-control' style='margin-bottom: 5px;'>
-                       <textarea cols='80' rows='3' id='mensaje-coment-".$miArray[$i]['idTag']."' type='text' class='form-control' placeholder='Mensaje Comentario' title='Mensaje Comentario'></textarea>                           
-                    </div>
-                </form>
-            </div>";
-//          echo "Nº de Comentarios: ".$totalComentarios;
-//        echo "<img src='../img/nomegusta.png' class='escalar' style='cursor:pointer; height:30px; width:30px; border-radius: 0px;' alt='Ya NO Me Gusta' title='Ya NO Me Gusta' onclick='quitarlike(".$miArray[$i]['idTag'].",".$apellidos=$_SESSION['usu']['idUsuario'].",".$miArray[$i]['idUsuario'].")'>&nbsp;&nbsp;";
-//        echo "<span style='vertical-align: -webkit-baseline-middle;'>Total Likes: <strong>".$totalLikes."</strong></span>";
-}
-
-
-
-echo "</div>";
-echo "</div>";
-}
-echo "		</div>
+echo "   			<div id='tags'>";
+include './dibujartags.php';
+echo "		</div>           
 		</div>
+                
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
   		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   			 	<div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		</div>
-  	</div>		
+  	</div>		        
 	</center>";
 }
 else{

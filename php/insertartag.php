@@ -1,9 +1,11 @@
 <?php
-  if (session_id() == "") session_start(); 
+  if (session_id() === "") { session_start(); } 
   include '../lib/lib1.php';
 
  if(isset($_POST['texto'])){
   //recibimos las variables por POST
+    $_SESSION['MisArchivos']=$_FILES;
+    $_SESSION['Total_imagenes']=count($_SESSION['MisArchivos']['archivos']['name']);
     $texto=$_POST['texto'];
     $cabecera=$_POST['cabecera'];
     $latitud=$_POST['latitud'];
@@ -13,23 +15,26 @@
     //creamos la consulta de inserción del tag y la ejecutamos
     $consulta="INSERT INTO Tags(idUsuario,Cabecera,Texto,Latitud,Longitud) VALUES ($idusuario,'$cabecera','$texto','$latitud','$longitud')";
     $conexion->query($consulta);
-       desconectarBD();
-
-      //creamos la consulta de seleccion del tag y le damos formato 
-       //JSON Y LA RETORNAMOS
-    $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
-
-    conectarBD();
-    $miArray = array();
-
-    if ($resultado= $conexion->query($consulta)) {
-
-    while($row = $resultado->fetch_assoc()) {
-            $miArray[] = $row;
-    }
-  }
+//    $consulta2 = "SELECT LAST_INSERT_ID()";
+//    $MiUltimoID=$conexion->query($consulta2);
     desconectarBD();
-    echo json_encode($miArray);
+    // Vamos a Subir las Imagenes
+    for($i=0;$i<count($_SESSION['MisArchivos']['archivos']['name']);$i++)
+    {
+        if ($_SESSION['MisArchivos']['archivos']['name'][$i] != "")
+        {
+            $_SESSION['Foto']=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
+            $foto=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
+            move_uploaded_file($_SESSION['MisArchivos']['archivos']['tmp_name'][$i],"../doc/Imagenes/$foto");
 
-  }
+                conectarBD();
+                //creamos la consulta de inserción de las Imagenes
+                $consulta="INSERT INTO Foto (idUsuario,IdAlbum,IdTag,Nombre,Ruta) VALUES ($idusuario,0,0,'$foto','$foto')";
+                $_SESSION['MiConsulta'] = $consulta;
+                $conexion->query($consulta);
+                desconectarBD();
+        }
+    }
+ }
+ include './dibujartags.php';
 ?>

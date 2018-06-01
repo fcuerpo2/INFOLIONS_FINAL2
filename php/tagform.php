@@ -13,7 +13,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 	echo "
 			<div id='tag' class='tag' >
 				<section>
-				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 15px;'>";
+				<header style='display: flex; text-align: center; margin: 0 auto; width: 100%; max-width: 310px; margin-bottom: 25px; margin-top: 5; padding: 5px; background-color: rgba(255, 255, 255, 0.40); border-radius: 10px;'>";
 $nombre_fichero = '../doc/fotoportada/'.$foto;
 if (file_exists($nombre_fichero)) {
     echo "<img src='../doc/fotoportada/$foto' id='fotoperfil' class='escalar' alt='Foto de Perfil' title='Foto de Perfil' />";
@@ -27,12 +27,11 @@ if (file_exists($nombre_fichero)) {
 				<input type='text' class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;'></input>
 				</article>
 				<article>
-				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>
-                                <br/>
-                                <dt><label>Archivos Adjuntos:</label>   <a href='#' onclick='addField()' accesskey='5'><span style='font-size: 20px; vertical-align: sub;' class='glyphicon glyphicon-camera'></span></a></dt>
-                                    <dd><div id='files'></div></dd>
-				<input type='hidden' name='latitud'/>
-				<input type='hidden' name='longitud'/>
+				<textarea cols='80' rows='3' id='text' type='text' class='form-control' name='texto' placeholder='Mensaje' title='Mensaje'></textarea>                                
+                                <dt style='border-radius:10px; padding: 5px 5px 1px 5px; background-color: #fff; margin-top: 5px; margin-bottom: 5px;'><label>Archivos Adjuntos:</label>   <a href='#' onclick='addField()' accesskey='5'><span style='font-size: 20px; vertical-align: sub;' class='glyphicon glyphicon-camera'></span></a></dt>
+                                    <dd style='overflow: hidden;'><div id='files'></div></dd>
+				<input type='hidden' name='latitud' id='latitud' />
+				<input type='hidden' name='longitud' id='longitud' />
 				</article>
 				<footer>
 				<input type='button' class='btn btn-lg btn-primary btn-block' onclick='enviartag();' value='Publicar' style='margin-top:10px;' id='botPubliTag'></input>
