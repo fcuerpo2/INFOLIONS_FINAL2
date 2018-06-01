@@ -11,16 +11,20 @@
         $selAnuncio = "SELECT * FROM publicidad WHERE idAnuncio=$elegido";
         conectarBD();
         $arrayIdAnuncios = array();
-
+    $_SESSION['anuncio']['recuperado']="nada";
         if ($resultado= $conexion->query($coleccionIdAnuncios)) {
+            
             while($row = $resultado->fetch_assoc()) {
                     $arrayIdAnuncios[] = $row;
             }
             $elegido=rand(0, count($arrayIdAnuncios));
+           
              if ($resultado= $conexion->query($selAnuncio)){
+                 $_SESSION['anuncio']['recuperado']=$elegido;
                  while($row = $resultado->fetch_assoc()) {
-                      
-                     $anuncio=$row;
+                      //TODO: extraer del row el valor
+                     $anuncio=$elegido;
+                     $_SESSION['anuncio']['recuperado']=$elegido;
                 }
              }
             
