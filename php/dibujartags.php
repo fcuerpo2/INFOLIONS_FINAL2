@@ -21,7 +21,7 @@ for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
     if ($_SESSION['TodasFotos'][$MisFotos]['IdTag'] == $miArray[$i]['idTag'])
     {
         echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
-                <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' />
+                <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px;' />
               </a>";
     }
 }
