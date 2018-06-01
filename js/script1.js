@@ -64,7 +64,7 @@ if(confirm("¿Estás seguro que quieres subir una imagen? \n\
         contentType: false,
         processData: false,
         success:function(resultado){
-          document.getElementById('fotoAnuncioSelect').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' width='200px' alt='sin acceso a la foto'/>";
+          document.getElementById('fotoAnuncioSelect').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' class='fotoAnuncio' alt='sin acceso a la foto'/>";
           document.getElementById('fotoAnuncioNombre').value=resultado;
           document.getElementById('textDescripcion').type='hidden';
         }
