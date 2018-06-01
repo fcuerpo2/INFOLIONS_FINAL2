@@ -13,13 +13,19 @@ echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'>";
-
+echo "<p class='imglist' style='max-width: 1000px;'>";
 $totalFotos = 0;
 $encontrado="NO";
 for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
 {
+    if ($_SESSION['TodasFotos'][$MisFotos]['IdTag'] == $miArray[$i]['idTag'])
+    {
+        echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
+                <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' />
+              </a>";
+    }
 }
-
+echo "</p>";
 echo "</div>";
 echo "<div id='Botones-".$miArray[$i]['idTag']."' class='botones' style='margin-top:10px;'>";
 $totalLikes = 0;
