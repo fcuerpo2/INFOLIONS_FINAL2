@@ -89,8 +89,8 @@ function compruebaCompatibilidadLocalStorage() {
              }
 }
 
-//var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
-//var myVar = setInterval(refrescarPublicidad, tiempo);
+// var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
+ //var myVar = setInterval(refrescarPublicidad, 5000);//Pruebas no subir a producción
 
 function refrescarPublicidad() {
     //TODO: introducir un delay entre cada llamada de unos 3 segundos
