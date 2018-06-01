@@ -26,10 +26,10 @@ $_SESSION['TodosLikes'] = "";
   desconectarBD();
   
   conectarBD();
-  $consulta="SELECT * FROM Comentarios INNER JOIN usuarios ON Comentarios.idUsuarioEnvio=usuarios.idUsuario order by Comentarios.Fecha DESC";
+  $consulta="SELECT * FROM Foto";
   $resultado=$conexion->query($consulta);
   
-  $_SESSION['TodosComentarios'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+  $_SESSION['TodasFotos'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
   
   desconectarBD();
   
