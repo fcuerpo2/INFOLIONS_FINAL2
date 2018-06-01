@@ -29,7 +29,7 @@
 
                 conectarBD();
                 //creamos la consulta de inserción de las Imagenes
-                $consulta="INSERT INTO Fotos(idUsuario,IdTag,Nombre,Ruta) VALUES ($idusuario,0,'$foto','$foto')";
+                $consulta="INSERT INTO Fotos (idUsuario,IdAlbum,IdTag,Nombre,Ruta) VALUES ($idusuario,0,0,'$foto','$foto')";
                 $_SESSION['MiConsulta'] = $consulta;
                 $conexion->query($consulta);
                 desconectarBD();
