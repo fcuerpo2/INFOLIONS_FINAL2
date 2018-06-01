@@ -87,9 +87,9 @@ var defaults = {
     // and they will be placed into toolbar (class="fancybox-toolbar"` element)
     buttons: [
         "zoom",
-        //"share",
-        //"slideShow",
-        //"fullScreen",
+        "share",
+        "slideShow",
+        "fullScreen",
         //"download",
         "thumbs",
         "close"
