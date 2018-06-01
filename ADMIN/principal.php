@@ -130,7 +130,7 @@ color: darkblue;
     }
 </script>
 </head>
-<body onload='cargarmuro()'>
+<body>
 <div id='cabecera'>
   <nav class='navbar navbar-inverse' id='borde'>
     <div class='container-fluid'>

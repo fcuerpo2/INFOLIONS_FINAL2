@@ -39,6 +39,20 @@ echo "
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>";
 ?>  
+<script>
+    function bloquear(IdUsuario)
+    {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("bloqueado "+IdUsuario);
+        }
+    }
+    xhttp.open("GET", "../ADMIN/bloquear.php?NumID="+IdUsuario, true);
+    xhttp.send();
+    }
+</script>
     <script>
       $(document).ready(function() {
         var table = $('#exampletabla').DataTable( {
@@ -104,7 +118,7 @@ text-align:center;
 color: darkblue;
 </style>
 </head>
-<body onload='cargarmuro()'>
+<body>
 <div id='cabecera'>
   <nav class='navbar navbar-inverse' id='borde'>
     <div class='container-fluid'>
@@ -146,7 +160,7 @@ color: darkblue;
 			<tr><td id='datos'>Ciudad:</td><td><input type='text' class="form-control" id='Frm_ciudad' value='<?php echo $_SESSION['FichaUsuario'][0]['Ciudad']; ?>' /></td></tr>
 			<tr><td id='datos' >Provincia:</td><td><input type='text' class="form-control" id='Frm_Provincia' value='<?php echo $_SESSION['FichaUsuario'][0]['Provincia']; ?>' /></td></tr>
                         <tr><td id='datos' >Provincia:</td><td><input type='text' class="form-control" id='Frm_Pais' value='<?php echo $_SESSION['FichaUsuario'][0]['Pais']; ?>' /></td></tr>
-			<tr><td></td><td id='botones'><input type='submit' value='Modificar' class='modificar' /><input type='submit' value='Bloquear' class='bloquear' /></td></tr>
+			<tr><td></td><td id='botones'><input type='submit' value='Modificar' class='modificar' /><input type='button' value='Bloquear' class='bloquear' onclick="bloquear(13)" /></td></tr>
                 </table>
     </form>
 </div>
