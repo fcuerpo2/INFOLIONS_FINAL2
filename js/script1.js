@@ -52,10 +52,11 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
 
 
 function subirFotoAnuncio(){
+    var textDescripcion = document.getElementById('text');
 if(confirm("¿Estás seguro que quieres subir una imagen? \n\
 (imagen y descripcion son EXCLUYENTES)")){
     var formdata = new FormData($('#formAnuncio')[0]);
-    //TODO: quitar espacio en blanco que aparece delante del nombre
+ 
     $.ajax({
         type: 'POST',
         url: '../ANUNCIOS/fotoUp.php',
@@ -63,13 +64,16 @@ if(confirm("¿Estás seguro que quieres subir una imagen? \n\
         contentType: false,
         processData: false,
         success:function(resultado){
-          document.getElementById('fotoAnuncio').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' width='200px' alt='sin acceso a la foto'/>";
-          document.getElementById('fotoAnuncioNombre').value=resultado;     
+          document.getElementById('fotoAnuncioSelect').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' width='200px' alt='sin acceso a la foto'/>";
+          document.getElementById('fotoAnuncioNombre').value=resultado;
+          textDescripcion.setAttribute("hidden", true);
         }
     });
 
 
 
+  }else{
+      textDescripcion.setAttribute("hidden", false);
   }
 }
 
