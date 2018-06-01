@@ -66,14 +66,14 @@ if(confirm("¿Estás seguro que quieres subir una imagen? \n\
         success:function(resultado){
           document.getElementById('fotoAnuncioSelect').innerHTML="<img src='../doc/fotosPublicidad/"+resultado+"' width='200px' alt='sin acceso a la foto'/>";
           document.getElementById('fotoAnuncioNombre').value=resultado;
-          textDescripcion.setAttribute("hidden", true);
+          textDescripcion.setAttribute('type','hidden');
         }
     });
 
 
 
   }else{
-     // textDescripcion.setAttribute("hidden", false);
+     //  textDescripcion.setAttribute('type','text');
   }
 }
 
