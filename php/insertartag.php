@@ -15,7 +15,7 @@
     //creamos la consulta de inserción del tag y la ejecutamos
     $consulta="INSERT INTO Tags(idUsuario,Cabecera,Texto,Latitud,Longitud) VALUES ($idusuario,'$cabecera','$texto','$latitud','$longitud')";
     $conexion->query($consulta);
-    $_SESSION['lastID'] = mysqli_insert_id($conexion);
+    $lastID = mysqli_insert_id($conexion);
     desconectarBD();
     // Vamos a Subir las Imagenes
     for($i=0;$i<count($_SESSION['MisArchivos']['archivos']['name']);$i++)
@@ -23,12 +23,12 @@
         if ($_SESSION['MisArchivos']['archivos']['name'][$i] != "")
         {
             $_SESSION['Foto']=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
-            $foto=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
+            $foto=$_SESSION['usu']['idUsuario']."-".$lastID."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
             move_uploaded_file($_SESSION['MisArchivos']['archivos']['tmp_name'][$i],"../doc/Imagenes/$foto");
 
                 conectarBD();
                 //creamos la consulta de inserción de las Imagenes
-                $consulta="INSERT INTO Foto (idUsuario,IdAlbum,IdTag,Nombre,Ruta) VALUES ($idusuario,0,0,'$foto','$foto')";
+                $consulta="INSERT INTO Foto (idUsuario,IdAlbum,IdTag,Nombre,Ruta) VALUES ($idusuario,0,$lastID,'$foto','$foto')";
                 $_SESSION['MiConsulta'] = $consulta;
                 $conexion->query($consulta);
                 desconectarBD();
