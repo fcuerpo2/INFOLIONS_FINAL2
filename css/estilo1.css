@@ -171,3 +171,6 @@ div#files {
 .file a {
     font-weight: 700;
 }
+.fancybox-image, .fancybox-spaceball {
+    border-radius: 0px !important;
+}
