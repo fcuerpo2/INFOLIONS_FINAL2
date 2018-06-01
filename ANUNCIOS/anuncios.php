@@ -40,7 +40,7 @@ echo "
 				</footer>
 				</form></section>
                                 
-                                <div id='fotoAnuncio'>
+                                <div id='fotoAnuncioSelect'>
                                 </div>
                                 <div id='pruebasNombreFoto'>
                                     <input id='fotoAnuncioNombre' name='fotoAnunNombre' class='form-control' value='nombre' disabled='' type='text'>
