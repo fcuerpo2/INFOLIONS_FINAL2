@@ -21,10 +21,10 @@
     // Vamos a Subir las Imagenes
     for($i=0;$i<count($_SESSION['MisArchivos']['archivos']['name']);$i++)
     {
-        if ($_SESSION['MisArchivos']['name'] != "")
+        if ($_SESSION['MisArchivos']['archivos']['name'][$i] != "")
         {
-            $foto=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['name'];
-            move_uploaded_file($_SESSION['MisArchivos']['tmp_name'],"../doc/Imagenes/$foto");
+            $foto=$_SESSION['usu']['idUsuario']."-".$_SESSION['MisArchivos']['archivos']['name'][$i];
+            move_uploaded_file($_SESSION['MisArchivos']['archivos']['tmp_name'][$i],"../doc/Imagenes/$foto");
 
                 conectarBD();
                 //creamos la consulta de inserción de las Imagenes
