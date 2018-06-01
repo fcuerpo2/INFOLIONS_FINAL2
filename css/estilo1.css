@@ -18,7 +18,7 @@ body {
 
 .fotoAnuncio{
     width: 80%;
-    height: 80%;
+    height: auto;
     border-radius: 10%;
 }
 

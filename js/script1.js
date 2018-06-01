@@ -38,14 +38,14 @@ if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
       var formdata = new FormData($('#formAnuncio')[0]);
         $.ajax({
         type: 'POST',
-        url: '../php/subirAnuncio.php',
+        url: '../ANUNCIOS/subirAnuncio.php',
         data: formdata,
         contentType: false,
         processData: false,
         success:function(resultado){
           alert(resultado);
-         window.location.assign("../principal.php");
-         // document.getElementById('fotop').value=resultado;          
+         window.location.assign("../php/principal.php");
+              
         }
     });
   }
