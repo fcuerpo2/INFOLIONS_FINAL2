@@ -8,6 +8,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 
   $nombre=$_SESSION['usu']['Nombre'];
   $apellidos=$_SESSION['usu']['Apellidos'];
+  $email=$_SESSION['usu']['Email'];
 
  //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
@@ -24,7 +25,6 @@ if($_SESSION['usu']['idUsuario']!=""){
     }
   }
     desconectarBD();
-
 echo "
 <html lang='es'>
 <head>
@@ -41,7 +41,11 @@ echo "
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js'></script>
 
     <script src='../js/script1.js'></script>
+    <script src='../js/mostrarAmigosContactos.js'></script>
+    <script src='../js/mostrarenLineaContactos.js'></script>
+    
     <link rel='stylesheet' href='../css/estilo1.css'>
+    <link rel='stylesheet' href='../css/misContactos.css'>
     <script src='../chat/chat.js'></script>
     <link href='../chat/chat.css' rel='stylesheet'/>
 
@@ -140,9 +144,26 @@ include './dibujartags.php';
 echo "		</div>           
 		</div>
                 
-  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
-  		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
-  			 	<div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>";
+?>
+  		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'>
+            <form method="Post">
+                <p> Mis Amigos </p>
+                <div class="amigosContactos" id ="amigosContactos">
+                  <input type="hidden" name="aEmail" id="aEmail" value="<?php  echo $email;?>" >
+                </div>
+              </form>
+              <form method="Post">
+                <p id="dato"> Contactos en linea </p>
+                <div class="enLineaContactos" id ="enLineaContactos">
+                  <input type="hidden" name="eEmail" id="eEmail" value="<?php  echo $email;?>" >
+                </div>
+              </form>
+
+            </div>
+  			 	
+<?php
+  echo"     <div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
   		</div>
   	</div>		        
 	</center>";
