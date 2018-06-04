@@ -9,24 +9,21 @@ if (session_id() === "") { session_start(); }
   include '../lib/lib1.php';
 
   conectarBD();
-  $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password'";
+  $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password' AND TipoUsuario=1";
 
   $resultado=$conexion->query($consulta);
 
   if($resultado->num_rows>0){
     //HAY ALGÚN USUARIO 
-    $fecha=time();
     $fila=mysqli_fetch_assoc($resultado);
     $_SESSION['usu']=$fila;
-    $consulta="UPDATE usuarios SET FechaLogin='$fecha', enLinea='1' WHERE Email='$email'";
-    $resultado=$conexion->query($consulta);
     desconectarBD();
     $_SESSION['user']=$_SESSION['usu']['nombre']." ".$_SESSION['usu'][apellidos];
-   header('location:./principal.php');
+   header('location:../ADMIN/principal.php');
 
   }else{
     //NO HAY NINGÚN USUARIO
-       header('location:../index.php');
+       header('location:../ADMIN/index.php?errorAdmin=YES');
   }
   desconectarBD();
 ?>
