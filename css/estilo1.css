@@ -11,6 +11,11 @@ body {
 }
   
 /*CSS para publicidad */
+/*
+#titul-anuncio{
+    No va hay que ver porque
+    margin-top: 20px;
+}*/
 [hidden] {
   display: none !important;
 
