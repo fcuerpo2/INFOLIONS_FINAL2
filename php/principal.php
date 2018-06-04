@@ -43,7 +43,6 @@ echo "
     <script src='../js/script1.js'></script>
     <script src='../js/mostrarAmigosContactos.js'></script>
     <script src='../js/mostrarenLineaContactos.js'></script>
-    
     <link rel='stylesheet' href='../css/estilo1.css'>
     <link rel='stylesheet' href='../css/misContactos.css'>
     <script src='../chat/chat.js'></script>
