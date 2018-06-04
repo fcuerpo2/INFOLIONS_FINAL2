@@ -1,0 +1,46 @@
+
+.imgContactos{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+.amigosContactos{
+margin:10px auto;        
+padding: 10px;
+border:1px solid #29a3a3;
+border-radius: 5px;
+display: -webkit-flex; /* Safari */        
+display: grid;
+grid-template-columns: auto auto;
+height: 30%;
+overflow: auto;
+}
+.amigosContactos > div {
+  text-align: center;  
+}
+.enLineaContactos{
+margin:10px auto;        
+padding: 10px;
+border:1px solid #29a3a3;
+border-radius: 5px;
+display: -webkit-flex; /* Safari */        
+display: grid;
+grid-template-columns: auto auto;
+height: 30%;
+overflow: auto;
+}
+.enLineaContactos > div {
+  text-align: center;  
+}
+.contacto{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    /*border-bottom: : 1px solid #29a3a3;*/
+    margin:5px;
+    padding: 5px;
+    font-size: 10px;
+    text-align: left;
+    
+}

@@ -15,8 +15,11 @@ if (session_id() === "") { session_start(); }
 
   if($resultado->num_rows>0){
     //HAY ALGÚN USUARIO 
+    $fecha=time();
     $fila=mysqli_fetch_assoc($resultado);
     $_SESSION['usu']=$fila;
+    $consulta="UPDATE usuarios SET FechaLogin='$fecha', enLinea='1' WHERE Email='$email'";
+    $resultado=$conexion->query($consulta);
     desconectarBD();
     $_SESSION['user']=$_SESSION['usu']['nombre']." ".$_SESSION['usu'][apellidos];
    header('location:./principal.php');
