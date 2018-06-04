@@ -155,6 +155,26 @@ if(confirm("¿Estás seguro que quieres actualizar los datos?")){
   }
 }
 
+function actualizar_perfil_Admin(){
+if(confirm("¿Estás seguro que quieres actualizar los datos?")){
+    var formdata = new FormData($('#datos')[0]);
+        $.ajax({
+        type: 'POST',
+        url: '../php/actualizarPerfilAdmin.php',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success:function(resultado){
+          alert('Perfil Actualizado');
+          //document.getElementById('nomUserMenu').innerHTML=resultado;          
+        }
+    });
+  }
+}
+
+
+
+
 function salir(){
 if(confirm("¿Estás seguro que quieres salir?")){
         $.ajax({
