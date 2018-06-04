@@ -54,8 +54,10 @@ echo "
     height:0px;
 }
 </style>
-<script>
-</script>
+<script>";
+?>
+<?php
+echo "</script>
 </head>
 <body onload='cargarmuro()'>
 <center>
