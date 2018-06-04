@@ -89,8 +89,8 @@ function compruebaCompatibilidadLocalStorage() {
              }
 }
 
-//var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
-//var myVar = setInterval(refrescarPublicidad, 5000);//Pruebas no subir a producción
+var tiempo = 1 *1000*30; //cada 30s revisará la publicidad
+var myVar = setInterval(refrescarPublicidad, tiempo);//Pruebas no subir a producción
 
 function refrescarPublicidad() {
     recuperarAnuncioPersistencia();
@@ -122,9 +122,10 @@ function recuperarAnuncioPersistencia(){
         processData: false,
         success:function(resultado){
             //alert(resultado);
-            document.getElementById("anuncio-top").innerHTML =resultado;
-            document.getElementById("anuncio-right").innerHTML =  resultado;                        
-            document.getElementById("anuncio-left").innerHTML = resultado;
+            var anuncios = resultado.split('PP%PSOE');
+            document.getElementById("anuncio-top").innerHTML =anuncios[0];
+            document.getElementById("anuncio-right").innerHTML =  anuncios[1];                        
+            document.getElementById("anuncio-left").innerHTML = anuncios[2];
             
         }
     });
@@ -244,6 +245,10 @@ function registrar(){
         processData: false,
         success:function(resultado){
         document.getElementById('perfiles').innerHTML=resultado;  
+        //Llamada inicial a publicidad
+        //TODO: Sólo llamar cuando no hay publicidad 
+        //Ahora se ejecuta cada vez que volvemos al home
+        recuperarAnuncioPersistencia();
 
         }
     });
