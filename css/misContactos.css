@@ -22,10 +22,15 @@ overflow: auto;
 margin:10px auto;        
 padding: 10px;
 border:1px solid #29a3a3;
-border-radius: 4px;    
-display: -webkit-flex; /* Safari */    
+border-radius: 5px;
+display: -webkit-flex; /* Safari */        
 display: grid;
 grid-template-columns: auto auto;
+height: 30%;
+overflow: auto;
+}
+.enLineaContactos > div {
+  text-align: center;  
 }
 .contacto{
     display: flex;

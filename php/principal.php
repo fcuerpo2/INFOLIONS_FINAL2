@@ -81,6 +81,7 @@ echo "</script>
                 <li><a href='./principal.php'>Home</a></li>
                 <li><a href='./contactos.php'>Contactos</a></li>
                 <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
+                <li><a href='#' onclick='buscarAmigo();'>Buscar Amigo</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
                 <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><span id='nomUserMenu'> Bienvenido/a $nombre $apellidos</span></a></li>
