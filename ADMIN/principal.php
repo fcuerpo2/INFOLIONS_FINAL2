@@ -176,6 +176,7 @@ color: darkblue;
                 <li class='menu'><a href='./principal.php'>Home</a></li>
                 <li class='menu'><a href='../actualizar.php'>Usuarios</a></li>
                 <li class='menu'><a href='#'>Tags</a></li>
+                
                 <li class='menu'><a href='./contactos.php'>Contactos</a></li>
                 <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
