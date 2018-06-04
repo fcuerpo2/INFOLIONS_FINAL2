@@ -31,10 +31,8 @@ echo "
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-        <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css'/>
-	<script type='text/javascript' src='https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js'></script> 
-	<script src='https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js'></script>
-	<script src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js'></script>  
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css' />
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js'></script>        
 
     <script src='../js/script1.js'></script>
     <link rel='stylesheet' href='../css/estilo1.css'>";
@@ -53,35 +51,6 @@ echo "
     xhttp.send();
     }
 </script>
-    <script>
-      $(document).ready(function() {
-        var table = $('#exampletabla').DataTable( {
-          responsive: true,
-//          order: [[ 0, "desc" ]],
-          language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Perfiles",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total Perfiles)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Perfiles",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-            "first": "Primero",
-            "last": "Ultimo",
-            "next": "Siguiente",
-            "previous": "Anterior"
-        			}
-    	}
-        } );
-//        new $.fn.dataTable.FixedHeader( table );
-      } );      
-      </script>	
 <style>
 .image-upload > input{
     visibility: hidden;
@@ -173,7 +142,7 @@ color: darkblue;
                 <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
-                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><?php echo "Bienvenido ".$_SESSION['user']; ?></a></li>
+                <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><span id="nomUserMenu"> <?php echo " Bienvenido ".$_SESSION['user']; ?></span></a></li>
                 <li class='menu'><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
             </ul>
         </div>
@@ -183,7 +152,75 @@ color: darkblue;
 <div class="row" style="margin: 0 auto;">
 <div class="col-md-12" style="width:100%; margin: 0 auto;">
 <h1>MODIFICAR UN USUARIO </h1>
-    <form id="Frm_FichaUsuario" method='POST'>
+<?php
+if ($_SESSION['FichaUsuario'][0]['idUsuario']!=0) {
+
+     $nombre=$_SESSION['FichaUsuario'][0]['Nombre'];
+     $apellidos=$_SESSION['FichaUsuario'][0]['Apellidos'];
+     $sexo=$_SESSION['FichaUsuario'][0]['Sexo'];
+     $estadocivil=$_SESSION['FichaUsuario'][0]['EstadoCivil'];
+     $telefono=$_SESSION['FichaUsuario'][0]['Telefono'];
+     $movil=$_SESSION['FichaUsuario'][0]['Movil'];
+     $email=$_SESSION['FichaUsuario'][0]['Email'];
+     $web=$_SESSION['FichaUsuario'][0]['Web'];
+     $fotoportada=$_SESSION['FichaUsuario'][0]['FotoPortada'];
+
+     $texto="<div class='row sombraNegra' style='background-color: orange; padding: 20px 10px; margin: 10px 10px 20px 10px; border-radius: 10px;'><div class='col-md-4'>";
+     $texto.="<form method='POST' id='subir' action='../php/fichero.php'><div id='foto' style='text-align:center;'>";
+     
+$nombre_fichero = '../doc/fotoportada/'.$fotoportada;
+if (file_exists($nombre_fichero)) {
+    $texto.="<img src='../doc/fotoportada/$fotoportada' id='fotoperfil' class='escalar cambio'/>";
+} else {
+    $texto.="<img src='../img/reservoir.png' id='fotoperfil' class='escalar'/>";
+}    
+     $texto.="</div><br>
+      <div class='image-upload' style='margin:0 auto; text-align:center;'>
+      <label for='fotoportada' style='margin-bottom:0px; cursor:pointer;'>
+      <img src='../img/ico-adjuntar.png' style='height:50px; width: 50px; pointer-events:none;'/>
+      </label>
+      <input type='file' id='fotoportada' name='fotoportada' onchange='subirfoto()' accept='image/*'/></div>
+      </form>";
+      $texto.="</div><div class='col-md-8'>";
+      $texto.="<form method='POST' id='datos' class='form-signin' action='../php/registro.php'>";
+      $texto.="<table style='background-color: transparent; width: 100%; max-width: 325px;'><tr><td>Nombre:</td><td><input type='text' name='nombre' class='form-control' value='$nombre'/></td></tr>";
+    $texto.="<tr><td>Apellidos:</td><td><input type='text' name='apellidos' class='form-control' value='$apellidos'/></td></tr>";
+    $texto.="<tr><td>Sexo:</td><td><input type='text' class='form-control' name='sexo' value='$sexo'/></td></tr>";
+    $texto.="<tr><td>Estado Civil:</td><td><input type='text' name='estadocivil' class='form-control' value='$estadocivil'/></td></tr>";
+    $texto.="<tr><td>Telefono:</td><td><input type='text' name='telefono' class='form-control' value='$telefono'/></td></tr>";
+    $texto.="<tr><td>Móvil:</td><td><input type='text' class='form-control' name='movil' value='$movil'/></td></tr>";
+    $texto.="<tr><td>Email:</td><td><input type='text' class='form-control' name='email' value='$email' disabled /></td></tr>";
+    $texto.="<tr><td>Web:</td><td><input type='text' class='form-control' name='web' value='$web'/></td></tr>";
+    $texto.="<tr><td>Foto:</td><td><input type='text' id='fotop' name='fotoportada' class='form-control' value='$fotoportada' disabled/></td></tr>";
+    if ($_SESSION['FichaUsuario'][0]['Activo'] == 1)
+    {
+        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><input type='checkbox' value='1' style='width:20px; height:20px;'></td></tr>";
+    }
+    else
+    {
+        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><input type='checkbox' value='0' style='width:20px; height:20px;' checked></td></tr>";
+    }
+    $texto.="<tr><td><input type='reset' class='form-control btn btn-default' value='Borrar' style='margin-top:10px;'/></td><td><input type='button' onclick='actualizar_perfil_Admin()' class='form-control btn btn-primary' value='Enviar' style='margin-top: 10px;'/></td></tr></table></form></div></div>";
+    $texto.="<p class='imglist' style='max-width: 1000px; text-align:center;'>";
+    echo $texto;
+$totalFotos = 0;
+$encontrado="NO";
+for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
+{
+    if ($_SESSION['TodasFotos'][$MisFotos]['idUsuario'] == $_SESSION['usu']['idUsuario'])
+    {
+        echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
+                <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
+              </a>";
+    }
+}
+echo "</p>";
+
+  }else{
+    header('location:../index.php');
+  }
+?>
+<!--    <form id="Frm_FichaUsuario" method='POST'>
 		<table class='table table-striped table-bordered' style='width: 100%; background-color: lightblue; max-width:600px; margin: 0 auto;' id='tabla'><tbody>
 			<input type='hidden' name='idcliente' value='.$fila['idCliente'].' />
 			<tr><td id='datos'>Nombre:</td><td><input type='text' class="form-control" id='Frm_Nombre' value='<?php echo $_SESSION['FichaUsuario'][0]['Nombre']; ?>' /></td></tr>
@@ -197,6 +234,7 @@ color: darkblue;
 			<tr><td></td><td id='botones'><input type='submit' value='Modificar' class='modificar' /><input type='button' value='Bloquear' class='bloquear' onclick="bloquear(13)" /></td></tr>
                 </table>
     </form>
+-->
 </div>
 </div>
 <?php
