@@ -11,7 +11,14 @@ if (session_id() === '') {session_start();}
   $_SESSION['TodosUsuarios'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
   
   desconectarBD();
-
+  
+if($_SESSION['usu']['TipoUsuario'] == 1)
+{
+}
+else
+{
+    echo "No Eres Administrador";
+}
 
 if($_SESSION['usu']['idUsuario']!=""){
 
