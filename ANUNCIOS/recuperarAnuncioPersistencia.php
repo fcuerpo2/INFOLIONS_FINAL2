@@ -31,7 +31,7 @@
                 
                 while($row = $resultado2->fetch_assoc()) {
                      $_SESSION['anuncio']['recuperado']=$row;
-                     $anuncio.= "<h3>"; $anuncio.=$_SESSION['anuncio']['recuperado']['titulo'];$anuncio.="</h3>";
+                     $anuncio.= "<h3 id='titul-anuncio'>"; $anuncio.=$_SESSION['anuncio']['recuperado']['titulo'];$anuncio.="</h3>";
                      $anuncio.="<br>";
                      $anuncio.="<img id='img-anuncio-top' src='../doc/fotosPublicidad/";
                      $anuncio.=$_SESSION['anuncio']['recuperado']['imagen'];
