@@ -9,11 +9,18 @@
     $telefono=$_POST['telefono'];
     $movil=$_POST['movil'];
     $web=$_POST['web'];
+    $_SESSION['bloqueado'] = $_POST['bloqueado'];
+    $bloqueado=$_POST['bloqueado'];
+    $TipoUsuario = $_POST['TipoUsuario'];
+//    $bloqueado=eval($bloqueado);
+
     $id=$_SESSION['FichaUsuario'][0]['idUsuario'];
     conectarBD();
-    $consulta="UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos',Sexo='$sexo', EstadoCivil='$estadocivil', Telefono='$telefono', Movil='$movil', Web='$web' WHERE idUsuario=$id";
+    $consulta="UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos',Sexo='$sexo', EstadoCivil='$estadocivil', Telefono='$telefono', Movil='$movil', Web='$web', Activo=$bloqueado, TipoUsuario=$TipoUsuario WHERE idUsuario=$id";
     $resultado=$conexion->query($consulta);
     desconectarBD();
+    $_SESSION['FichaUsuario'][0]['Activo']=$bloqueado;
+    $_SESSION['FichaUsuario'][0]['TipoUsuario']=$TipoUsuario;
     $_SESSION['FichaUsuario'][0]['Web']=$web;
     $_SESSION['FichaUsuario'][0]['Movil']=$movil;
     $_SESSION['FichaUsuario'][0]['Telefono']=$telefono;
