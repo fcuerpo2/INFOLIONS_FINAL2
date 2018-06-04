@@ -89,22 +89,24 @@ function compruebaCompatibilidadLocalStorage() {
              }
 }
 
-var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
-var myVar = setInterval(refrescarPublicidad, 5000);//Pruebas no subir a producción
+//var tiempo = 1 *1000*60; //cada 1m revisará la publicidad
+//var myVar = setInterval(refrescarPublicidad, 5000);//Pruebas no subir a producción
 
 function refrescarPublicidad() {
+    recuperarAnuncioPersistencia();
+    //TODO: revisar porque no acepta returns el recuperarAnuncioPersistencia();
     //TODO: introducir un delay entre cada llamada de unos 3 segundos
     // OPCION PARA AGREGAR UN HIJO AL ELEMENTO (padre) SELECCIONADO
+    /*
     var node= recuperarAnuncioPersistencia(); 
     document.getElementById("anuncio-right").appendChild(node);
     document.getElementById("anuncio-top").appendChild(recuperarAnuncioPersistencia());
-    document.getElementById("anuncio-left").appendChild(recuperarAnuncioPersistencia());
+    document.getElementById("anuncio-left").appendChild(recuperarAnuncioPersistencia());*/
     
     /* Opción para sustituir elementos completos
-    document.getElementById("anuncio-right").innerHTML = recuperarAnuncioPersistencia();                         
-    document.getElementById("anuncio-top").innerHTML = recuperarAnuncioPersistencia();
-    document.getElementById("anuncio-left").innerHTML = recuperarAnuncioPersistencia();*/
-    
+    var anuncioTop="<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
+    anuncioTop+=recuperarAnuncioPersistencia(); 
+    anuncioTop+=*/
    // <div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
    // <div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
    // <div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
@@ -119,7 +121,11 @@ function recuperarAnuncioPersistencia(){
         contentType: false,
         processData: false,
         success:function(resultado){
-         return resultado;
+            //alert(resultado);
+            document.getElementById("anuncio-top").innerHTML =resultado;
+            document.getElementById("anuncio-right").innerHTML =  resultado;                        
+            document.getElementById("anuncio-left").innerHTML = resultado;
+            
         }
     });
 }
