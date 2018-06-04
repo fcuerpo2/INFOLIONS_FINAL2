@@ -9,7 +9,7 @@ if (session_id() === "") { session_start(); }
   include '../lib/lib1.php';
 
   conectarBD();
-  $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password'";
+  $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password' AND TipoUsuario=1";
 
   $resultado=$conexion->query($consulta);
 
@@ -19,11 +19,11 @@ if (session_id() === "") { session_start(); }
     $_SESSION['usu']=$fila;
     desconectarBD();
     $_SESSION['user']=$_SESSION['usu']['nombre']." ".$_SESSION['usu'][apellidos];
-   header('location:./principal.php');
+   header('location:../ADMIN/principal.php');
 
   }else{
     //NO HAY NINGÚN USUARIO
-       header('location:../index.php');
+       header('location:../ADMIN/index.php?errorAdmin=YES');
   }
   desconectarBD();
 ?>

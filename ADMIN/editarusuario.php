@@ -116,6 +116,40 @@ th {
 h1{
 text-align:center;
 color: darkblue;
+}
+ button{
+  	background-color: blue;
+  	border: 1px solid blue;
+  	cursor: pointer;
+  }
+  #modificar, #borrar{
+  	width: 30px;
+  }
+  #detalles{
+  	margin-top: 25px;
+  	width: 80%;
+  	margin: auto;
+  	  }
+  #tabla{
+  	margin-left: 50%;
+  	transform: translateX(-50%);
+  }	  
+ #datos{
+  	text-align: center;
+  	color: darkblue;
+  	
+  }
+  #botones{
+  display: flex;
+  justify-content: space-around;	
+  }
+  .modificar, .bloquear{
+  	width: 100px;
+  	border: 1px solid darkblue;
+  	background-color: darkblue;
+  	color:#fff;
+  	 }	
+  
 </style>
 </head>
 <body>

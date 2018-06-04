@@ -2,6 +2,7 @@
 header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
 header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
+include '../php/comprobarAdmin.php';
 if (session_id() === '') {session_start();}
 
   conectarBD();
@@ -12,14 +13,6 @@ if (session_id() === '') {session_start();}
   
   desconectarBD();
   
-if($_SESSION['usu']['TipoUsuario'] == 1)
-{
-}
-else
-{
-    echo "No Eres Administrador";
-}
-
 if($_SESSION['usu']['idUsuario']!=""){
 
   $nombre=$_SESSION['usu']['Nombre'];
@@ -128,6 +121,38 @@ th {
 h1{
 text-align:center;
 color: darkblue;
+  button{
+  	background-color: blue;
+  	border: 1px solid blue;
+  	cursor: pointer;
+  }
+  #modificar, #borrar{
+  	width: 30px;
+  }
+  #detalles{
+  	margin-top: 25px;
+  	width: 80%;
+  	margin: auto;
+  	  }
+  #tabla{
+  	margin-left: 50%;
+  	transform: translateX(-50%);
+  }	  
+  #datos{
+  	text-align: center;
+  	color: darkblue;
+  	
+  }
+  #botones{
+  display: flex;
+  justify-content: space-around;	
+  }
+  .modificar, .bloquear{
+  	width: 100px;
+  	border: 1px solid darkblue;
+  	background-color: darkblue;
+  	color:#fff;
+  	 }
 </style>";
 ?>
 <script>
