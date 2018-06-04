@@ -21,14 +21,14 @@ if (session_id() === "") { session_start(); }
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="UTF-8">
 	    <!-- Custom styles for this template -->
-    	<link href="./css/estilo1.css" rel="stylesheet">
-    	<script src='./js/script1.js' type='text/javascript'></script>
+    	<link href="../css/estilo1.css" rel="stylesheet">
+    	<script src='../js/script1.js' type='text/javascript'></script>
 </head>
 <body class="login">
 <div class="container-fluid">
     <div id='acceso' class='tag2'>
     	<form class="form-signin" action="./php/loginadmin.php" method="POST">
-      		<img class="mb-4 fotologin" src="./img/reservoir.png" alt="" width="72" height="72">
+      		<img class="mb-4 fotologin" src="../img/reservoir.png" alt="" width="72" height="72">
       		<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión ADMINISTRADOR</h1>
       		<label for="inputEmail" class="sr-only">Email</label>
       		<input type="email" name="email" id="email" class="form-control" placeholder="Email" required autofocus>
