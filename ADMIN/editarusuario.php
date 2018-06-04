@@ -149,9 +149,15 @@ color: darkblue;
     </div>
   </nav> 
 </div>
-<div class="row" style="margin: 0 auto;">
-<div class="col-md-12" style="width:100%; margin: 0 auto;">
-<h1>MODIFICAR UN USUARIO </h1>
+<div class='row' style='margin: 0 auto;'>
+    <div class='col-md-9' style='margin-top: 5px; margin-bottom: 5px; text-align:center;'>
+        <font style='font-size:24px;'>MODIFICAR UN USUARIO</font>
+    </div>
+    <div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px; text-align:center;'>
+        <a href="principal.php" style="text-decoration:none;"><button type="button" class="btn btn-primary">Volver</button></a>
+    </div>
+<div class="row">
+<div class="col-md-12" style="width:100%; margin: 0 auto;">    
 <?php
 if ($_SESSION['FichaUsuario'][0]['idUsuario']!=0) {
 
@@ -194,14 +200,38 @@ if (file_exists($nombre_fichero)) {
     $texto.="<tr><td>Foto:</td><td><input type='text' id='fotop' name='fotoportada' class='form-control' value='$fotoportada' disabled/></td></tr>";
     if ($_SESSION['FichaUsuario'][0]['Activo'] == 1)
     {
-        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><input type='checkbox' value='1' style='width:20px; height:20px;'></td></tr>";
+        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><select name='bloqueado' id='bloqueado' class='form-control'>
+                <option value='0'>Bloqueado</option>
+                <option value='1' selected>Desbloqueado</option>
+                </select>
+                </td></tr>";
     }
     else
     {
-        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><input type='checkbox' value='0' style='width:20px; height:20px;' checked></td></tr>";
+        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><select name='bloqueado' id='bloqueado' class='form-control'>
+                <option value='0' selected>Bloqueado</option>
+                <option value='1'>Desbloqueado</option>
+                </select>
+                </td></tr>";        
     }
+    if ($_SESSION['FichaUsuario'][0]['TipoUsuario'] == 1)
+    {
+        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><select name='TipoUsuario' id='TipoUsuario' class='form-control'>
+                <option value='0'>Usuario</option>
+                <option value='1' selected>Permiso Administrador</option>
+                </select>
+                </td></tr>";
+    }
+    else
+    {
+        $texto.="<tr><td>Bloqueado:</td><td style='text-align:center;'><select name='TipoUsuario' id='TipoUsuario' class='form-control'>
+                <option value='0' selected>Usuario</option>
+                <option value='1'>Permiso Administrador</option>
+                </select>
+                </td></tr>";        
+    }    
     $texto.="<tr><td><input type='reset' class='form-control btn btn-default' value='Borrar' style='margin-top:10px;'/></td><td><input type='button' onclick='actualizar_perfil_Admin()' class='form-control btn btn-primary' value='Enviar' style='margin-top: 10px;'/></td></tr></table></form></div></div>";
-    $texto.="<p class='imglist' style='max-width: 1000px; text-align:center;'>";
+    $texto.="<p class='imglist' style='max-width: 1000px; text-align:center; margin:0 auto;'>";
     echo $texto;
 $totalFotos = 0;
 $encontrado="NO";
@@ -235,6 +265,7 @@ echo "</p>";
                 </table>
     </form>
 -->
+</div>
 </div>
 </div>
 <?php
