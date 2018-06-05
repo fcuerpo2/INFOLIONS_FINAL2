@@ -35,7 +35,7 @@ echo "
 	<meta http-equiv='Expires' content='-1'>
 	<!-- parte modificada por edgar -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js'></script>
@@ -115,6 +115,9 @@ echo "</script>
                                     </form>
 	                </div>                        
   		  	<div id='geolocalizacion' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+                        <div id='AnunciosSlide' style='min-height: 40px; margin-bottom: 10px; border-radius: 10px;margin-bottom:20px;' class='sombraNegra'>";
+include '../ANUNCIOS/slideAnuncios.php';
+echo"                   </div>                        
   		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding-top: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
   		</div>
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
