@@ -31,7 +31,7 @@ $_SESSION['TodosAnuncios'] = "";
   <div class="carousel-inner">
     <div class="item active" style="border-radius:5px;">
         <img src="../doc/fotosPublicidad/<?php echo $_SESSION['TodosAnuncios'][0]['imagen']; ?>" alt="<?php echo $_SESSION['TodosAnuncios'][0]['titulo']; ?>" style='width: 100%; height: auto; max-width: 400px; border-radius: 5px; max-height:400px;'>
-        <div class="carousel-caption" style="padding-bottom:5px;">
+        <div class="carousel-caption" style="padding-bottom:0px !important;">
             <h3><?php echo $_SESSION['TodosAnuncios'][0]['titulo']; ?></h3>
             <p><?php echo $_SESSION['TodosAnuncios'][0]['descripcion']; ?></p>
         </div>        
@@ -45,21 +45,21 @@ $_SESSION['TodosAnuncios'] = "";
     </div>
     <div class="item" style="border-radius:5px;">
         <img src="../doc/fotosPublicidad/<?php echo $_SESSION['TodosAnuncios'][2]['imagen']; ?>" alt="<?php echo $_SESSION['TodosAnuncios'][2]['titulo']; ?>" style='width: 100%; height: auto; max-width: 400px; border-radius: 5px; max-height:400px;'>
-        <div class="carousel-caption" style="padding-bottom:5px;">
+        <div class="carousel-caption" style="padding-bottom:0px !important;">
             <h3><?php echo $_SESSION['TodosAnuncios'][2]['titulo']; ?></h3>
             <p><?php echo $_SESSION['TodosAnuncios'][2]['descripcion']; ?></p>
         </div>                
     </div>
     <div class="item" style="border-radius:5px;">
         <img src="../doc/fotosPublicidad/<?php echo $_SESSION['TodosAnuncios'][3]['imagen']; ?>" alt="<?php echo $_SESSION['TodosAnuncios'][3]['titulo']; ?>" style='width: 100%; height: auto; max-width: 400px; border-radius: 5px; max-height:400px;'>
-        <div class="carousel-caption" style="padding-bottom:5px;">
+        <div class="carousel-caption" style="padding-bottom:0px !important;">
             <h3><?php echo $_SESSION['TodosAnuncios'][3]['titulo']; ?></h3>
             <p><?php echo $_SESSION['TodosAnuncios'][3]['descripcion']; ?></p>
         </div>                
     </div>      
     <div class="item" style="border-radius:5px;">
         <img src="../doc/fotosPublicidad/<?php echo $_SESSION['TodosAnuncios'][4]['imagen']; ?>" alt="<?php echo $_SESSION['TodosAnuncios'][4]['titulo']; ?>" style='width: 100%; height: auto; max-width: 400px; border-radius: 5px; max-height:400px;'>
-        <div class="carousel-caption" style="padding-bottom:5px;">
+        <div class="carousel-caption" style="padding-bottom:0px !important;">
             <h3><?php echo $_SESSION['TodosAnuncios'][4]['titulo']; ?></h3>
             <p><?php echo $_SESSION['TodosAnuncios'][4]['descripcion']; ?></p>
         </div>                
