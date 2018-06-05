@@ -12,7 +12,7 @@ if (file_exists($nombre_fichero)) {
 echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'>";
+echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes' style='margin-top:10px;'>";
 echo "<p class='imglist' style='max-width: 1000px;'>";
 $totalFotos = 0;
 $encontrado="NO";
