@@ -108,11 +108,10 @@ echo "</script>
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
-                <li><a href='./principal.php'>Home</a></li>
                 <li><a href='./contactos.php'>Contactos</a></li>
                 <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
                 <li><a href='#' onclick='buscarAmigo();'>Buscar Amigo</a></li>
-                <li class='menu'><a href='../ADMIN/'>Administardor</a></li>
+                <li class='menu'><a href='../ADMIN/'>Administrador</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
                 <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><span id='nomUserMenu'> Bienvenido/a $nombre $apellidos</span></a></li>
