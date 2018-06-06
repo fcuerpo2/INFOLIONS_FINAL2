@@ -16,7 +16,14 @@ $_SESSION['TodosAnuncios'] = "";
 //    print_r($_SESSION['TodosAnuncios']);
 //    echo "</pre>";
       
-?>    
+?>   
+<script>
+  $(document).ready(function(){
+    $('#myCarousel').carousel({
+      interval: 10000
+    });
+  });
+</script>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
 <!--  <ol class="carousel-indicators">
