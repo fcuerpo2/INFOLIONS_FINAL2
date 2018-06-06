@@ -94,6 +94,16 @@ var scrollToTop =
 echo "</script>
 </head>
 <body onload='cargarmuro()'>
+
+<div id='anuncio-top' class='container-fluid' style='background-color:#F44336;color:#fff;'> <!--height:300px;-->
+ 
+  
+  
+
+</div>
+
+
+
 <center>
 <div id='cabecera' class='navbar-fixed-top' style='position:sticky;'>
   <nav class='navbar navbar-inverse'>
@@ -105,7 +115,7 @@ echo "</script>
             <span class='icon-bar'></span>
             </button>
             <a class='navbar-brand' href='principal.php'><img src='../img/reservoir.png' class='escalar' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
-        </div>
+        </div>        
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
                 <li><a href='./contactos.php'>Contactos</a></li>
@@ -148,14 +158,14 @@ echo "</script>
                         <div id='AnunciosSlide' style='min-height: 40px; margin-bottom: 10px; border-radius: 10px;margin-bottom:20px;' class='sombraNegra'>";
 include '../ANUNCIOS/slideAnuncios.php';
 echo"                   </div>                        
-  		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding-top: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
+  		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
   		</div>
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
-  		   	<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
+  		   	<!--<div id='anuncio-top' style='background-color: #0e5f0e; margin-bottom: 20px; border-radius: 10px; padding: 10px; color: #fff;' class='sombraNegra'>";
 
-include "../ANUNCIOS/anuncioInicioBlanco.php";
+//include "../ANUNCIOS/anuncioInicioBlanco.php";
 
-echo "                  </div>
+echo "                  </div> -->
    			<div id='imagen'></div>";
 if ($_SESSION['usu']['FotoFondo'] == "")
 {
@@ -197,7 +207,7 @@ echo "		</div>
             </div>
   			 	
 <?php
-  echo"     <div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding-top: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
+  echo"     <div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding: 10px 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
   		</div>
   	</div>";		        
   echo "<a href='#' class='scrollToTop'><span style='font-size: 25px; vertical-align: sub; background-color:#ddd; border-radius: 5px; padding:10px;' class='glyphicon glyphicon-chevron-up sombraNegra'></span></a>";
