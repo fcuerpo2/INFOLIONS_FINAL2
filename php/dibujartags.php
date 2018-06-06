@@ -11,6 +11,16 @@ if (file_exists($nombre_fichero)) {
 }    
 echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
+     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+     preg_match_all($reg_exUrl, $miArray[$i]['Texto'], $matches);
+     $usedPatterns = array();
+     foreach($matches[0] as $pattern){
+       if(!array_key_exists($pattern, $usedPatterns)){
+         $usedPatterns[$pattern]=true;
+         $miArray[$i]['Texto'] = str_replace  ($pattern, '<a href="'.$pattern.'" rel="nofollow" target="_blank">'.$pattern.'</a> ', $miArray[$i]['Texto']);   
+       }
+     }
+
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
 echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes' style='margin-top:10px;'>";
 echo "<p class='imglist' style='max-width: 1000px;'>";
@@ -120,6 +130,17 @@ if (file_exists($nombre_fichero)) {
 }    
 echo "&nbsp;&nbsp;&nbsp;".$_SESSION['TodosComentarios'][$z]['Nombre']." ".$_SESSION['TodosComentarios'][$z]['Apellidos']."      ".$_SESSION['TodosComentarios'][$z]['Fecha']."</div>";
 echo "<div id='TituloComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='titulo'>".$_SESSION['TodosComentarios'][$z]['Cabecera']."</div>";
+
+     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+     preg_match_all($reg_exUrl, $_SESSION['TodosComentarios'][$z]['Texto'], $matches);
+     $usedPatterns = array();
+     foreach($matches[0] as $pattern){
+       if(!array_key_exists($pattern, $usedPatterns)){
+         $usedPatterns[$pattern]=true;
+         $_SESSION['TodosComentarios'][$z]['Texto'] = str_replace  ($pattern, '<a href="'.$pattern.'" rel="nofollow" target="_blank">'.$pattern.'</a> ', $_SESSION['TodosComentarios'][$z]['Texto']);   
+       }
+     }
+
 echo "<div id='TextoComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='texto'>".$_SESSION['TodosComentarios'][$z]['Texto']."</div>"; 
 echo "<div id='ImagenesComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='imagenes'></div>";
 echo "</div>";              
