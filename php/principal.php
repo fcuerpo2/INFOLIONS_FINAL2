@@ -59,6 +59,37 @@ echo "
 </style>
 <script>";
 ?>
+var $ = jQuery.noConflict();
+jQuery(document).ready(function( $ ){
+    scrollToTop.init( );
+});
+
+var scrollToTop =
+{
+    /**
+     * When the user has scrolled more than 100 pixels then we display the scroll to top button using the fadeIn function
+     * If the scroll position is less than 100 then hide the scroll up button
+     *
+     * On the click event of the scroll to top button scroll the window to the top
+     */
+    init: function(  ){
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 200) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+
+        // Click event to scroll to top
+        $('.scrollToTop').click(function(){
+            $('html, body').animate({scrollTop : 0},800);
+            return false;
+        });
+    }
+};
 <?php
 echo "</script>
 </head>
@@ -169,8 +200,10 @@ echo "		</div>
 <?php
   echo"     <div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding-top: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
   		</div>
-  	</div>		        
-	</center>";
+  	</div>";		        
+  echo "<a href='#' class='scrollToTop'><span style='font-size: 25px; vertical-align: sub; background-color:#ddd; border-radius: 5px; padding:10px;' class='glyphicon glyphicon-chevron-up sombraNegra'></span></a>";
+  echo"	</center>";
+
 }
 else{
   header("location: ../index.php");
