@@ -30,11 +30,25 @@ for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
 {
     if ($_SESSION['TodasFotos'][$MisFotos]['IdTag'] == $miArray[$i]['idTag'])
     {
+        $EncontradoVideo="no";
+        $pos = strpos($_SESSION['TodasFotos'][$MisFotos]['Ruta'], ".mp4");
+        if ($pos > 0) {$EncontradoVideo="si";}
         if (file_exists("../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']))
         {
-            echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
+            if ($EncontradoVideo=="si"){
+            //    echo "<iframe width='100%' height='auto' src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>";
+            
+           echo "<video width='100%' height='auto' controls>
+  <source src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' type='video/mp4'>
+  
+  Your browser does not support the video tag.
+</video>";    
+            }
+           else {
+                echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
                 <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
               </a>";
+           }
         }
         else
         {
