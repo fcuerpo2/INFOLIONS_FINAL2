@@ -32,9 +32,9 @@
                 while($row = $resultado2->fetch_assoc()) {
                      $_SESSION['anuncio']['recuperado']=$row;
                      
-                    $anuncio.='<div class="row">';
+                    $anuncio.="<div class='row' style='margin-bottom:20px; text-align: center;'>";
                      if($x==0){ //Al primer anuncio y sólo al primero lo envolvemos en bootstrap para poder ternerlo en dos columnas
-                        $anuncio.="<div class='col-sm-3'>";
+                        $anuncio.="<div class='col-sm-3' style='margin-left=15px; text-align: center;'>";
                      }  
                      $anuncio.= "<h3 id='titul-anuncio'>"; $anuncio.=$_SESSION['anuncio']['recuperado']['titulo'];$anuncio.="</h3>";
                      $anuncio.="<br>";
@@ -43,12 +43,22 @@
                      $anuncio.="' alt='no he podido acceder a la imagen' width='80%'  >";
                      if($x==0){
                         $anuncio.="</div>";
-                        $anuncio.="<div class='col-sm-9'>";
+                        $anuncio.="<div class='col-sm-6'>";
+                        $anuncio.="<br><br><br>";
                      } 
                      $anuncio.="<h4>"; $anuncio.=$_SESSION['anuncio']['recuperado']['descripcion'];$anuncio.="</h4>";
                      if($x==0){
                         $anuncio.="</div>";
-                     }
+                        $anuncio.="<div class='col-sm-3'>";
+                         $anuncio.= "<h3 id='titul-anuncio'>"; $anuncio.=$_SESSION['anuncio']['recuperado']['titulo'];$anuncio.="</h3>";
+                         $anuncio.="<br>";
+                         $anuncio.="<img id='img-anuncio-top' src='../doc/fotosPublicidad/";
+                         $anuncio.=$_SESSION['anuncio']['recuperado']['imagen'];
+                         $anuncio.="' alt='no he podido acceder a la imagen' width='80%'  >";
+                         $anuncio.="</div>";
+                     }  
+                    
+                     
                      $anuncio.="<br>";
                     $anuncio.="</div>";
                      //SEPARADOR
