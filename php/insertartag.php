@@ -1,7 +1,7 @@
 <?php
   if (session_id() === "") { session_start(); } 
   include '../lib/lib1.php';
-
+  $_SESSION['MisArchivos'] = "";
  if(isset($_POST['texto'])){
   //recibimos las variables por POST
     $_SESSION['MisArchivos']=$_FILES;
