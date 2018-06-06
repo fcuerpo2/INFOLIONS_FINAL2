@@ -18,15 +18,15 @@ body {
 }*/
 
 
-.principalAffix {
+.affix {
       top: 0;
       width: 100%;
       z-index: 9999 !important;
   }
-
-  .principalAffix + .container-fluid {
+.affix + .container-fluid {
       padding-top: 70px;
   }
+  
 [hidden] {
   display: none !important;
 
