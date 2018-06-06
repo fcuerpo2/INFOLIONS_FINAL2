@@ -12,7 +12,7 @@ if (file_exists($nombre_fichero)) {
 echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'>";
+echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes' style='margin-top:10px;'>";
 echo "<p class='imglist' style='max-width: 1000px;'>";
 $totalFotos = 0;
 $encontrado="NO";
@@ -20,9 +20,18 @@ for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
 {
     if ($_SESSION['TodasFotos'][$MisFotos]['IdTag'] == $miArray[$i]['idTag'])
     {
-        echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
+        if (file_exists("../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']))
+        {
+            echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
                 <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
               </a>";
+        }
+        else
+        {
+            echo "<a href='../img/Foto-NO-Disponible.jpg' data-fancybox='images'>
+                <img src='../img/Foto-NO-Disponible.jpg' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
+              </a>";            
+        }
     }
 }
 echo "</p>";
@@ -87,7 +96,7 @@ if ($encontrado == "NO")
 else
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#BotComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='BotComent-".$miArray[$i]['idTag']."' class='collapse show'>
+            <div id='BotComent-".$miArray[$i]['idTag']."' class='collapse in'>
               <div id='PublicaComent-".$miArray[$i]['idTag']."' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form id='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>

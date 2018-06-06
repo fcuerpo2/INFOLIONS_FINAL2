@@ -35,7 +35,7 @@ echo "
 	<meta http-equiv='Expires' content='-1'>
 	<!-- parte modificada por edgar -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js'></script>
@@ -59,6 +59,37 @@ echo "
 </style>
 <script>";
 ?>
+var $ = jQuery.noConflict();
+jQuery(document).ready(function( $ ){
+    scrollToTop.init( );
+});
+
+var scrollToTop =
+{
+    /**
+     * When the user has scrolled more than 100 pixels then we display the scroll to top button using the fadeIn function
+     * If the scroll position is less than 100 then hide the scroll up button
+     *
+     * On the click event of the scroll to top button scroll the window to the top
+     */
+    init: function(  ){
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 200) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+
+        // Click event to scroll to top
+        $('.scrollToTop').click(function(){
+            $('html, body').animate({scrollTop : 0},800);
+            return false;
+        });
+    }
+};
 <?php
 echo "</script>
 </head>
@@ -73,15 +104,14 @@ echo "</script>
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' href='principal.php'><img src='../img/reservoir.png' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
+            <a class='navbar-brand' href='principal.php'><img src='../img/reservoir.png' class='escalar' alt='InfoLions' title='InfoLions' style='height: 25px; width: 25px; display: initial;'>&nbsp;&nbsp;&nbsp;&nbsp;INFOLIONS</a>
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
-                <li><a href='./principal.php'>Home</a></li>
                 <li><a href='./contactos.php'>Contactos</a></li>
                 <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
                 <li><a href='#' onclick='buscarAmigo();'>Buscar Amigo</a></li>
-                <li class='menu'><a href='../ADMIN/'>Administardor</a></li>
+                <li class='menu'><a href='../ADMIN/'>Administrador</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
                 <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><span id='nomUserMenu'> Bienvenido/a $nombre $apellidos</span></a></li>
@@ -115,6 +145,9 @@ echo "</script>
                                     </form>
 	                </div>                        
   		  	<div id='geolocalizacion' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'></div>
+                        <div id='AnunciosSlide' style='min-height: 40px; margin-bottom: 10px; border-radius: 10px;margin-bottom:20px;' class='sombraNegra'>";
+include '../ANUNCIOS/slideAnuncios.php';
+echo"                   </div>                        
   		  	<div id='anuncio-left' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding-top: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
   		</div>
   		<div class='col-md-6' style='margin-top: 5px; margin-bottom: 5px;'>
@@ -166,8 +199,10 @@ echo "		</div>
 <?php
   echo"     <div id='anuncio-right' style='background-color: #333; min-height: 40px; margin-bottom: 10px; padding-top: 10px; border-radius: 10px; color: #fff;' class='sombraNegra'></div>
   		</div>
-  	</div>		        
-	</center>";
+  	</div>";		        
+  echo "<a href='#' class='scrollToTop'><span style='font-size: 25px; vertical-align: sub; background-color:#ddd; border-radius: 5px; padding:10px;' class='glyphicon glyphicon-chevron-up sombraNegra'></span></a>";
+  echo"	</center>";
+
 }
 else{
   header("location: ../index.php");
