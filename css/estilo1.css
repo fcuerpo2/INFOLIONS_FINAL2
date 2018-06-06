@@ -16,6 +16,17 @@ body {
     No va hay que ver porque
     margin-top: 20px;
 }*/
+
+
+.principalAffix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .principalAffix + .container-fluid {
+      padding-top: 70px;
+  }
 [hidden] {
   display: none !important;
 
