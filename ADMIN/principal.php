@@ -250,7 +250,7 @@ echo "          </tr>";
 }
 else{
 
-  header("location: ../index.php");
+  header("location: ../principal.php");
 
 }
 ?>
