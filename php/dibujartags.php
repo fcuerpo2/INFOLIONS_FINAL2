@@ -165,4 +165,5 @@ echo "</div>";
 echo "</div>";
 echo "</div>";
 }
+include "../php/paginar.php";
 ?>

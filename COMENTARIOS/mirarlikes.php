@@ -1,14 +1,34 @@
 <?php
 if (session_id() === "") { session_start(); }
 $_SESSION['TodosLikes'] = "";
+$_SESSION['MisTags'] = "";
+$limitFinal = 10;
+if ($_SESSION['NumPag'] == 1)
+{
+    $limitInicial=1;
+}
+else
+{
+    $limitInicial=($_SESSION['NumPag']-1) * 10;
+}
 
-    $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
+$consulta="SELECT * FROM Tags";
+
+    conectarBD();
+
+    if ($resultado= $conexion->query($consulta)) {
+        $total_tags = mysqli_num_rows($resultado);
+	$_SESSION['total_paginas'] = ceil($total_tags / $limitFinal);      
+  }
+    desconectarBD();
+
+$consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC LIMIT ".$limitInicial.",".($limitInicial+10);
 
     conectarBD();
     $miArray = array();
 
     if ($resultado= $conexion->query($consulta)) {
-
+	
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
             $_SESSION['MisTags'][] = $row;
