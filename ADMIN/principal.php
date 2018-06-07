@@ -199,8 +199,7 @@ color: darkblue;
         <thead>
             <tr>
             	<th>Modificar</th>
-            	<th>Borrar</th>
-                <th>Nombre</th>
+            	<th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Email</th>
                 <th>Teléfono</th>
@@ -242,8 +241,7 @@ echo "          </tr>";
         <tfooter>
             <tr>
             	<th>Modificar</th>
-            	<th>Borrar</th>
-                <th>Nombre</th>
+            	<th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Email</th>
                 <th>Teléfono</th>
