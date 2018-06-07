@@ -123,7 +123,7 @@ color: darkblue;
   	border: 1px solid blue;
   	cursor: pointer;
   }
-  #modificar, #borrar{
+  #modificar{
   	width: 30px;
   }
   #detalles{
@@ -216,13 +216,7 @@ color: darkblue;
         				<img src='../img/editar.png' alt='modificar' id='modificar'>
         			</button>
             	</td>
-            	<td style='text-align:center;'>
-        			<button onclick='bloquear(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
-        				<img src='../img/borrar2.png' alt='borrar' id='borrar'>
-        			</button>
-        		</th>	
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Nombre']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Apellidos']."</td>
+            	<td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Apellidos']."</td>
                 <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Email']."</td>
                 <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Telefono']."</td>";
 if ($_SESSION['TodosUsuarios'][$misUsuarios]['Activo'] == 1)
