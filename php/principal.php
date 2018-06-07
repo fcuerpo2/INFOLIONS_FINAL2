@@ -12,6 +12,8 @@ if($_SESSION['usu']['idUsuario']!=""){
 
  //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
+  
+    
     $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
 
     conectarBD();
