@@ -91,7 +91,7 @@ color: darkblue;
   	border: 1px solid blue;
   	cursor: pointer;
   }
-  #modificar, #borrar{
+  #modificar, {
   	width: 30px;
   }
   #detalles{
