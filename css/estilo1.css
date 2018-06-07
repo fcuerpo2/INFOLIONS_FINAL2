@@ -8,6 +8,9 @@ body {
   padding-top: 0px;
   padding-bottom: 10px;
   background-color: #f5f5f5;
+  scrollbar-face-color: slategray;
+  scrollbar-track-color: #b8c0c8;
+
 }
   
 /*CSS para publicidad */
@@ -213,4 +216,16 @@ img.fancybox-image, img.fancybox-spaceball {
 }
 .scrollToTop:hover{
     text-decoration:none;
+}
+::-webkit-scrollbar {
+  width: 0.9em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: slategray;
+}
+
+::-webkit-scrollbar-track {
+  background: #b8c0c8;
 }
