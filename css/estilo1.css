@@ -211,7 +211,7 @@ img.fancybox-image, img.fancybox-spaceball {
     text-decoration: none;
     position:fixed;
     bottom:75px;
-    right:20px;
+    right:5px;
     display:none;
 }
 .scrollToTop:hover{
