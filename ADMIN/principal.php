@@ -173,7 +173,7 @@ color: darkblue;
         </div>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
-                <li class='menu'><a href='./principal.php'>Home</a></li>
+                <li class='menu'><a href='../principal.php'>Home</a></li>
                 <li class='menu'><a href='../actualizar.php'>Usuarios</a></li>
                 <li class='menu'><a href='#'>Tags</a></li>
                 <li class='menu'><a href='./contactos.php'>Contactos</a></li>
@@ -250,7 +250,7 @@ echo "          </tr>";
 }
 else{
 
-  header("location: ../principal.php");
+  header("location: ../index.php");
 
 }
 ?>
