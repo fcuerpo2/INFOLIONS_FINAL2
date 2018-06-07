@@ -90,47 +90,66 @@ echo"<style>
     width:0px;
     height:0px;
 }
-  body{
-    background-image: url('../img/fondo.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  #principal{
-    background-color: rgba(0,0,255,0.2);
-    margin-left: 20px;
-    margin-right: 20px;
-    height: 500px;
-  }
-  .container{
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .container a{
-    text-decoration: none;
-  } 
-  #usuarios, #tags, #contactos, #geos, #anuncios{
-    margin-top: 50px;
-    border: 1px solid blue;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    background-color: rgba(0,0,255,0.1); 
-  }
-  #usuarios, #tags, #contactos, #geos, #anuncios{
-    padding-top: 25px;
-    padding-left: 25px;
-    font-size: 90px;
-    color: #fff;
-    
-  }
-  .usuarios, .tags, .contactos, .geos, .anuncios{
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
 
+#borde{
+    border: 1px solid lightblue;
+
+
+}
+
+.container-fluid{
+    
+    background-color: lightblue; 
+}
+#myNavbar{
+    background-color: lightblue;
+}
+#cabecera {
+    color: #000 !important;
+    
+}
+.menu a{
+    color: #000 !important;
+}
+th {
+    background-color: blue;
+    text-align:center;
+}
+h1{
+text-align:center;
+color: darkblue;
+  button{
+  	background-color: blue;
+  	border: 1px solid blue;
+  	cursor: pointer;
   }
- 
+  #modificar{
+  	width: 30px;
+  }
+  #detalles{
+  	margin-top: 25px;
+  	width: 80%;
+  	margin: auto;
+  	  }
+  #tabla{
+  	margin-left: 50%;
+  	transform: translateX(-50%);
+  }	  
+  #datos{
+  	text-align: center;
+  	color: darkblue;
+  	
+  }
+  #botones{
+  display: flex;
+  justify-content: space-around;	
+  }
+  .modificar, .bloquear{
+  	width: 100px;
+  	border: 1px solid darkblue;
+  	background-color: darkblue;
+  	color:#fff;
+  	 }
 </style>";
 ?>
 <script>
@@ -155,10 +174,9 @@ echo"<style>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
                 <li class='menu'><a href='../php/principal.php'>Home</a></li>
-                <li class='menu'><a href='principalUsuario.php'>Usuarios</a></li>
-                <li class='menu'><a href='principalTags'>Tags</a></li>
-                <li class='menu'><a href='PrincipalContactos.php'>Contactos</a></li>
-                <li class='menu'><a href='#'>Geolocalización</a></li>
+                <li class='menu'><a href='../actualizar.php'>Usuarios</a></li>
+                <li class='menu'><a href='#'>Tags</a></li>
+                <li class='menu'><a href='./contactos.php'>Contactos</a></li>
                 <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Anuncios</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
@@ -169,43 +187,67 @@ echo"<style>
     </div>
   </nav> 
 </div>
-    <div class="principal">
-<div class="container">
-          <a href="principalUsuario.php">
-            <span id="usuarios" class="glyphicon glyphicon-user"></span>
-            <div class="usuarios">  
-              <p>Usuarios</p>
-             </div>  
-          </a>
-          <a href="principalTags.php">
-            <span id="tags" class="glyphicon glyphicon-tag"></span>
-            <div class="tags">
-              <p>Tags</p>
-            </div>   
-          </a>
-          <a href="principalContactos.php">
-            <span id="contactos" class="glyphicon glyphicon-earphone"></span>
-            <div class="contactos">
-              <p>Contactos</p>
-            </div> 
-          </a>
-          <a href="#">
-            <span id="geos" class="glyphicon glyphicon-map-marker"></span>
-            <div class="geos">
-              <p>Geolocalización</p>
-            </div>   
-          </a>
-          <a href="#"> 
-            <span  id="anuncios" class="glyphicon glyphicon-pushpin"></span>
-            <div class="anuncios">
-              <p>Anuncios</p>
-            </div>  
-         </a> 
-         
-      </div>
-    </div>           
-
- <?php
+<div class="row" style="margin: 0 auto;">
+<div class="col-md-12">
+<div id='principal'>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>MODIFICAR Y BLOQUEAR USUARIO</h1>
+        </div>
+    </div>
+    <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; color: #fff; text-align: center'>
+        <thead>
+            <tr>
+            	<th>Modificar</th>
+            	<th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Bloq</th>
+            </tr>
+        </thead>
+        <tbody>
+<?php
+    for($misUsuarios=0;$misUsuarios<count($_SESSION['TodosUsuarios']);$misUsuarios++)
+    {
+        echo "<tr>
+            	<td style='text-align:center;'>
+            		<button onclick='modificar(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
+        				<img src='../img/editar.png' alt='modificar' id='modificar'>
+        			</button>
+            	</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Nombre']."</td>
+            	<td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Apellidos']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Email']."</td>
+                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Telefono']."</td>";
+if ($_SESSION['TodosUsuarios'][$misUsuarios]['Activo'] == 1)
+{
+    echo "<td style='color:#000; text-align:center;'><input type='checkbox' value='0' style='width:20px; height:20px;' readonly></td>";
+}
+else
+{
+    echo "<td style='color:#000; text-align:center;'><input type='checkbox' value='0' style='width:20px; height:20px;' checked></td>";
+}
+//echo"           <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Activo']."</td>
+echo "          </tr>";
+    }
+?>
+        </tbody>
+        <tfooter>
+            <tr>
+            	<th>Modificar</th>
+            	<th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Bloq</th>
+            </tr>
+        </tfooter>
+  </table>
+  </div>
+</div>    
+</div>
+<?php
 }
 else{
 
