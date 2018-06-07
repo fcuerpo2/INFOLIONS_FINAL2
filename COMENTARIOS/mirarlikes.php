@@ -5,7 +5,7 @@ $_SESSION['MisTags'] = "";
 $limitFinal = 10;
 if ($_SESSION['NumPag'] == 1)
 {
-    $limitInicial=1;
+    $limitInicial=0;
 }
 else
 {
