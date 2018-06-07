@@ -10,8 +10,8 @@
 				if ($_SESSION['total_paginas'] > 1)
 					{	echo "<ul class='pagination' style='margin:10px 0px; display:inline-block;'>";
 						if ($_SESSION['NumPag'] != 1)
-							{ echo "<li class='first' style='display:inline-block;'><a href='principal.php?numpag=1' title='1'><<</a></li>";
-							  echo "<li class='previous' style='display:inline-block;'><a href='principal.php?numpag=" . ($_SESSION['NumPag'] - 1) . "' title='" . ($_SESSION['NumPag'] - 1) . "'><</a></li>";
+							{ echo "<li class='first' style='display:inline-block;'><a href='principal.php?numpag=1#tags' title='1'><<</a></li>";
+							  echo "<li class='previous' style='display:inline-block;'><a href='principal.php?numpag=" . ($_SESSION['NumPag'] - 1) . "#tags' title='" . ($_SESSION['NumPag'] - 1) . "'><</a></li>";
 							}
 						else
 							{ echo "<li class='first disabled' style='display:inline-block;'><a href='#' onclick='return false;' style='cursor:default;'><<</a></li>";
@@ -34,51 +34,51 @@
 						if ($_SESSION['total_paginas'] >= 1)
 						{
 						if ($_SESSION['NumPag'] == $inicio_paginacion)
-							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . $inicio_paginacion . "'><font color='#E35A06'>" . $inicio_paginacion . "</font></a></li>";
+							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . $inicio_paginacion . "#tags'><font color='#E35A06'>" . $inicio_paginacion . "</font></a></li>";
 							}
 						else
 							{
-			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . $inicio_paginacion . "'>" . $inicio_paginacion . "</a></li>";
+			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . $inicio_paginacion . "#tags'>" . $inicio_paginacion . "</a></li>";
 							}
 						}
 						if ($_SESSION['total_paginas'] >= 2)
 						{
 						if ($_SESSION['NumPag'] == ($inicio_paginacion + 1))
-							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 1) . "'><font color='#E35A06'>" . ($inicio_paginacion + 1) . "</font></a></li>";
+							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 1) . "#tags'><font color='#E35A06'>" . ($inicio_paginacion + 1) . "</font></a></li>";
 							}
 						else
 							{
-			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 1) . "'>" . ($inicio_paginacion + 1) . "</a></li>";
+			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 1) . "#tags'>" . ($inicio_paginacion + 1) . "</a></li>";
 							}
 						}
 						if ($_SESSION['total_paginas'] >= 3)
 						{
 						if ($_SESSION['NumPag'] == ($inicio_paginacion + 2))
-							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 2) . "'><font color='#E35A06'>" . ($inicio_paginacion + 2) . "</font></a></li>";
+							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 2) . "#tags'><font color='#E35A06'>" . ($inicio_paginacion + 2) . "</font></a></li>";
 							}
 						else
 							{
-			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 2) . "'>" . ($inicio_paginacion + 2) . "</a></li>";
+			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 2) . "#tags'>" . ($inicio_paginacion + 2) . "</a></li>";
 							}
 						}
 						if ($_SESSION['total_paginas'] >= 4)
 						{
 						if ($_SESSION['NumPag'] == ($inicio_paginacion + 3))
-							{	echo "<li class='next' style='display:inline-block;'><a href='princiapal.php?numpag=" . ($inicio_paginacion + 3) . "'><font color='#E35A06'>" . ($inicio_paginacion + 3). "</font></a></li>";
+							{	echo "<li class='next' style='display:inline-block;'><a href='princiapal.php?numpag=" . ($inicio_paginacion + 3) . "#tags'><font color='#E35A06'>" . ($inicio_paginacion + 3). "</font></a></li>";
 							}
 						else
 							{
-			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 3) . "'>" . ($inicio_paginacion + 3). "</a></li>";
+			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 3) . "#tags'>" . ($inicio_paginacion + 3). "</a></li>";
 							}
 						}
 						if ($_SESSION['total_paginas'] >= 5)
 						{
 						if ($_SESSION['NumPag'] == ($inicio_paginacion + 4))
-							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 4) . "'><font color='#E35A06'>" . ($inicio_paginacion + 4). "</font></a></li>";
+							{	echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 4) . "#tags'><font color='#E35A06'>" . ($inicio_paginacion + 4). "</font></a></li>";
 							}
 						else
 							{
-			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 4) . "'>" . ($inicio_paginacion + 4). "</a></li>";
+			  					echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($inicio_paginacion + 4) . "#tags'>" . ($inicio_paginacion + 4). "</a></li>";
 							}
 						}
 						if ($_SESSION['NumPag'] == $_SESSION['total_paginas'] )
@@ -88,8 +88,8 @@
 							}
 						else
 							{
-								echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($_SESSION['NumPag'] + 1) . "' title='" . ($_SESSION['NumPag'] + 1) . "'>></a></li>";
-								echo "<li class='last' style='display:inline-block;'><a href='principal.php?numpag=" . $_SESSION['total_paginas'] . "' title='" . $_SESSION['total_paginas'] . "'>>></a></li>";
+								echo "<li class='next' style='display:inline-block;'><a href='principal.php?numpag=" . ($_SESSION['NumPag'] + 1) . "#tags' title='" . ($_SESSION['NumPag'] + 1) . "'>></a></li>";
+								echo "<li class='last' style='display:inline-block;'><a href='principal.php?numpag=" . $_SESSION['total_paginas'] . "#tags' title='" . $_SESSION['total_paginas'] . "'>>></a></li>";
 							}
 					    echo "</ul>";
 					}
