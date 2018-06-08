@@ -1,7 +1,7 @@
 <?php
 if (session_id() === "") { session_start(); }
 $_SESSION['TodosLikes'] = "";
-$_SESSION['MisTags'] = "";
+$_SESSION['MisTags'][] = "";
 $limitFinal = 10;
 if ($_SESSION['NumPag'] == 1)
 {
@@ -28,10 +28,11 @@ $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idU
     $miArray = array();
 
     if ($resultado= $conexion->query($consulta)) {
-	
+    $numdeTag=0;
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
-            $_SESSION['MisTags'][] = $row;
+            $_SESSION['MisTags'][$numdeTag] = $row;
+            $numdeTag++;
     }
   }
     desconectarBD();
