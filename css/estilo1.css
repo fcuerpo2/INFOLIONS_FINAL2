@@ -8,18 +8,39 @@ body {
   padding-top: 0px;
   padding-bottom: 10px;
   background-color: #f5f5f5;
+  scrollbar-face-color: slategray;
+  scrollbar-track-color: #b8c0c8;
+
 }
   
 /*CSS para publicidad */
+/*
+#titul-anuncio{
+    No va hay que ver porque
+    margin-top: 20px;
+}*/
+
+
+.affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+.affix + .container-fluid {
+      padding-top: 70px;
+  }
+  
 [hidden] {
   display: none !important;
 
 }
 
 .fotoAnuncio, #img-anuncio-top{
-    width: 80%;
+    width: auto;
     height: auto;
     border-radius: 10%;
+    max-width: 80%;
+    max-height:200px;
 }
 
 /*fin CSS para publicidad */
@@ -179,4 +200,32 @@ div#files {
 }
 img.fancybox-image, img.fancybox-spaceball {
     border-radius: 0px !important;
+}
+.scrollToTop{
+    width:75px; 
+    height:auto;
+    padding:10px; 
+    text-align:center; 
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    position:fixed;
+    bottom:75px;
+    right:20px;
+    display:none;
+}
+.scrollToTop:hover{
+    text-decoration:none;
+}
+::-webkit-scrollbar {
+  width: 0.9em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: slategray;
+}
+
+::-webkit-scrollbar-track {
+  background: #b8c0c8;
 }

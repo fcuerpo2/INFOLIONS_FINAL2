@@ -20,15 +20,18 @@ if($_SESSION['usu']['idUsuario']!=""){
 
  //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
-    $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
+    $consulta="SELECT Tags.idTag, Tags.Fecha, Tags.Cabecera, Tags.Texto, Tags.idUsuario, usuarios.idUsuario, usuarios.Nombre, usuarios.Apellidos FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
 
     conectarBD();
     $miArray = array();
 
     if ($resultado= $conexion->query($consulta)) {
-
+        $_SESSION['Tags_Betty']="";
+        $numTagBetty=0;
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
+            $_SESSION['Tags_Betty'][$numTagBetty]= $row;
+            $numTagBetty++;
     }
   }
     desconectarBD();
@@ -192,55 +195,72 @@ color: darkblue;
 <div id='principal'>
     <div class="row">
         <div class="col-md-12">
-            <h1>BLOQUEAR TAGS</h1>
+            <h1>BORRAR TAGS</h1>
         </div>
     </div>
     <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; color: #fff; text-align: center'>
         <thead>
             <tr>
-            	<th>Modificar</th>
+            	<th>Borrar</th>
+                <th>ID Tag</th>
+                <th>Fecha</th>
+                <th>Cabecera</th>
+                <th>Texto</th>
+                <th>ID Ususario</th>
             	<th>Nombre</th>
-                <th>Tags</th>
-                <th>Bloq</th>
+                <th>Apellidos</th>
+                
             </tr>
         </thead>
         <tbody>
 <?php
-    for($misUsuarios=0;$misUsuarios<count($_SESSION['TodosUsuarios']);$misUsuarios++)
+    for($TagsBetty=0;$TagsBetty<count($_SESSION['Tags_Betty']);$TagsBetty++)
     {
         echo "<tr>
             	<td style='text-align:center;'>
-            		<button onclick='borrar(".$_SESSION['TodosUsuarios'][$misUsuarios]['idUsuario'].");'>
-                             <span id='borrar' class='glyphicon glyphicon-remove'></span>
-                        </button>
+            		<button onclick='borrarTag(".$_SESSION['Tags_Betty'][$TagsBetty]['idTag'].");' class='btn btn-danger'>
+        				 <span id='borrar' class='glyphicon glyphicon-remove'></span>
+        			</button>
             	</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Nombre']."</td>
-            	<td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Apellidos']."</td>
-                <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Tags']."</td>
-                
-if ($_SESSION['TodosUsuarios'][$misUsuarios]['Activo'] == 1)
-{
-    echo "<td style='color:#000; text-align:center;'><input type='checkbox' value='0' style='width:20px; height:20px;' readonly></td>";
-}
-else
-{
-    echo "<td style='color:#000; text-align:center;'><input type='checkbox' value='0' style='width:20px; height:20px;' checked></td>";
-}
-//echo"           <td style='color:#000;'>".$_SESSION['TodosUsuarios'][$misUsuarios]['Activo']."</td>
-echo "          </tr>";
+                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['idTag']."</td>
+            	<td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Fecha']."</td>
+                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Cabecera']."</td>
+                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Texto']."</td>
+            	<td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['idUsuario']."</td>
+                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Nombre']."</td>
+                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Apellidos']."</td>
+             </tr>";
     }
 ?>
         </tbody>
         <tfooter>
             <tr>
             	<th>Borrar</th>
+                <th>ID Tag</th>
+                <th>Fecha</th>
+                <th>Título</th>
+                <th>Texto</th>
+                <th>ID Ususario</th>
             	<th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Tags</th>
-                <th>Bloq</th>
             </tr>
         </tfooter>
   </table>
+    <script>
+        function borrarTag(idTagBorrar)
+        {
+            var txt;
+            var r = confirm("¿ Realmente deseas Borrar el Tag "+ idTagBorrar + " ?");
+            if (r == true)
+            {
+                window.location.href='borrarTag.php?IdTagBorrar='+idTagBorrar;
+            } 
+            else
+            {
+                return;
+            }
+        }
+    </script>
   </div>
 </div>    
 </div>
@@ -251,6 +271,32 @@ else{
   header("location: ../index.php");
 
 }
+?>
+<!-- Ventana Modal Javi, Juan Carlos y Betty -->
+<?php
+    if ($_SESSION['MensajeTagBorrado'] == "SI")
+    {
+?>
+    <div id="DIV_TagBorrado" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal;  background-color:rgba(16,31,68,0.9); color: #000000;" onclick="ocultar_TagBorrado()">
+	<a href="#close" onclick="ocultar_TagBorrado()">
+	<div style="position:absolute; top:30%;left:50%; width:300px; border-radius:5px; background-color:rgba(255,255,255,0.9); padding:15px; z-index:6; float:left;line-height:22px; margin:-2% 0px 0px -150px;">
+		<center>
+                    <span style="font-size:14px;"><font color="#F59336" style="font-size: 20px; font-weight:700;">Felicidades</font><br><font color="#000">El Tag <?php echo $_SESSION['NumTagBorrado'] ?> ha sido borrado</font></span><BR><BR>
+			<span style="color:#FFFFFF;font-size:15px; background-color: #101f44; border-radius:5px; padding:10px; width:100%; text-decoration:none; display:block; max-width:150px;"><FONT COLOR="#FFFFFF">Aceptar</FONT></span>
+		</center>
+	</div>
+	</a>
+</div>
+<script>
+function ocultar_TagBorrado()
+			{
+				document.getElementById('DIV_TagBorrado').style.display = 'none';
+			}
+</script>                        
+<?php
+    $_SESSION['MensajeTagBorrado']="NO";
+    $_SESSION['NumTagBorrado']="";
+    }
 ?>
 </body>
 </html>

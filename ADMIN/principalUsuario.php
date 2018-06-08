@@ -4,7 +4,8 @@ header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
 include '../php/comprobarAdmin.php';
 if (session_id() === '') {session_start();}
-
+  $_SESSION['MensajeagBorrado']="NO";
+  $_SESSION['NumTagBorrado']="";
   conectarBD();
   $consulta="SELECT * FROM usuarios";
   $resultado=$conexion->query($consulta);

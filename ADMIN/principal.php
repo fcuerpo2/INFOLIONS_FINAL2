@@ -91,7 +91,7 @@ echo"<style>
     height:0px;
 }
   body{
-    background-image: url('../img/fondo.jpg');
+    background-image: url('./fondo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -104,9 +104,10 @@ echo"<style>
   .container{
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
   
-  .container a{
+  .container-fluid a{
     text-decoration: none;
   } 
   #usuarios, #tags, #contactos, #geos, #anuncios{
@@ -119,7 +120,7 @@ echo"<style>
   }
   #usuarios, #tags, #contactos, #geos, #anuncios{
     padding-top: 25px;
-    padding-left: 25px;
+    padding-left: 0px;
     font-size: 90px;
     color: #fff;
     
@@ -128,7 +129,7 @@ echo"<style>
     font-size: 20px;
     color: #fff;
     text-align: center;
-
+    margin-top: 10px;
   }
  
 </style>";
@@ -169,39 +170,54 @@ echo"<style>
     </div>
   </nav> 
 </div>
-    <div class="principal">
-<div class="container">
-          <a href="principalUsuario.php">
-            <span id="usuarios" class="glyphicon glyphicon-user"></span>
-            <div class="usuarios">  
-              <p>Usuarios</p>
-             </div>  
-          </a>
-          <a href="principalTags.php">
-            <span id="tags" class="glyphicon glyphicon-tag"></span>
-            <div class="tags">
-              <p>Tags</p>
-            </div>   
-          </a>
-          <a href="principalContactos.php">
+<div class="principal">
+<div class="container-fluid">
+    <div class="row" style="padding: 20px; border-radius: 10px; background-color: rgba(0, 0, 255, 0.21); margin-right: 0px; margin-left:0px;">
+        <div class="col-md-12">
+            <div class="col-md-1"></div>
+            <div class="col-md-2" style="text-align: center;">
+                <a href="principalUsuario.php">
+                <span id="usuarios" class="glyphicon glyphicon-user"></span>
+                <div class="usuarios">  
+                    <p>Usuarios</p>
+                </div>  
+                </a>
+          </div>
+          <div class="col-md-2" style="text-align: center;">            
+            <a href="principalTags.php">
+                <span id="tags" class="glyphicon glyphicon-tag" style="padding-top:25px;"></span>
+                <div class="tags">
+                    <p>Tags</p>
+                </div>   
+            </a>
+          </div>
+          <div class="col-md-2" style="text-align: center;">            
+            <a href="principalContactos.php">
             <span id="contactos" class="glyphicon glyphicon-earphone"></span>
             <div class="contactos">
               <p>Contactos</p>
             </div> 
-          </a>
-          <a href="#">
+            </a>
+          </div>
+          <div class="col-md-2" style="text-align: center;">            
+            <a href="#">
             <span id="geos" class="glyphicon glyphicon-map-marker"></span>
             <div class="geos">
               <p>Geolocalización</p>
             </div>   
           </a>
-          <a href="#"> 
+          </div>
+          <div class="col-md-2" style="text-align: center;">            
+            <a href="#"> 
             <span  id="anuncios" class="glyphicon glyphicon-pushpin"></span>
             <div class="anuncios">
               <p>Anuncios</p>
             </div>  
-         </a> 
-         
+            </a> 
+          </div>
+          <div class="col-md-1"></div>            
+        </div>
+        </div>
       </div>
     </div>           
 

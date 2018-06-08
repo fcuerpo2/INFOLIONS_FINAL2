@@ -11,8 +11,18 @@ if (file_exists($nombre_fichero)) {
 }    
 echo "&nbsp;&nbsp;&nbsp;".$miArray[$i]['Nombre']." ".$miArray[$i]['Apellidos']."      ".$miArray[$i]['Fecha']."</div>";
 echo "<div id='Titulo-".$miArray[$i]['idTag']."' class='titulo'>".$miArray[$i]['Cabecera']."</div>";
+     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+     preg_match_all($reg_exUrl, $miArray[$i]['Texto'], $matches);
+     $usedPatterns = array();
+     foreach($matches[0] as $pattern){
+       if(!array_key_exists($pattern, $usedPatterns)){
+         $usedPatterns[$pattern]=true;
+         $miArray[$i]['Texto'] = str_replace  ($pattern, '<a href="'.$pattern.'" rel="nofollow" target="_blank">'.$pattern.'</a> ', $miArray[$i]['Texto']);   
+       }
+     }
+
 echo "<div id='Texto-".$miArray[$i]['idTag']."' class='texto'>".$miArray[$i]['Texto']."</div>"; 
-echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes'>";
+echo "<div id='Imagenes-".$miArray[$i]['idTag']."' class='imagenes' style='margin-top:10px;'>";
 echo "<p class='imglist' style='max-width: 1000px;'>";
 $totalFotos = 0;
 $encontrado="NO";
@@ -20,9 +30,32 @@ for($MisFotos=0;$MisFotos<count($_SESSION['TodasFotos']);$MisFotos++)
 {
     if ($_SESSION['TodasFotos'][$MisFotos]['IdTag'] == $miArray[$i]['idTag'])
     {
-        echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
+        $EncontradoVideo="no";
+        $pos = strpos($_SESSION['TodasFotos'][$MisFotos]['Ruta'], ".mp4");
+        if ($pos > 0) {$EncontradoVideo="si";}
+        if (file_exists("../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']))
+        {
+            if ($EncontradoVideo=="si"){
+            //    echo "<iframe width='100%' height='auto' src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>";
+            
+           echo "<video width='100%' height='auto' controls>
+  <source src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' type='video/mp4'>
+  
+  Your browser does not support the video tag.
+</video>";    
+            }
+           else {
+                echo "<a href='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' data-fancybox='images'>
                 <img src='../doc/Imagenes/".$_SESSION['TodasFotos'][$MisFotos]['Ruta']."' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
               </a>";
+           }
+        }
+        else
+        {
+            echo "<a href='../img/Foto-NO-Disponible.jpg' data-fancybox='images'>
+                <img src='../img/Foto-NO-Disponible.jpg' style='width:100%; height: auto; border-radius: 5px; margin-bottom: 10px; max-width: 200px;' />
+              </a>";            
+        }
     }
 }
 echo "</p>";
@@ -87,7 +120,7 @@ if ($encontrado == "NO")
 else
 {
     echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#BotComent-".$miArray[$i]['idTag']."'>( $totalComentarios ) Comentarios</button>
-            <div id='BotComent-".$miArray[$i]['idTag']."' class='collapse show'>
+            <div id='BotComent-".$miArray[$i]['idTag']."' class='collapse in'>
               <div id='PublicaComent-".$miArray[$i]['idTag']."' style='padding: 1px 10px 1px; border-radius:10px; background-color: #5cb85c; margin-bottom:0px; margin-top:5px;'>
                 <form id='Form-Com-".$miArray[$i]['idTag']."' action='POST' style='margin-top: 10px;'>
                     <div class='formComents'>
@@ -111,6 +144,17 @@ if (file_exists($nombre_fichero)) {
 }    
 echo "&nbsp;&nbsp;&nbsp;".$_SESSION['TodosComentarios'][$z]['Nombre']." ".$_SESSION['TodosComentarios'][$z]['Apellidos']."      ".$_SESSION['TodosComentarios'][$z]['Fecha']."</div>";
 echo "<div id='TituloComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='titulo'>".$_SESSION['TodosComentarios'][$z]['Cabecera']."</div>";
+
+     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+     preg_match_all($reg_exUrl, $_SESSION['TodosComentarios'][$z]['Texto'], $matches);
+     $usedPatterns = array();
+     foreach($matches[0] as $pattern){
+       if(!array_key_exists($pattern, $usedPatterns)){
+         $usedPatterns[$pattern]=true;
+         $_SESSION['TodosComentarios'][$z]['Texto'] = str_replace  ($pattern, '<a href="'.$pattern.'" rel="nofollow" target="_blank">'.$pattern.'</a> ', $_SESSION['TodosComentarios'][$z]['Texto']);   
+       }
+     }
+
 echo "<div id='TextoComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='texto'>".$_SESSION['TodosComentarios'][$z]['Texto']."</div>"; 
 echo "<div id='ImagenesComent-".$_SESSION['TodosComentarios'][$z]['idComentario']."' class='imagenes'></div>";
 echo "</div>";              
@@ -121,4 +165,5 @@ echo "</div>";
 echo "</div>";
 echo "</div>";
 }
+include "../php/paginar.php";
 ?>
