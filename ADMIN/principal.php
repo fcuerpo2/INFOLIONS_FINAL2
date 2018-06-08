@@ -156,7 +156,7 @@ echo"<style>
             <ul class='nav navbar-nav'>
                 <li class='menu'><a href='../php/principal.php'>Home</a></li>
                 <li class='menu'><a href='./principalUsuario.php'>Usuarios</a></li>
-                <li class='menu'><a href='principalTags'>Tags</a></li>
+                <li class='menu'><a href='./principalTags'>Tags</a></li>
                 <li class='menu'><a href='PrincipalContactos.php'>Contactos</a></li>
                 <li class='menu'><a href='#'>Geolocalización</a></li>
                 <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Anuncios</a></li>
