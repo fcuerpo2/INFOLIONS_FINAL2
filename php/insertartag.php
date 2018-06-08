@@ -35,5 +35,6 @@
         }
     }
  }
+ $_SESSION['NumPag']=1;
  include './dibujartags.php';
 ?>
