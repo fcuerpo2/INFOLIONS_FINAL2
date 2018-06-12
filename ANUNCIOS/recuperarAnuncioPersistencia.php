@@ -15,14 +15,21 @@
         if ($resultado= $conexion->query($coleccionIdAnuncios)) {
             
             while($row = $resultado->fetch_assoc()) {
-                    $arrayIdAnuncios[] = $row;
+                    $arrayIdAnuncios[] = $row['idAnuncio'];
             }
-            $elegidos = array();
+            $_SESSION['anuncio']['arrayIdAnuncios']=$arrayIdAnuncios;
+            $elegidosN = array(); //Numero de orden 
             $selAnuncio = array();
+            $elegidosV = array();
             
             for($x = 0; $x < 3; $x++) {
-                $elegidos[$x]=rand(1, count($arrayIdAnuncios));
-                $selAnuncios[$x] = "SELECT * FROM publicidad WHERE idAnuncio=$elegidos[$x]";
+                $elegidosN[$x]=rand(1, count($arrayIdAnuncios));
+                //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
+                // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
+                
+                $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
+                $selAnuncios[$x] = "SELECT * FROM publicidad WHERE idAnuncio=$elegidosV[$x]";
+                
                 
             
                 $_SESSION['anuncio']['recuperado']=$selAnuncios[$x];
@@ -67,6 +74,8 @@
                 }
              }
             }
+             
+            $_SESSION['anuncio']['elegidosA']=$elegidosV;
             $_SESSION['anuncio']['salida']=$anuncio;
             echo $anuncio;
         }
