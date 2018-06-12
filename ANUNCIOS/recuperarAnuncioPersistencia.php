@@ -15,14 +15,21 @@
         if ($resultado= $conexion->query($coleccionIdAnuncios)) {
             
             while($row = $resultado->fetch_assoc()) {
-                    $arrayIdAnuncios[] = $row;
+                    $arrayIdAnuncios[] = $row['idAnuncio'];
             }
-            $elegidos = array();
+            $_SESSION['anuncio']['arrayIdAnuncios']=$arrayIdAnuncios;
+            $elegidosN = array(); //Numero de orden 
             $selAnuncio = array();
+            $elegidosV = array();
             
             for($x = 0; $x < 3; $x++) {
-                $elegidos[$x]=rand(1, count($arrayIdAnuncios));
-                $selAnuncios[$x] = "SELECT * FROM publicidad WHERE idAnuncio=$elegidos[$x]";
+                $elegidosN[$x]=rand(1, count($arrayIdAnuncios));
+                //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
+                // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
+                
+                $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
+                $selAnuncios[$x] = "SELECT * FROM publicidad WHERE idAnuncio=$elegidosV[$x]";
+                
                 
             
                 $_SESSION['anuncio']['recuperado']=$selAnuncios[$x];
@@ -32,9 +39,9 @@
                 while($row = $resultado2->fetch_assoc()) {
                      $_SESSION['anuncio']['recuperado']=$row;
                      
-                    $anuncio.='<div class="row">';
+                    $anuncio.="<div class='row' style='margin-bottom:20px; text-align: center;'>";
                      if($x==0){ //Al primer anuncio y sólo al primero lo envolvemos en bootstrap para poder ternerlo en dos columnas
-                        $anuncio.="<div class='col-sm-3'>";
+                        $anuncio.="<div class='col-sm-3' style='margin-left=15px; text-align: center;'>";
                      }  
                      $anuncio.= "<h3 id='titul-anuncio'>"; $anuncio.=$_SESSION['anuncio']['recuperado']['titulo'];$anuncio.="</h3>";
                      $anuncio.="<br>";
@@ -43,12 +50,22 @@
                      $anuncio.="' alt='no he podido acceder a la imagen' width='80%'  >";
                      if($x==0){
                         $anuncio.="</div>";
-                        $anuncio.="<div class='col-sm-9'>";
+                        $anuncio.="<div class='col-sm-6'>";
+                        $anuncio.="<br><br><br>";
                      } 
                      $anuncio.="<h4>"; $anuncio.=$_SESSION['anuncio']['recuperado']['descripcion'];$anuncio.="</h4>";
                      if($x==0){
                         $anuncio.="</div>";
-                     }
+                        $anuncio.="<div class='col-sm-3'>";
+                         $anuncio.= "<h3 id='titul-anuncio'>"; $anuncio.=$_SESSION['anuncio']['recuperado']['titulo'];$anuncio.="</h3>";
+                         $anuncio.="<br>";
+                         $anuncio.="<img id='img-anuncio-top' src='../doc/fotosPublicidad/";
+                         $anuncio.=$_SESSION['anuncio']['recuperado']['imagen'];
+                         $anuncio.="' alt='no he podido acceder a la imagen' width='80%'  >";
+                         $anuncio.="</div>";
+                     }  
+                    
+                     
                      $anuncio.="<br>";
                     $anuncio.="</div>";
                      //SEPARADOR
@@ -57,6 +74,8 @@
                 }
              }
             }
+             
+            $_SESSION['anuncio']['elegidosA']=$elegidosV;
             $_SESSION['anuncio']['salida']=$anuncio;
             echo $anuncio;
         }

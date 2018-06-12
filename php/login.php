@@ -9,11 +9,27 @@ if (session_id() === "") { session_start(); }
   include '../lib/lib1.php';
 
   conectarBD();
-  $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password'";
-
-  $resultado=$conexion->query($consulta);
-
+  
+  //METODO-1: de esta forma estamos expuestos a una inyección SQL
+  //Hay que usar la sentencia/consulta preparada  para evitar :
+  // 1: poniendo un correro con formato valido y como password 'or '1'='1
+  //  2: detrás del 'or '1'='1 podemos poner ; DROP TABLE usuarios; SELECT * FROM datos WHERE nombre LIKE '%';
+ // $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password'";
+  //NO FUNCIONA mysql_real_escape_string($email) ."' AND password='". mysql_real_escape_string($password)."'";
+  //$consulta = sprintf("SELECT * FROM usuarios WHERE Email='%s' AND password='%s'", $email, $paswword);
+  
+  
+  $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE Email=? AND password=? LIMIT 1");
+  $stmt->bind_param('ss', $email, $password);
+  $stmt->execute();
+ 
+  $resultado = $stmt->get_result();
+  
+ //Metodo con real_escape_string (que no va)  o sin  
+ //$resultado=$conexion->query($consulta);
+ $_SESSION['resultado']= $resultado;
   if($resultado->num_rows>0){
+     
     //HAY ALGÚN USUARIO 
     $fecha=time();
     $fila=mysqli_fetch_assoc($resultado);
@@ -28,5 +44,8 @@ if (session_id() === "") { session_start(); }
     //NO HAY NINGÚN USUARIO
        header('location:../index.php');
   }
+  
+  //cerramos sentencia
+  $stmt->close();
   desconectarBD();
 ?>
