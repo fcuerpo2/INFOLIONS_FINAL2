@@ -144,7 +144,7 @@ if(confirm("¿Estás seguro que quieres cambiar la foto?")){
         contentType: false,
         processData: false,
         success:function(resultado){
-          document.getElementById('foto').innerHTML="<img src='../doc/fotoportada/"+resultado+"' width='200px'/>";
+          document.getElementById('foto').innerHTML="<img src='../doc/fotoportada/"+resultado+"' id='fotoperfil' class='escalar cambio' />";
           document.getElementById('fotop').value=resultado;          
         }
     });
