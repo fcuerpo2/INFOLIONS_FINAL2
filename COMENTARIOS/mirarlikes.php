@@ -26,12 +26,15 @@ $consulta="SELECT * FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idU
 
     conectarBD();
     $miArray = array();
-
+    $resultado=$conexion->query($consulta);
+    $_SESSION['MisTags'] = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+    
     if ($resultado= $conexion->query($consulta)) {
-	
+    $numdeTag=0;
     while($row = $resultado->fetch_assoc()) {
             $miArray[] = $row;
-            $_SESSION['MisTags'][] = $row;
+//            $_SESSION['MisTags'][] = $row;
+            $numdeTag++;
     }
   }
     desconectarBD();
