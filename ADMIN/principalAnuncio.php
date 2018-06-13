@@ -20,7 +20,8 @@ if($_SESSION['usu']['idUsuario']!=""){
 
  //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
-    $consulta="SELECT publicidad.idAnuncio, publicidad.titulo, publiciad.descripcion, publicidad.imagen, publicidad.visto, publicidad.idUsuario, usuarios.idUsuario, usuarios.Nombre, usuarios.Apellidos FROM publicidad INNER JOIN usuarios ON publicidad.idUsuario=usuarios.idUsuario order by publicidad.idAnuncio DESC";
+    $consulta="SELECT * FROM publicidad INNER JOIN usuarios ON publicidad.idUsuario=usuarios.idUsuario order by publicidad.idAnuncio DESC";
+//    $consulta="SELECT publicidad.idAnuncio, publicidad.titulo, publiciad.descripcion, publicidad.imagen, publicidad.visto, publicidad.idUsuario, usuarios.idUsuario, usuarios.Nombre, usuarios.Apellidos FROM publicidad INNER JOIN usuarios ON publicidad.idUsuario=usuarios.idUsuario order by publicidad.idAnuncio DESC";
 
     conectarBD();
     $miArray = array();
@@ -219,7 +220,7 @@ color: darkblue;
     {
         echo "<tr>
             	<td style='text-align:center;'>
-            		<button onclick='borrarAnuncio(".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['idTag'].");' class='btn btn-danger'>
+            		<button onclick='borrarAnuncio(".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['idAnuncio'].");' class='btn btn-danger'>
         				 <span id='borrar' class='glyphicon glyphicon-remove'></span>
         			</button>
             	</td>
@@ -277,7 +278,7 @@ else{
 ?>
 <!-- Ventana Modal Javi, Juan Carlos y Betty -->
 <?php
-    if ($_SESSION['MensajeTagBorrado'] == "SI")
+    if ($_SESSION['MensajeAnuncioBorrado'] == "SI")
     {
 ?>
     <div id="DIV_AnuncioBorrado" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal;  background-color:rgba(16,31,68,0.9); color: #000000;" onclick="ocultar_TagBorrado()">
