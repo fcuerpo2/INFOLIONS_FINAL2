@@ -89,4 +89,15 @@
      echo $anuncio;   
     }
     
+    function noRepetirAnuncio(){
+        $_SESSION['anuncio']['recuperado'][0];
+        $_SESSION['anuncio']['recuperado'][1];
+        $_SESSION['anuncio']['recuperado'][2];
+        
+        //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
+        // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
+        
+        return true;
+    }
+    
 ?>
