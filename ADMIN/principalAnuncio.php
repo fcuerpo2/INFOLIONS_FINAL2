@@ -20,7 +20,7 @@ if($_SESSION['usu']['idUsuario']!=""){
 
  //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
-    $consulta="SELECT Tags.idTag, Tags.Fecha, Tags.Cabecera, Tags.Texto, Tags.idUsuario, usuarios.idUsuario, usuarios.Nombre, usuarios.Apellidos FROM Tags INNER JOIN usuarios ON Tags.idUsuario=usuarios.idUsuario order by Tags.Fecha DESC";
+    $consulta="SELECT publicidad.idAnuncio, publicidad.titulo, publiciad.descripcion, publicidad.imagen, publicidad.visto, publicidad.idUsuario, usuarios.idUsuario, usuarios.Nombre, usuarios.Apellidos FROM publicidad INNER JOIN usuarios ON publicidad.idUsuario=usuarios.idUsuario order by publicidad.idAnuncio DESC";
 
     conectarBD();
     $miArray = array();
@@ -195,7 +195,7 @@ color: darkblue;
 <div id='principal'>
     <div class="row">
         <div class="col-md-12">
-            <h1>BORRAR TAGS</h1>
+            <h1>BORRAR ANUNCIOS</h1>
         </div>
     </div>
     <table id='exampletabla' class='table table-striped table-bordered' style=' border: 1px solid blue; width:100%; color: #fff; text-align: center'>
@@ -203,9 +203,10 @@ color: darkblue;
             <tr>
             	<th>Borrar</th>
                 <th>ID Anuncio</th>
-                <th>Fecha</th>
-                <th>Cabecera</th>
-                <th>Texto</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Visto</th>
                 <th>ID Ususario</th>
             	<th>Nombre</th>
                 <th>Apellidos</th>
@@ -218,17 +219,18 @@ color: darkblue;
     {
         echo "<tr>
             	<td style='text-align:center;'>
-            		<button onclick='borrarTag(".$_SESSION['Anuncio_Betty'][$TagsBetty]['idTag'].");' class='btn btn-danger'>
+            		<button onclick='borrarAnuncio(".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['idTag'].");' class='btn btn-danger'>
         				 <span id='borrar' class='glyphicon glyphicon-remove'></span>
         			</button>
             	</td>
-                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['idanuncio']."</td>
-            	<td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Fecha']."</td>
-                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Cabecera']."</td>
-                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Texto']."</td>
-            	<td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['idUsuario']."</td>
-                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Nombre']."</td>
-                <td style='color:#000;'>".$_SESSION['Tags_Betty'][$TagsBetty]['Apellidos']."</td>
+                <td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['idAnuncio']."</td>
+            	<td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['titulo']."</td>
+                <td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['descripcion']."</td>
+                <td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['imagen']."</td>
+                <td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['visto']."</td>    
+            	<td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['idUsuario']."</td>
+                <td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['Nombre']."</td>
+                <td style='color:#000;'>".$_SESSION['Anuncio_Betty'][$AnuncioBetty]['Apellidos']."</td>
              </tr>";
     }
 ?>
@@ -237,9 +239,10 @@ color: darkblue;
             <tr>
             	<th>Borrar</th>
                 <th>ID Anuncio</th>
-                <th>Fecha</th>
                 <th>Título</th>
-                <th>Texto</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Visto</th>
                 <th>ID Ususario</th>
             	<th>Nombre</th>
                 <th>Apellidos</th>
@@ -247,13 +250,13 @@ color: darkblue;
         </tfooter>
   </table>
     <script>
-        function borrarTag(idTagBorrar)
+        function borrarAnuncio(idAnuncioBorrar)
         {
             var txt;
-            var r = confirm("¿ Realmente deseas Borrar el Tag "+ idTagBorrar + " ?");
+            var r = confirm("¿ Realmente deseas Borrar el Anuncio "+ idAnunciogBorrar + " ?");
             if (r == true)
             {
-                window.location.href='borrarTag.php?IdTagBorrar='+idTagBorrar;
+                window.location.href='borraAnuncio.php?IdAnuncioBorrar='+idAnuncioBorrar;
             } 
             else
             {
@@ -288,14 +291,14 @@ else{
 	</a>
 </div>
 <script>
-function ocultar_TagBorrado()
+function ocultar_AnuncioBorrado()
 			{
-				document.getElementById('DIV_TagBorrado').style.display = 'none';
+				document.getElementById('DIV_AnuncioBorrado').style.display = 'none';
 			}
 </script>                        
 <?php
-    $_SESSION['MensajeTagBorrado']="NO";
-    $_SESSION['NumTagBorrado']="";
+    $_SESSION['MensajeAnuncioBorrado']="NO";
+    $_SESSION['NumAnuncioBorrado']="";
     }
 ?>
 </body>
