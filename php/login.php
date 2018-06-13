@@ -27,6 +27,9 @@ if (session_id() === "") { session_start(); }
  //Método-1 
  //
  //$resultado=$conexion->query($consulta);
+  
+  //Método-3
+ // DONDE APARECE un valor de input usar $nombre= mysqli_escape_string($conexion,$nombre);
  $_SESSION['resultado']= $resultado;
   if($resultado->num_rows>0){
      
