@@ -23,15 +23,18 @@
             $elegidosV = array();
             
             for($x = 0; $x < 3; $x++) {
-                $elegidosN[$x]=rand(1, count($arrayIdAnuncios));
-                //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
-                // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
+                do{
+                    $elegidosN[$x]=rand(1, count($arrayIdAnuncios)-1);
+                    //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
+                    // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
                 
-                $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
-                $selAnuncios[$x] = "SELECT * FROM publicidad WHERE idAnuncio=$elegidosV[$x]";
+                    $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
+                }while (noRepetirAnuncio($elegidosV[$x],$x,$elegidosV));
                 
                 
-            
+                
+                
+                $selAnuncios[$x] = "SELECT * FROM publicidad WHERE idAnuncio=$elegidosV[$x]";       
                 $_SESSION['anuncio']['recuperado']=$selAnuncios[$x];
 
                 if ($resultado2= $conexion->query($selAnuncios[$x])){
@@ -89,15 +92,27 @@
      echo $anuncio;   
     }
     
-    function noRepetirAnuncio(){
-        $_SESSION['anuncio']['recuperado'][0];
-        $_SESSION['anuncio']['recuperado'][1];
-        $_SESSION['anuncio']['recuperado'][2];
+    function noRepetirAnuncio($aComparar, $x, $arrayIds){
+        if($x==1){
+            if($aComparar==$arrayIds[0]){
+                return true;
+            }
+        }else if($x==2){
+            if($aComparar==$arrayIds[1] ||$aComparar==$arrayIds[0] ){
+                return true;
+            }
+        }
         
+        if( $_SESSION['anuncio']['elegidosA'][0]===$aComparar){
+          return true;  
+        }else if( $_SESSION['anuncio']['elegidosA'][1]===$aComparar){
+          return true;  
+        }else if( $_SESSION['anuncio']['elegidosA'][2]===$aComparar){
+          return true;  
+        }
         //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
         // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
-        
-        return true;
+        return false;
     }
     
 ?>
