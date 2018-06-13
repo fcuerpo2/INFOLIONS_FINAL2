@@ -15,9 +15,7 @@ if (session_id() === "") { session_start(); }
   // 1: poniendo un correro con formato valido y como password 'or '1'='1
   //  2: detrás del 'or '1'='1 podemos poner ; DROP TABLE usuarios; SELECT * FROM datos WHERE nombre LIKE '%';
  // $consulta="SELECT * FROM usuarios WHERE Email='$email' AND password='$password'";
-  //OTRA OPCION, PERO NO FUNCIONA mysql_real_escape_string($email) ."' AND password='". mysql_real_escape_string($password)."'";
-  //FELIPE LA PROBÓ AÑADIENDO COMO ATRIBUTO LA CONEXION $consulta = sprintf("SELECT * FROM usuarios WHERE Email='%s' AND password='%s'", $email, $paswword);
-  
+ 
   //Método-2: No funcionan las inyecciones SQL
   $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE Email=? AND password=? LIMIT 1");
   $stmt->bind_param('ss', $email, $password);
