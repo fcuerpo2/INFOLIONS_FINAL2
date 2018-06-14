@@ -2,7 +2,7 @@
 if (session_id() == "") {session_start(); }
 include '../lib/lib1.php';
 conectarBD(); 
-//$email=$_POST['email'];
+$email=$_POST['email'];
 $miId=$_POST['idUs'];
 $time = 15 ;
 $date = time() ;
@@ -14,7 +14,7 @@ $enLinea=1;
 $consultaActualizar="UPDATE usuarios SET FechaLogin='$fechaFuera', enLinea='$linea' WHERE FechaLogin < $limite";
 $resultadoActualizar=$conexion->query($consultaActualizar);
 
-$miconsulta="SELECT idUsuario, Nombre, Apellidos, FotoPortada, Email, Activo, FechaLogin, enLinea FROM usuarios WHERE Activo='1' AND Email IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') ";
+$miconsulta="SELECT idUsuario, Nombre, Apellidos, FotoPortada, Email, Activo, FechaLogin, enLinea FROM usuarios WHERE Activo='1' AND (Email IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') OR idUsuario IN (SELECT id_contacto FROM contactos WHERE aceptar ='1' AND id_usuario ='$email')) ";
 $resultado = mysqli_query($conexion,$miconsulta);
 /*
 $resultado = mysqli_query($conexion, "SELECT idUsuario, Nombre, Apellidos, FotoPortada, Email, Activo, FechaLogin, enLinea FROM usuarios WHERE Activo ='1' AND Email !='".$email."'"); */

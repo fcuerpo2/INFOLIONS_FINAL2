@@ -9,8 +9,7 @@ function buscarAmigoContactos(){
             url: "../php/buscarAmigos.php",
             data:{"email":$nEmail,"idUs":$nId},
             //data: "email=" + $nEmail + "idUs " + $nId,
-            success: function(resp) {
-                
+            success: function(resp) {                
                 $('#buscarAmigos').html(resp);
                 $('#buscarAmigos').css({"display": "grid"});
                 $('#mostrarPerfilContactos').css({"display": "none"});

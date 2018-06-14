@@ -37,7 +37,7 @@ function cancelarPeticion(miEmail,cancelContacto){
     });
 }
 
-function anyadirPeticion(miEmail,solidContacto){
+function anyadirPeticion(miEmail,miId,solidContacto){
  var xhttp;
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -45,7 +45,7 @@ function anyadirPeticion(miEmail,solidContacto){
       document.getElementById("buscarA").innerHTML = this.responseText;     
     }
   }
-  xhttp.open("GET", "solicitarAmistad.php?sidUs="+miEmail+"&sidCon="+ solidContacto, true);
+  xhttp.open("GET", "solicitarAmistad.php?sidUs="+miEmail+"&sidUsu= "+ miId +"&sidCon="+ solidContacto, true);
   xhttp.send();
 /* */
   $nEmail = $("#miEmail").val();
@@ -68,7 +68,8 @@ function cancelarSolicitud(emailContacto,sMiId){
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("buscarA").innerHTML = this.responseText;     
+      document.getElementById("buscarAmigos").innerHTML = this.responseText;     
+      verSolicitudesContactos()
     }
   }
   xhttp.open("GET", "cancelarSolicitud.php?semCon="+emailContacto+"&sMiId="+ sMiId, true);
@@ -80,7 +81,8 @@ function aceptarSolicitud(emailContacto,sMiId){
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("buscarA").innerHTML = this.responseText;     
+      document.getElementById("buscarAmigos").innerHTML = this.responseText;     
+      verSolicitudesContactos()
     }
   }
   xhttp.open("GET", "aceptarSolicitud.php?semCon="+emailContacto+"&sMiId="+sMiId , true);

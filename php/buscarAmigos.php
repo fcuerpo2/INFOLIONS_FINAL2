@@ -5,7 +5,7 @@ conectarBD();
 $email=$_POST['email'];
 $miId=$_POST['idUs'];
 /*$resultado = mysqli_query($conexion, "SELECT U.idUsuario, U.Nombre, U.Apellidos, U.FotoPortada, U.Email, U.Activo, U.FechaLogin FROM usuarios AS U, contactos AS C WHERE C.aceptar='1' AND U.Activo ='1' AND U.Email !='".$email."'");*/
-$miconsulta="SELECT idUsuario, Nombre, Apellidos, FotoPortada, Email, Activo, FechaLogin FROM usuarios WHERE Email !='$email' AND Email NOT IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') ";
+$miconsulta="SELECT idUsuario, Nombre, Apellidos, FotoPortada, Email, Activo, FechaLogin FROM usuarios WHERE Email !='$email' AND Email NOT IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') AND idUsuario NOT IN (SELECT id_contacto FROM contactos WHERE aceptar ='1' AND id_usuario ='$email') ";
 $resultado = mysqli_query($conexion,$miconsulta); 
 if ($resultado->num_rows>0) {
   while($row = $resultado->fetch_assoc()) {
@@ -34,7 +34,7 @@ $solicitud = mysqli_query($conexion, "SELECT aceptar FROM contactos WHERE id_usu
       }
       else{
 ?>
-        <a href="#" onclick="anyadirPeticion('<?php echo $email;?>','<?php echo $row['idUsuario']; ?>')" class="a" >
+        <a href="#" onclick="anyadirPeticion('<?php echo $email;?>','<?php echo $miId;?>','<?php echo $row['idUsuario']; ?>')" class="a" >
           <strong>Añadir</strong> 
         </a>
 <?php
