@@ -10,7 +10,7 @@
   
   $_SESSION['MensajeAnunciogBorrado']="SI";
   $_SESSION['NumanuncioBorrado']=$recibirID;
-
+/*
   $consulta="DELETE from titulo WHERE idAnuncio =".$recibirID;
   
   $resultado=$conexion->query($consulta);
@@ -22,6 +22,8 @@
   $consulta="DELETE from imagen WHERE IdAnuncio=".$recibirID;
   
   $resultado=$conexion->query($consulta);
+ */ 
+ 
   desconectarBD();
   header('Location: ../ADMIN/principalAnuncio.php');
 ?>
