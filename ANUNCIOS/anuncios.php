@@ -49,18 +49,37 @@ echo "
 				<input name='latitud' type='hidden'>
 				<input name='longitud' type='hidden'>
 				</article>
+                                <article>
+                                    <div class='container'>
+                                        <div class='row'>
+                                            <div class='col-sm-6'>
+                                                <div class='form-group'>
+                                                    <div class='input-group date' id='datetimepickerInicio'>
+                                                        <input name='dateInicio' type='text' class='form-control' />
+                                                        <span class='input-group-addon'>
+                                                        <span class='glyphicon glyphicon-calendar'></span>
+                                                       </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type='text/javascript'>
+                                                $(function () {
+                                                    $('#datetimepickerInicio').datetimepicker();
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                </article>
                                 
-                                
-
 				<footer>
 				<input class='btn btn-lg btn-primary btn-block' onclick='publicarAnuncio();' value='Publicar' style='margin-top:10px;' id='botPubliTag' type='button'>
 				</footer>
 				</form></section>
                                 
-                                
+                                <!--
                                 <div id='pruebasNombreFoto'>
                                     <input id='fotoAnuncioNombre' name='fotoAnunNombre' class='form-control' value='nombre' disabled='' type='text'>
-                                </div>
+                                </div> -->
 			</div></div>
                                         ";
 
