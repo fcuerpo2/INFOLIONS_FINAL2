@@ -145,7 +145,7 @@ echo "</script>
 
    	<div class='row' style='margin: 0 auto;'>
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>";
-echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#btnMisUsuariosChat' style='width:100%; border-radius:10px; margin-bottom:10px;'>USUARIOS CONECTADOS</button>
+echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#btnMisUsuariosChat' style='width:100%; border-radius:10px; margin-bottom:10px;'>USUARIOS CONECTADOS  <span class='glyphicon glyphicon-menu-down'></button>
             <div id='btnMisUsuariosChat' class='collapse' style='padding: 1px 10px 1px; border-radius:10px; background-color: #ccc; margin-bottom:10px; margin-top:0px;'>";
 echo"       </div>";
 echo "                  <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>

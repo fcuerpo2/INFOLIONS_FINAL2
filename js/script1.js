@@ -248,7 +248,7 @@ function registrar(){
         //TODO: Sólo llamar cuando no hay publicidad 
         //Ahora se ejecuta cada vez que volvemos al home
         recuperarAnuncioPersistencia();
-
+        refrescarusuarioschat();
         }
     });
  if (navigator.geolocation){
