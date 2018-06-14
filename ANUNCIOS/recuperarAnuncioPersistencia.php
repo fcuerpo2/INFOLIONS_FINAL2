@@ -102,13 +102,14 @@
                 return true;
             }
         }
-        
-        if( $_SESSION['anuncio']['elegidosA'][0]===$aComparar){
-          return true;  
-        }else if( $_SESSION['anuncio']['elegidosA'][1]===$aComparar){
-          return true;  
-        }else if( $_SESSION['anuncio']['elegidosA'][2]===$aComparar){
-          return true;  
+        if(isset ($_SESSION['anuncio']['elegidosA'][0] )){
+            if( $_SESSION['anuncio']['elegidosA'][0]==$aComparar){
+              return true;  
+            }else if( $_SESSION['anuncio']['elegidosA'][1]==$aComparar){
+              return true;  
+            }else if( $_SESSION['anuncio']['elegidosA'][2]==$aComparar){
+              return true;  
+            }
         }
         //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
         // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
