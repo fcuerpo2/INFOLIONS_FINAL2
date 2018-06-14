@@ -144,8 +144,12 @@ echo "</script>
 </div>
 
    	<div class='row' style='margin: 0 auto;'>
-  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>
-                        <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>
+  		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>";
+echo "<button type='button' class='btn btn-success' data-toggle='collapse' data-target='#btnMisUsuariosChat' style='width:100%; border-radius:10px; margin-bottom:5px;'>USUARIOS CONECTADOS</button>
+            <div id='btnMisUsuariosChat' class='collapse' style='padding: 1px 10px 1px; border-radius:10px; background-color: #ccc; margin-bottom:10px; margin-top:5px;'>";
+include "../php/usuariosmichat.php";
+echo"       </div>";
+echo "                  <div id='michat' style='background-color: #333; min-height: 40px; margin-bottom: 10px; border-radius: 10px;' class='sombraNegra'>
                                     <div id='EspacioChat' style='max-height:350px; overflow: auto; padding: 0px 10px;'>
                                     <div class='chat'";
         	
