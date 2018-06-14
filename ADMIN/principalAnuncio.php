@@ -254,10 +254,10 @@ color: darkblue;
         function borrarAnuncio(idAnuncioBorrar)
         {
             var txt;
-            var r = confirm("¿ Realmente deseas Borrar el Anuncio "+ idAnunciogBorrar + " ?");
+            var r = confirm("¿ Realmente deseas Borrar el Anuncio "+ idAnuncioBorrar + " ?");
             if (r == true)
             {
-                window.location.href='borraAnuncio.php?IdAnuncioBorrar='+idAnuncioBorrar;
+                window.location.href='borrarAnuncio.php?IdAnuncioBorrar='+idAnuncioBorrar;
             } 
             else
             {

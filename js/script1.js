@@ -237,7 +237,6 @@ function registrar(){
  }
 
  function cargarmuro(){
-
         $.ajax({
         type: 'POST',
         url: '../php/tagform.php',
@@ -249,7 +248,7 @@ function registrar(){
         //TODO: Sólo llamar cuando no hay publicidad 
         //Ahora se ejecuta cada vez que volvemos al home
         recuperarAnuncioPersistencia();
-
+        refrescarusuarioschat();
         }
     });
  if (navigator.geolocation){
@@ -409,3 +408,16 @@ removeField = function (evt) {
 //		document.getElementById("text").value="";
 
  }
+ 
+function refrescarusuarioschat(){
+  console.log("refrescando usuarios chat");
+  var xhttp;
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("btnMisUsuariosChat").innerHTML = this.responseText;
+    }
+  }
+  xhttp.open("GET", "../php/usuariosmichat.php", true);
+  xhttp.send();   
+}
