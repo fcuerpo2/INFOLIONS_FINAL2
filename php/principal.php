@@ -17,7 +17,7 @@ if($_SESSION['usu']['idUsuario']!=""){
   $nombre=$_SESSION['usu']['Nombre'];
   $apellidos=$_SESSION['usu']['Apellidos'];
   $email=$_SESSION['usu']['Email'];
-
+  $idUsuario=$_SESSION['usu']['idUsuario']; 
  //creamos la consulta de seleccion del tag y le damos formato 
        //JSON Y LA RETORNAMOS
   
@@ -50,11 +50,13 @@ echo "
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js'></script>
 
-    <script src='../js/script1.js'></script>
-    <script src='../js/mostrarAmigosContactos.js'></script>
-    <script src='../js/mostrarenLineaContactos.js'></script>
+<script src='../js/script1.js'></script>
+
+<script src='../js/mostrarAmigosContactos.js'></script>    
+<script src='../js/buscarAmigos.js'></script> 
+
     <link rel='stylesheet' href='../css/estilo1.css'>
-    <link rel='stylesheet' href='../css/misContactos.css'>
+<link rel='stylesheet' href='../css/misContactos.css'>
     <script src='../chat/chat.js'></script>
     <link href='../chat/chat.css' rel='stylesheet'/>
 
@@ -106,13 +108,7 @@ echo "</script>
 <body onload='cargarmuro()'>
 
 <div id='anuncio-top' class='container-fluid' style='background-color:#F44336;color:#fff;'> <!--height:300px;-->
- 
-  
-  
-
 </div>
-
-
 
 <center>
 <div id='cabecera' class='navbar-fixed-top' style='position:sticky;'>
@@ -129,11 +125,16 @@ echo "</script>
         <div class='collapse navbar-collapse' id='myNavbar'>
             <ul class='nav navbar-nav'>
                 <li><a href='./contactos.php'>Contactos</a></li>
-                <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>
-                <li><a href='#' onclick='buscarAmigo();'>Buscar Amigo</a></li>
+                <li><a href='#' onclick='nuevoAnuncio();'>Agregar Anuncio</a></li>                
+                <li><a href='#' onclick='buscarAmigoContactos();'>Buscar Amigo</a></li>
                 <li class='menu'><a href='../ADMIN/'>Administrador</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
+                <li>
+                <a href='#' onclick='verSolicitudesContactos()'>
+                  <span id='solicitudAmistad'></span>
+                </a>
+              </li>
                 <li><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><span id='nomUserMenu'> Bienvenido/a $nombre $apellidos</span></a></li>
                 <li><a href='#' onclick='salir();'><span class='glyphicon glyphicon-log-in'></span> Cerrar Sesión</a></li>
             </ul>
@@ -193,27 +194,30 @@ echo "   			<div id='perfiles' class='sombraNegra' style='background-image: url(
 echo "   			<div id='perfiles' class='sombraNegra'></div>";        
         }
 }
-echo "   			<div id='tags'>";
+echo "  <div class='buscarAmigos' id='buscarAmigos'></div>
+          <div class='mostrarPerfilContactos' id='mostrarPerfilContactos'></div>
+        	<div id='tags'>";
 include './dibujartags.php';
 echo "		</div>           
 		</div>
                 
   		<div class='col-md-3' style='margin-top: 5px; margin-bottom: 5px;'>";
 ?>
-  		  		<div id='grupos' style='background-color: #ccc; min-height: 40px; margin-bottom: 10px; border-radius: 10px;'>
-            <form method="Post">
-                <p> Mis Amigos </p>
-                <div class="amigosContactos" id ="amigosContactos">
-                  <input type="hidden" name="aEmail" id="aEmail" value="<?php  echo $email;?>" >
-                </div>
-              </form>
-              <form method="Post">
-                <p id="dato"> Contactos en linea </p>
-                <div class="enLineaContactos" id ="enLineaContactos">
-                  <input type="hidden" name="eEmail" id="eEmail" value="<?php  echo $email;?>" >
-                </div>
-              </form>
-
+  		  		<div id='grupos' style='min-height: 40px; margin-bottom: 10px; border-radius: 10px;'>
+            <form >
+              <input type="hidden" name="miEmail" id="miEmail" value="<?php  echo $email;?>" >
+              <input type="hidden" name="miId" id="miId" value="<?php  echo $idUsuario;?>" >
+              <p id ="buscarA"></p>                
+              <!--div class="buscarAmigos" id="buscarAmigos">
+              </div-->
+                <p id ="misA"> Mis Amigos </p>  
+                <p id ="mensajeNumEnLinea"></p>  
+                <div class="amigosContactos" id ="amigosContactos">                  
+                </div>            
+                <!--p id="linea"> Contactos en linea </p>
+                <div class="enLineaContactos" id ="enLineaContactos">                  
+                </div-->              
+            </form>
             </div>
   			 	
 <?php
@@ -228,5 +232,6 @@ else{
   header("location: ../index.php");
 }
 ?>
+<script src='../js/mostrarPerfilContactos.js'></script>
 </body>
 </html>
