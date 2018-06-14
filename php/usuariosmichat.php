@@ -1,6 +1,6 @@
 <?php
 if (session_id() === '') { session_start(); }
-
+include '../lib/lib1.php';
 if($_SESSION['usu']['idUsuario']!=""){
 
   $_SESSION['TodosUsuariosMiChat']="";  
