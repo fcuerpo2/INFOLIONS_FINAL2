@@ -39,7 +39,7 @@ if (session_id() === "") { session_start(); }
     $consulta="UPDATE usuarios SET FechaLogin='$fecha', enLinea='1' WHERE Email='$email'";
     $resultado=$conexion->query($consulta);
     desconectarBD();
-    $_SESSION['user']=$_SESSION['usu']['nombre']." ".$_SESSION['usu'][apellidos];
+    $_SESSION['user']=$_SESSION['usu']['nombre']." ".$_SESSION['usu']['apellidos'];
    header('location:./principal.php');
 
   }else{
