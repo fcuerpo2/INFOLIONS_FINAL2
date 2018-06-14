@@ -34,41 +34,49 @@ grid-template-columns: auto auto;
 /*height: 80%;
 overflow: auto;*/
 }
-.contacto{
-    display: flex;
-    /*justify-content: center;*/
-    flex-direction: column;
-    /*background-color: rgba(255, 255, 255, 0.8);*/
-    /*border: 1px solid #29a3a3;*/
-    /*margin:5px;*/
-    /*padding: 5px;*/
-    font-size: 10px;
-    text-align: left;
-    size: 10px; 
-    padding:2px;
-}
 .imgContactosenLinea{
     width: 50px;
     height: 50px;
     border:3px solid #008000; /* verde #008000 rojo #ff8080 azul #80aaff naranja #ffcc80*/
     border-radius: 5px;
 }
-.contacto a.a{
-    color: #0c2027;
+
+.contacto {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    /* border: 1px solid #29a3a3; */
+    /* margin: 5px; */
+    /* padding: 5px; */
+    font-size: 10px;
+    text-align: left;
+    size: 10px;
+    padding: 2px;
+}
+.contacto a.a {
     pointer-events: auto;
     cursor: pointer;
     text-decoration: none;
+    padding: 5px;
+    color: #000;
+    background-color: #5cb85c;
+    text-align: center;
+    border-radius: 10px;
 }
 /*.contacto a.a:hover{
     color: #000;  
 }*/
-.contacto a.c{
-    color: red;
+.contacto a.c {
     pointer-events: auto;
     cursor: pointer;
     text-decoration: none;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
 }
 .contacto a.n{
     text-decoration: none;
 } 
-
