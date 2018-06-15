@@ -26,17 +26,13 @@ if ($resultado->num_rows>0) {
 <?php
 $solicitud = mysqli_query($conexion, "SELECT aceptar FROM contactos WHERE id_usuario ='$email' AND id_contacto ='$idContacto'"); 
       if ($solicitud->num_rows > 0) {
-?>        
-        <a href="#" onclick="cancelarPeticion('<?php echo $email;?>','<?php echo $row['idUsuario']; ?>')" class="c"  >
-          <strong>Cancelar</strong>
-        </a>        
+?>
+        <input type="button" class="btn btn-danger btn-sm" onclick="cancelarPeticion('<?php echo $email;?>','<?php echo $row['idUsuario']; ?>')" value="Cancelar" >                                
 <?php 
       }
       else{
 ?>
-        <a href="#" onclick="anyadirPeticion('<?php echo $email;?>','<?php echo $miId;?>','<?php echo $row['idUsuario']; ?>')" class="a" >
-          <strong>Añadir</strong> 
-        </a>
+        <input type="button" class="btn btn-primary btn-sm" onclick="anyadirPeticion('<?php echo $email;?>','<?php echo $miId;?>','<?php echo $row['idUsuario']; ?>')" value="Añadir" >        
 <?php
       }
 ?>        
@@ -45,7 +41,7 @@ $solicitud = mysqli_query($conexion, "SELECT aceptar FROM contactos WHERE id_usu
   }
 }
 else {
-  echo "0 results";
+  echo "No Tienes mas solicitud de amistad";
 }
 $conexion->close();
 ?>

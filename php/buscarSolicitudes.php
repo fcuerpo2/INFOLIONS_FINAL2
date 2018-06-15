@@ -27,14 +27,10 @@ $solicitud = mysqli_query($conexion, "SELECT aceptar FROM contactos WHERE id_usu
         {
 ?>
       <div class='contacto' id='botonAceptar'>
-        <a href="#" onclick="aceptarSolicitud('<?php echo $emailContacto;?>','<?php echo $miId;?>')" class="a"  >
-          <strong>Aceptar</strong>
-        </a>
+        <input type="button" class="btn btn-success btn-sm" onclick="aceptarSolicitud('<?php echo $emailContacto;?>','<?php echo $miId;?>')" value="Aceptar" >
       </div>
       <div class="contacto" id="botonCancelar">  
-        <a href="#" onclick="cancelarSolicitud('<?php echo $emailContacto;?>','<?php echo $miId;?>')" class="c"  >
-          <strong>Cancelar</strong>
-        </a>                
+        <input type="button" class="btn btn-danger btn-sm" onclick="cancelarSolicitud('<?php echo $emailContacto;?>','<?php echo $miId;?>')" value="Cancelar" >
       </div>
 <?php 
       }
@@ -46,7 +42,8 @@ $solicitud = mysqli_query($conexion, "SELECT aceptar FROM contactos WHERE id_usu
     }
   }
     else {
-      header('location:./principal.php');      
+      //header('location:./principal.php');      
+      echo "No tienes mas solicitudes de amistad.";
     }
 $conexion->close();
 ?>

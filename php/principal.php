@@ -208,8 +208,8 @@ echo "		</div>
 ?>
   		  		<div id='grupos' style='min-height: 40px; margin-bottom: 10px; border-radius: 10px;'>
             <form >
-              <input type="hidden" name="miEmail" id="miEmail" value="<?php  echo $email;?>" >
-              <input type="hidden" name="miId" id="miId" value="<?php  echo $idUsuario;?>" >
+              <input type="hidden" name="miEmail" id="miEmail" value="<?php echo $email;?>" >
+              <input type="hidden" name="miId" id="miId" value="<?php echo $idUsuario;?>" >
               <p id ="buscarA"></p>                
               <!--div class="buscarAmigos" id="buscarAmigos">
               </div-->

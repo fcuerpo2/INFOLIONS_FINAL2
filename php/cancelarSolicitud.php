@@ -6,6 +6,7 @@ if ($_SESSION['usu']['idUsuario']!=0) {
   include "../lib/lib1.php";
   conectarBD();
   $uid=$_GET['semCon'];
+  //$uidu=$_GET['sidUsu'];
   $cid=$_GET['sMiId']; 
   $consulta="DELETE FROM contactos WHERE id_usuario='$uid' AND id_contacto='$cid'";  
   $resultado=$conexion->query($consulta);

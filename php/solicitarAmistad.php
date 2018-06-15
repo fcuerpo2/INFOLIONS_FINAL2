@@ -8,7 +8,7 @@ if ($_SESSION['usu']['idUsuario']!=0) {
   $uid=$_GET['sidUs'];
   $uidu=$_GET['sidUsu'];
   $cid=$_GET['sidCon']; 
-  $consulta="INSERT INTO contactos(id_usuario,id_us,id_contacto,tipo_relacion,aceptar) VALUES('" . $uid . "','".$uidu."'' ,'" . $cid . " ', '1','0')";  
+  $consulta="INSERT INTO contactos(id_usuario,id_us,id_contacto,tipo_relacion,aceptar) VALUES('$uid','$uidu' ,'$cid', '1','0')";  
   $resultado=$conexion->query($consulta);
   desconectarBD();
   //echo $uid ;

@@ -18,19 +18,8 @@ $resultado=$conexion->query($consulta);
 // tomamos todos los usuarios en linea
 $resultado = mysqli_query($conexion, "SELECT Nombre, Apellidos, FotoPortada, Activo, FechaLogin FROM usuarios WHERE enLinea=$enLinea AND Email !='$email'");
 // Si son los mismo actualizamos la tabla gente_online
-// Ocultamos algún mensaje de error con @
-//$resp = @mysql_query($query) or die(mysql_error());
-// almacenamos la consulta en la variable $usuarios
 $usuarios = $resultado->num_rows;
-// Si hay 1 usuarios se muestra en singular; si hay más de uno, en plural
-/*if($usuarios > 1 || $usuarios == 0)
-  {echo("Hay ");}
-else{echo("Hay ");}
-if($usuarios == 0){echo("no ");}
-else{echo($usuarios." ");}
-if($usuarios > 1 || $usuarios == 0){echo("usuarios en línea.");}
-else{echo("usuario en línea.");}
-*/
+
 if ($resultado->num_rows>0) {
     //echo "entra >0";
     // output data of each row
