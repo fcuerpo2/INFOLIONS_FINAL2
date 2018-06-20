@@ -30,7 +30,7 @@ border:2px solid lightgray;
 border-radius: 5px;
 display: -webkit-flex; /* Safari */        
 display: grid;
-grid-template-columns: auto auto;
+grid-template-columns: auto auto auto;
 /*height: 80%;
 overflow: auto;*/
 }
@@ -41,6 +41,10 @@ overflow: auto;*/
     border-radius: 5px;
 }
 
+img.imgOnline{
+    width: 10px;
+    height: 10px;    
+}
 .contacto {
     display: flex;
     justify-content: center;

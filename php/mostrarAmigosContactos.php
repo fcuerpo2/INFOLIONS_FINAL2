@@ -21,30 +21,35 @@ $resultado = mysqli_query($conexion, "SELECT idUsuario, Nombre, Apellidos, FotoP
 if ($resultado->num_rows>0) {
   while($row = $resultado->fetch_assoc()){
     $fotoPerfil=$row['FotoPortada']; 
-    if($row['enLinea']==$enLinea)
-    {       
-?>    <div class='contacto' id='fotoContacto'>
-        <a href='#' onclick="perfilUsuario(<?php echo $row['idUsuario']; ?>)">
-        <img src='<?php if($fotoPerfil!=NULL){echo '../doc/fotoportada/'.$fotoPerfil;}else{echo '../img/usuario.jpg';} ?>' class='imgContactosenLinea'>
-        </a>
-      </div>
-<?php
-    }
-    else{
-?>    
+?>
       <div class='contacto' id='fotoContacto'>
         <a href='#' onclick="perfilUsuario(<?php echo $row['idUsuario']; ?>)">
         <img src='<?php if($fotoPerfil!=NULL){echo '../doc/fotoportada/'.$fotoPerfil;}else{echo '../img/usuario.jpg';} ?>' class='imgContactos'>
         </a>
       </div>
-<?php
-      }
-?>
       <div class='contacto' id='nombreContacto'>
         <a href='#' onclick="perfilUsuario(<?php echo $row['idUsuario']; ?>)" class="n">
         <strong><?php  echo $row['Nombre'] ." ". $row['Apellidos'];?></strong>
         </a>                      
       </div>
+<?php      
+if($row['enLinea']==$enLinea)
+    {       
+?>   
+      <div class='contacto' id='iconoOnline'>        
+        <img src='<?php echo '../img/online.png' ?>' class='imgOnline'>
+      </div>
+<?php
+    }
+    else
+    {
+?>   
+    <div class='contacto' id='iconoOffline'>       
+    </div>   
+<?php
+
+    }
+?>      
 <?php
   }
 }
