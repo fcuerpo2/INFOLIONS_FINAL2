@@ -34,8 +34,15 @@ function nuevoAnuncio(){
 }
 
 function publicarAnuncio(){
+    
+    var formdata = new FormData($('#formAnuncio')[0]);
+    
+   formdata.forEach(function(element) {
+        console.log(element);
+    });
+        
 if(confirm("¿Estás seguro que quieres publicar el anuncio?")){
-      var formdata = new FormData($('#formAnuncio')[0]);
+      
         $.ajax({
         type: 'POST',
         url: '../ANUNCIOS/subirAnuncio.php',
