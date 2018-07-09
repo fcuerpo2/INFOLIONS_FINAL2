@@ -5,8 +5,10 @@ conectarBD();
 $email=$_POST['email'];
 $miId=$_POST['idUs'];
 $enLinea=1;
-/*$resultado = mysqli_query($conexion, "SELECT idUsuario FROM usuarios WHERE enLinea ='$enLinea' AND Email !='".$email."'"); */
-$miconsulta="SELECT idUsuario FROM usuarios WHERE enLinea ='$enLinea' AND Email !='$email' AND Email IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') ";
+/*
+$miconsulta="SELECT idUsuario, Nombre, Apellidos, FotoPortada, Email, Activo, FechaLogin, enLinea FROM usuarios WHERE Activo='1' AND (Email IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') OR idUsuario IN (SELECT id_contacto FROM contactos WHERE aceptar ='1' AND id_usuario ='$email')) ";
+*/
+$miconsulta="SELECT idUsuario FROM usuarios WHERE Activo='1' AND enLinea ='$enLinea' AND Email !='$email' AND (Email IN (SELECT id_usuario FROM contactos WHERE aceptar ='1' AND id_contacto ='$miId') OR idUsuario IN (SELECT id_contacto FROM contactos WHERE aceptar ='1' AND id_usuario ='$email') ) ";
 $resultado = mysqli_query($conexion,$miconsulta); 
 $row_cnt = mysqli_num_rows($resultado);
 if ($row_cnt>0) {

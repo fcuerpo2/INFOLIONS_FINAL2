@@ -4,7 +4,7 @@ header('Expires: Sat, 1 Jul 2000 05:00:00 GMT'); // Fecha en el pasado
 include '../lib/lib1.php';
 include '../php/comprobarAdmin.php';
 if (session_id() === '') {session_start();}
-
+$_SESSION['MensajeAnuncioBorrado']="";
   conectarBD();
   $consulta="SELECT * FROM usuarios";
   $resultado=$conexion->query($consulta);
@@ -160,7 +160,7 @@ echo"<style>
                 <li class='menu'><a href='./principalTags'>Tags</a></li>
                 <li class='menu'><a href='PrincipalContactos.php'>Contactos</a></li>
                 <li class='menu'><a href='#'>Geolocalización</a></li>
-                <li class='menu'><a href='#' onclick='nuevoAnuncio();'>Anuncios</a></li>
+                <li class='menu'><a href='./principalAnuncio.php'>Anuncios</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
                 <li class='menu'><a href='#' onclick='miperfil();'><span class='glyphicon glyphicon-user'></span><?php echo "Bienvenido $nombre $apellidos"; ?></a></li>
@@ -208,7 +208,7 @@ echo"<style>
           </a>
           </div>
           <div class="col-md-2" style="text-align: center;">            
-            <a href="#"> 
+            <a href="./principalAnuncio.php"> 
             <span  id="anuncios" class="glyphicon glyphicon-pushpin"></span>
             <div class="anuncios">
               <p>Anuncios</p>

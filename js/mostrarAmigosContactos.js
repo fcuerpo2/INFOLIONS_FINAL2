@@ -6,7 +6,7 @@ $(document).ready(function(){
             type: "POST",
             dataType: 'html',
             url: "../php/mostrarAmigosContactos.php",
-            data: "idUs=" + $nId,
+            data:{"email":$nEmail,"idUs":$nId},
             success: function(resp) {
                 $('#amigosContactos').html(resp);
             }
@@ -20,7 +20,8 @@ $(document).ready(function(){
                 url: "../php/mostrarAmigosContactos.php",
                 //data:{"email":$nEmail,"idUs":$nId},
                 //data: "email=" + $nEmail + "idUs=" + $nId,
-                data: "idUs=" + $nId,
+                data:{"email":$nEmail,"idUs":$nId},
+                //data: "idUs=" + $nId,
                 success: function(resp) {
                 $('#amigosContactos').html(resp);
                 }
