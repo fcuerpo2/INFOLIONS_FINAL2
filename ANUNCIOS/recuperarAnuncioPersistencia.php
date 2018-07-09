@@ -23,14 +23,18 @@
             $elegidosV = array();
             
             for($x = 0; $x < 3; $x++) {
-                do{
-                    $elegidosN[$x]=rand(1, count($arrayIdAnuncios)-1);
-                    //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
-                    // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
-                
-                    $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
-                }while (noRepetirAnuncio($elegidosV[$x],$x,$elegidosV));
-                
+                //En caso de que tengamos 7 o más anuncios, nunca repetiremos en dos tandas
+                if(count($arrayIdAnuncios)>6){
+                    do{
+                        $elegidosN[$x]=rand(1, count($arrayIdAnuncios)-1);
+                        //TODO : elegidoN[$x] ha de ser diferente al inmediatamente anterior
+                        // y ha de ser diferente a los tres de la vez anterior  $_SESSION['anuncio']['elegidosA']
+                        $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
+                    }while (noRepetirAnuncio($elegidosV[$x],$x,$elegidosV));
+                }else{//Si tenemos menos de 7 no realizamos el control sobre la repetición (no tiene sentido y crearía un bucle)
+                     $elegidosN[$x]=rand(1, count($arrayIdAnuncios)-1);  
+                     $elegidosV[$x]=$arrayIdAnuncios[$elegidosN[$x]];
+                }
                 
                 
                 

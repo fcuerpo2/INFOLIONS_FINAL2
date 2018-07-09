@@ -12,7 +12,7 @@ if($_SESSION['usu']['idUsuario']!=""){
   $fecha=date('d-m-y h:i:sa');
   $nombre_fichero = '../doc/fotoportada/'.$foto;
 echo "
-    
+   
 <div id='perfiles' class='sombraNegra'>
                         <br>
                         <h3>PUBLICAR ANUNCIO</h3>
@@ -26,9 +26,9 @@ echo "
                                 }
                                 echo "<span style='text-align:center; margin-top: 10px; width:100%'><span style='font-size:18px; font-weight: 700; text-shadow: 2px 2px 8px #9a96e4;'>$nombre $apellidos</span><br><span style='font-size: 12px; font-style: italic;'>$fecha</span></span>
 				</header>
-				<form id='formAnuncio' method='POST' style='margin-bottom:0px;'>
+				<form class='needs-validation' novalidate id='formAnuncio' method='POST' style='margin-bottom:0px;'>
 				<article>
-				<input class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;' type='text'>
+				<input class='form-control' id='cab' name='cabecera' placeholder='Título' title='Título' style='margin-bottom:5px;' type='text' required>
 				</article>
                                 <article>
                                     <br>                
@@ -45,30 +45,20 @@ echo "
                                 </article>
                                  <br>
 				<article>
-				<textarea cols='80' rows='3' id='textDescripcion' type='text' class='form-control' name='textDescripcion' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
+				<textarea cols='80' rows='3' required id='textDescripcion' type='text' class='form-control' name='textDescripcion' placeholder='Texto del anuncio. Si elijes foto no aparecerá este texto' title='Mensaje'></textarea>
 				<input name='latitud' type='hidden'>
 				<input name='longitud' type='hidden'>
 				</article>
+                                <br>
                                 <article>
-                                    <div class='container'>
-                                        <div class='row'>
-                                            <div class='col-sm-6'>
-                                                <div class='form-group'>
-                                                    <div class='input-group date' id='datetimepickerInicio'>
-                                                        <input name='dateInicio' type='text' class='form-control' />
-                                                        <span class='input-group-addon'>
-                                                        <span class='glyphicon glyphicon-calendar'></span>
-                                                       </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <script type='text/javascript'>
-                                                $(function () {
-                                                    $('#datetimepickerInicio').datetimepicker();
-                                                });
-                                            </script>
-                                        </div>
-                                    </div>
+                                    <p>Inicio publicación:</p>
+                                    <input id='date' type='date' name='fechaDesde'>
+                                    <input id='time' type='time' name='horaDesde'>
+                                </article>
+                                 <article>
+                                    <p>Fin publicación:</p>
+                                    <input id='date' type='date' name='fechaHasta'>
+                                    <input id='time' type='time' name='horaHasta'>
                                 </article>
                                 
 				<footer>
